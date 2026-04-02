@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InStyle Cleaning — Marketing Content Hub</title>
+<style>
+  :root {
+    --navy: #0F1E3D;
+    --navy-light: #1B2A4A;
+    --navy-mid: #253658;
+    --gold: #C9A84C;
+    --gold-light: #E8D48B;
+    --gold-dark: #A88A2E;
+    --cream: #FFF8E7;
+    --white: #FFFFFF;
+    --gray-50: #F9FAFB;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+    --gray-300: #D1D5DB;
+    --gray-500: #6B7280;
+    --gray-600: #4B5563;
+    --gray-700: #374151;
+    --gray-800: #1F2937;
+    --green: #10B981;
+    --blue: #3B82F6;
+    --purple: #8B5CF6;
+    --pink: #EC4899;
+    --orange: #F59E0B;
+    --red: #EF4444;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.04);
+    --shadow-lg: 0 4px 24px rgba(0,0,0,.12);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-800);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, var(--navy-mid) 100%);
+    color: white;
+    padding: 48px 32px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold-light);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .header h1 span { color: var(--gold); }
+  .header p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    max-width: 600px;
+  }
+  .header-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 24px;
+  }
+  .header-stat {
+    text-align: left;
+  }
+  .header-stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .header-stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Navigation */
+  .nav {
+    background: white;
+    border-bottom: 1px solid var(--gray-200);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+  }
+  .nav-tab {
+    padding: 14px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray-500);
+    background: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav-tab:hover { color: var(--navy); }
+  .nav-tab.active {
+    color: var(--navy);
+    border-bottom-color: var(--gold);
+    font-weight: 600;
+  }
+  .nav-tab .tab-icon { margin-right: 6px; }
+
+  /* Content */
+  .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px;
+  }
+  .section { display: none; }
+  .section.active { display: block; }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .section-desc {
+    color: var(--gray-500);
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  /* Cards */
+  .card {
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-200);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: var(--shadow); }
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .card-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-800);
+  }
+  .card-subtitle {
+    font-size: 12px;
+    color: var(--gray-500);
+  }
+  .card-body { padding: 20px; }
+  .card-content {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--gray-700);
+    white-space: pre-wrap;
+  }
+
+  /* Copy Button */
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray-500);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .copy-btn:hover {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+  }
+  .copy-btn.copied {
+    background: var(--green);
+    color: white;
+    border-color: var(--green);
+  }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .tag-instagram { background: #FDF2F8; color: #DB2777; }
+  .tag-facebook { background: #EFF6FF; color: #2563EB; }
+  .tag-google { background: #FEF3C7; color: #D97706; }
+  .tag-tiktok { background: #F0FDF4; color: #059669; }
+  .tag-email { background: #F5F3FF; color: #7C3AED; }
+  .tag-blog { background: #FFF7ED; color: #EA580C; }
+  .tag-nextdoor { background: #ECFDF5; color: #047857; }
+  .tag-sms { background: #FEF2F2; color: #DC2626; }
+
+  /* Grid layouts */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(520px, 1fr));
+    gap: 20px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+  }
+
+  /* Calendar */
+  .calendar-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 100px 80px;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--gray-100);
+    font-size: 13px;
+    transition: background 0.15s;
+  }
+  .calendar-row:hover { background: var(--gray-50); }
+  .calendar-day {
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .calendar-topic {
+    color: var(--gray-700);
+  }
+
+  /* Brand Voice */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .voice-card {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .voice-card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .voice-do {
+    color: var(--green);
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  .voice-dont {
+    color: var(--red);
+    font-size: 13px;
+    margin-top: 6px;
+  }
+
+  /* Campaign */
+  .campaign-card {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .campaign-banner {
+    height: 8px;
+  }
+  .campaign-body { padding: 20px; }
+  .campaign-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .campaign-period {
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-bottom: 12px;
+  }
+  .campaign-channels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  /* Email Template */
+  .email-preview {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 24px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .email-subject {
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .email-from {
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  /* Hashtag cloud */
+  .hashtag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .hashtag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--cream);
+    color: var(--gold-dark);
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  /* SEO keyword table */
+  .kw-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .kw-table th {
+    text-align: left;
+    padding: 10px 16px;
+    background: var(--gray-50);
+    color: var(--gray-600);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .kw-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .kw-volume {
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .kw-diff {
+    display: inline-block;
+    width: 60px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--gray-200);
+    position: relative;
+    overflow: hidden;
+  }
+  .kw-diff-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 3px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .header { padding: 32px 20px; }
+    .header h1 { font-size: 24px; }
+    .header-stats { gap: 20px; }
+    .header-stat-value { font-size: 22px; }
+    .content { padding: 20px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .calendar-row { grid-template-columns: 80px 1fr 80px; }
+    .calendar-row > :last-child { display: none; }
+    .nav-inner { padding: 0 16px; }
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--navy);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 1000;
+  }
+  .toast.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Print */
+  @media print {
+    .nav { display: none; }
+    .section { display: block !important; page-break-before: always; }
+    .copy-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-badge">Deliverable #8 — Marketing Content</div>
+    <h1>InStyle Cleaning <span>Content Hub</span></h1>
+    <p>Ready-to-publish marketing content across all channels. Click any copy button to grab content instantly.</p>
+    <div class="header-stats">
+      <div class="header-stat">
+        <div class="header-stat-value">48</div>
+        <div class="header-stat-label">Content Pieces</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat-value">7</div>
+        <div class="header-stat-label">Channels</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat-value">4</div>
+        <div class="header-stat-label">Campaigns</div>
+      </div>
+      <div class="header-stat">
+        <div class="header-stat-value">12</div>
+        <div class="header-stat-label">Weeks Planned</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <div class="nav-inner">
+    <button class="nav-tab active" data-tab="social"><span class="tab-icon">📱</span>Social Media</button>
+    <button class="nav-tab" data-tab="ads"><span class="tab-icon">📣</span>Ad Copy</button>
+    <button class="nav-tab" data-tab="email"><span class="tab-icon">📧</span>Email</button>
+    <button class="nav-tab" data-tab="seo"><span class="tab-icon">🔍</span>SEO & Blog</button>
+    <button class="nav-tab" data-tab="campaigns"><span class="tab-icon">🎯</span>Campaigns</button>
+    <button class="nav-tab" data-tab="calendar"><span class="tab-icon">📅</span>Content Calendar</button>
+    <button class="nav-tab" data-tab="voice"><span class="tab-icon">🎨</span>Brand Voice</button>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="content">
+
+<!-- ==================== SOCIAL MEDIA ==================== -->
+<div class="section active" id="social">
+  <h2 class="section-title">Social Media Posts</h2>
+  <p class="section-desc">Ready-to-publish posts for Instagram, Facebook, TikTok, and Nextdoor. Click copy to grab.</p>
+
+  <div class="grid-2">
+
+    <!-- Instagram Post 1 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#FDF2F8;color:#DB2777">IG</div>
+          <div>
+            <div class="card-title">Before/After Transformation</div>
+            <div class="card-subtitle">Instagram Feed + Carousel</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">The difference is in the details. ✨
+
+Swipe to see this Gainesville home go from "lived-in" to "move-in ready" in just 3 hours.
+
+Our deep cleaning team doesn't cut corners — we clean them. Every baseboard, every vent, every forgotten shelf behind the door.
+
+This is what InStyle standard looks like.
+
+📍 Gainesville, FL
+📞 Book your transformation — link in bio
+
+#InStyleCleaning #GainesvilleCleaning #BeforeAndAfter #DeepClean #CleanHome #GainesvilleFL #HomeTransformation #CleaningService #MovingDayCleaning #SpotlesHome</div>
+      </div>
+    </div>
+
+    <!-- Instagram Post 2 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#FDF2F8;color:#DB2777">IG</div>
+          <div>
+            <div class="card-title">Team Spotlight</div>
+            <div class="card-subtitle">Instagram Feed — People Content</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">Meet the people who make your home sparkle. 💛
+
+Our team has been serving Gainesville families since 2020 — and we treat every home like our own.
+
+Fully trained. Fully insured. Fully obsessed with getting it right.
+
+When you book InStyle, you're not getting a random crew. You're getting professionals who take pride in what they do.
+
+💬 "They cleaned spots I didn't even know were dirty!" — actual client review
+
+#InStyleCleaning #CleaningCrew #GainesvilleFL #TrustedCleaners #ProfessionalCleaning #TeamSpotlight #SmallBusinessFL #CleaningPros</div>
+      </div>
+    </div>
+
+    <!-- Instagram Reel Script -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#FDF2F8;color:#DB2777">IG</div>
+          <div>
+            <div class="card-title">Reel: "Things We Actually Clean"</div>
+            <div class="card-subtitle">Instagram Reel — 30-sec script</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">[HOOK — Text on screen: "Things your cleaning service probably skips"]
+
+🎵 Trending audio — upbeat
+
+Shot 1: Close-up wiping inside oven (text: "Inside your oven")
+Shot 2: Cleaning ceiling fan blades (text: "Ceiling fans")
+Shot 3: Wiping light switches (text: "Every light switch")
+Shot 4: Cleaning baseboards (text: "All the baseboards")
+Shot 5: Behind toilet base (text: "Behind the toilet")
+Shot 6: Team poses smiling (text: "We don't skip. We're InStyle.")
+
+Caption: Things most cleaners skip... we START with. 💅
+
+Every InStyle deep clean covers what others forget. Book the difference — link in bio.
+
+#CleaningHacks #GainesvilleCleaning #DeepClean #CleanTok #InStyleCleaning #SatisfyingClean</div>
+      </div>
+    </div>
+
+    <!-- Facebook Post 1 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#EFF6FF;color:#2563EB">FB</div>
+          <div>
+            <div class="card-title">Community Trust Post</div>
+            <div class="card-subtitle">Facebook — Engagement</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">We started InStyle Cleaning in 2020 with one simple belief: Gainesville deserves better cleaning.
+
+Not the "showed up late, did the bare minimum" kind.
+
+The kind where you walk in after we leave and think "...wow."
+
+4 years later, that belief hasn't changed. We still:
+✅ Show up on time, every time
+✅ Use our own premium supplies
+✅ Do a walkthrough checklist before we leave
+✅ Follow up to make sure you're happy
+
+Whether it's a one-time deep clean, recurring service, or move-out clean — we bring the same standard.
+
+Gainesville, Orlando, Tampa — we've got you covered.
+
+📞 Ready to see the difference? Message us or visit instylecleaningfl.com
+
+#GainesvilleCleaning #OrlandoCleaning #TampaCleaning #InStyleCleaning #LocalBusiness #TrustedCleaning</div>
+      </div>
+    </div>
+
+    <!-- Facebook Post 2 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#EFF6FF;color:#2563EB">FB</div>
+          <div>
+            <div class="card-title">Review Showcase</div>
+            <div class="card-subtitle">Facebook — Social Proof</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">Nothing makes our day like reading your reviews. 🥹
+
+⭐⭐⭐⭐⭐ "I've tried 3 different cleaning services in Gainesville. InStyle is the only one I've kept. They're thorough, professional, and my house has never looked this good consistently."
+
+This is why we do what we do.
+
+If you've been thinking about trying a new cleaning service — your sign is right here 👆
+
+📩 DM us "CLEAN" and we'll send you our service menu + a special first-time offer.</div>
+      </div>
+    </div>
+
+    <!-- TikTok Script -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#F0FDF4;color:#059669">TT</div>
+          <div>
+            <div class="card-title">"Day in the Life" Cleaning</div>
+            <div class="card-subtitle">TikTok — 60-sec script</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">[HOOK — POV: You hired InStyle Cleaning for the first time]
+
+🎵 Lo-fi or "that" trending sound
+
+6:45 AM — Team loads supplies into van (text: "We bring everything")
+7:00 AM — Arrive at house, booties on (text: "Shoes off. Always.")
+7:05 AM — Walk-through checklist with client (text: "We ask what matters to YOU")
+7:15 AM — Montage: kitchen, bathrooms, bedrooms
+         (satisfying close-ups of grout scrubbing, mirror buffing, vacuum lines)
+8:30 AM — Final walkthrough (text: "We check every room before we go")
+8:35 AM — Client reaction: "Oh my god..."
+
+End card: "This is InStyle standard. Gainesville, FL 📍"
+
+Caption: POV: You finally found THE cleaning service 🫧✨
+
+We don't just clean — we transform. Serving Gainesville, Orlando & Tampa.
+
+#CleanTok #CleaningMotivation #GainesvilleFL #SatisfyingCleaning #InStyleCleaning #CleanWithMe</div>
+      </div>
+    </div>
+
+    <!-- Nextdoor Post -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#ECFDF5;color:#047857">ND</div>
+          <div>
+            <div class="card-title">Neighborhood Recommendation</div>
+            <div class="card-subtitle">Nextdoor — Local Trust</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">Hi neighbors! 👋
+
+If anyone is looking for a reliable cleaning service, I wanted to share that InStyle Cleaning has been serving our Gainesville community since 2020.
+
+We offer:
+🏠 Regular recurring cleaning (weekly, biweekly, monthly)
+🧹 Deep cleaning for those "haven't cleaned in a while" moments
+📦 Move-in / move-out cleaning
+🏢 Commercial & office cleaning
+
+We're fully insured, bring all our own supplies, and every clean comes with a satisfaction guarantee.
+
+We also serve Orlando and Tampa if you have family/friends in those areas!
+
+Happy to answer any questions. You can reach us at instylecleaningfl.com or just reply here.
+
+— The InStyle Cleaning Team</div>
+      </div>
+    </div>
+
+    <!-- Instagram Story Series -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#FDF2F8;color:#DB2777">IG</div>
+          <div>
+            <div class="card-title">Story Series: "Would You Rather"</div>
+            <div class="card-subtitle">Instagram Stories — 5-slide engagement</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">Slide 1: "Cleaning edition: Would you rather? 🤔"
+(use Poll sticker)
+
+Slide 2: "Clean the kitchen OR clean the bathroom?"
+Poll: 🍳 Kitchen | 🚿 Bathroom
+
+Slide 3: "Vacuum OR mop?"
+Poll: Vacuum 🏃 | Mop 🧹
+
+Slide 4: "Clean for 4 hours once a month OR 1 hour every week?"
+Poll: 4hr monthly | 1hr weekly
+
+Slide 5: "OR... just let InStyle handle it all? 😏"
+Link sticker: "Book Now" → instylecleaningfl.com
+
+(Pro tip: Polls boost story engagement by 40%+ and help the algorithm show your content to more people)</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== AD COPY ==================== -->
+<div class="section" id="ads">
+  <h2 class="section-title">Advertising Copy</h2>
+  <p class="section-desc">Google Ads, Facebook/Instagram Ads, and local advertising copy — tested frameworks, ready to deploy.</p>
+
+  <div class="grid-2">
+
+    <!-- Google Search Ad 1 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#FEF3C7;color:#D97706">G</div>
+          <div>
+            <div class="card-title">Google Search — Brand</div>
+            <div class="card-subtitle">Keywords: cleaning service gainesville fl</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">Headline 1: Gainesville's Trusted Cleaning Service
+Headline 2: InStyle Cleaning — Since 2020
+Headline 3: Book Online in 60 Seconds
+
+Description 1: Professional home & office cleaning in Gainesville, FL. Insured team, premium supplies included. Recurring, deep clean & move-out services. Free estimates.
+
+Description 2: ⭐ 5-Star Rated | ✅ Insured & Bonded | 🧹 We Bring Everything | Serving Gainesville, Orlando & Tampa. Book your clean today.
+
+Sitelinks:
+• Deep Cleaning Services — One-time deep clean starting at competitive rates
+• Recurring Cleaning — Weekly, biweekly, or monthly plans
+• Move-Out Cleaning — Get your deposit back guaranteed
+• Free Estimate — No obligation, fast response</div>
+      </div>
+    </div>
+
+    <!-- Google Search Ad 2 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#FEF3C7;color:#D97706">G</div>
+          <div>
+            <div class="card-title">Google Search — Move-Out</div>
+            <div class="card-subtitle">Keywords: move out cleaning gainesville</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">Headline 1: Move-Out Cleaning Gainesville FL
+Headline 2: Get Your Full Deposit Back
+Headline 3: Trusted by 500+ Renters & Landlords
+
+Description 1: Moving out near UF? InStyle's move-out cleaning covers every inch — kitchen, baths, floors, windows. Landlord-approved results. Book 48 hrs in advance.
+
+Description 2: Don't lose your deposit over a dirty apartment. Our move-out clean is thorough, fast, and priced right for students and families. Same-week availability.
+
+Callout Extensions:
+• Free Estimates • Insured & Bonded • Satisfaction Guaranteed • Eco-Friendly Options</div>
+      </div>
+    </div>
+
+    <!-- Facebook/IG Ad 1 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#EFF6FF;color:#2563EB">FB</div>
+          <div>
+            <div class="card-title">Facebook Ad — First-Time Offer</div>
+            <div class="card-subtitle">Objective: Lead Generation</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">Primary Text:
+You work hard. Your weekends shouldn't be spent scrubbing toilets.
+
+InStyle Cleaning has been making Gainesville homes sparkle since 2020. Professional team. Premium supplies. Satisfaction guaranteed.
+
+🎁 First-time clients: Mention this ad for a special offer on your first clean.
+
+✅ Recurring, deep clean, or one-time — we do it all.
+
+Headline: Gainesville's Top-Rated Cleaning Service
+Description: Professional cleaning. No contracts. Book in 60 seconds.
+CTA: Get Quote
+
+---
+
+Targeting Suggestions:
+• Location: Gainesville, FL + 25mi radius
+• Age: 25-55
+• Interests: Home improvement, home decor, busy professionals, working parents
+• Behaviors: Homeowners, recently moved
+• Lookalike: Based on existing client list (if available)</div>
+      </div>
+    </div>
+
+    <!-- Facebook/IG Ad 2 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#EFF6FF;color:#2563EB">FB</div>
+          <div>
+            <div class="card-title">Facebook Ad — Recurring Upsell</div>
+            <div class="card-subtitle">Objective: Conversions — Retargeting</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">Primary Text:
+What if your home was always clean?
+
+Not "I cleaned on Saturday and it lasted 2 days" clean.
+
+Actually, consistently, walk-in-and-smile clean.
+
+InStyle's recurring plans keep your home spotless — weekly, biweekly, or monthly. Same trusted team every visit. No surprises.
+
+💛 Recurring clients save up to 20% vs. one-time bookings.
+
+Headline: A Clean Home, Every Week
+Description: Recurring cleaning plans starting at rates that make sense.
+CTA: Learn More
+
+---
+
+Targeting: Retarget website visitors (30 days), past leads who didn't convert, engaged FB/IG audience</div>
+      </div>
+    </div>
+
+    <!-- Google Local Services -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#FEF3C7;color:#D97706">G</div>
+          <div>
+            <div class="card-title">Google Local Services Ad</div>
+            <div class="card-subtitle">Google Guaranteed Badge</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">Business Description (for LSA profile):
+InStyle Cleaning provides professional residential and commercial cleaning services in Gainesville, Orlando, and Tampa, Florida. Founded in 2020, we've built our reputation on reliability, thoroughness, and genuine care for our clients' homes.
+
+Services to List:
+• House Cleaning
+• Deep Cleaning
+• Move-In / Move-Out Cleaning
+• Office Cleaning
+• Recurring Cleaning (Weekly/Biweekly/Monthly)
+• Post-Construction Cleaning
+
+Service Areas: Gainesville, Alachua, High Springs, Newberry, Archer, Micanopy, Orlando, Tampa
+
+Pro Tips:
+→ Apply for Google Guaranteed badge (background check required)
+→ Respond to every lead within 5 minutes (LSA rewards fast responders)
+→ Ask every happy client to leave a Google review (volume matters for LSA ranking)</div>
+      </div>
+    </div>
+
+    <!-- Yelp Ad -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#FEF2F2;color:#DC2626">Y</div>
+          <div>
+            <div class="card-title">Yelp Business Description</div>
+            <div class="card-subtitle">Yelp Profile Optimization</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">About InStyle Cleaning:
+We're a locally owned and operated cleaning company serving Gainesville and Central Florida since 2020. At InStyle Cleaning, we believe everyone deserves to come home to a clean, fresh space — without lifting a finger.
+
+What sets us apart:
+★ Trained, insured professional team
+★ We bring all supplies and equipment (eco-friendly options available)
+★ Customizable cleaning checklists
+★ Consistent quality — same team, every visit
+★ Satisfaction guarantee on every clean
+
+Our Services:
+• Recurring House Cleaning (weekly, biweekly, monthly)
+• One-Time Deep Cleaning
+• Move-In / Move-Out Cleaning
+• Commercial & Office Cleaning
+• Post-Construction Cleanup
+• Special Event Prep & Post-Event Cleaning
+
+Serving: Gainesville, Orlando, Tampa, and surrounding areas.
+
+Get a free estimate today — call, text, or book online!</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== EMAIL ==================== -->
+<div class="section" id="email">
+  <h2 class="section-title">Email Marketing Templates</h2>
+  <p class="section-desc">Welcome sequences, promotional emails, and re-engagement campaigns. Personalize the brackets and send.</p>
+
+  <div class="grid-2">
+
+    <!-- Welcome Email -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#F5F3FF;color:#7C3AED">✉</div>
+          <div>
+            <div class="card-title">Welcome Email</div>
+            <div class="card-subtitle">Automation — After first inquiry</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="email-preview">
+          <div class="email-subject">Subject: Welcome to InStyle — Here's What to Expect ✨</div>
+          <div class="email-from">From: InStyle Cleaning &lt;hello@instylecleaningfl.com&gt;</div>
+          <div class="card-content">Hi [First Name],
+
+Thanks for reaching out to InStyle Cleaning! We're excited to help you get your home looking (and feeling) amazing.
+
+Here's what happens next:
+
+1️⃣ We'll confirm your service details within 24 hours
+2️⃣ Our team arrives on time with all supplies included
+3️⃣ We do a thorough walkthrough before we start
+4️⃣ You come home to a spotless house 🏠
+
+A few things our clients love about us:
+• We've been serving Gainesville since 2020
+• Our team is fully trained, insured, and background-checked
+• We don't cut corners — literally (we clean every baseboard)
+• Your satisfaction is guaranteed
+
+Got questions? Just reply to this email — a real human will respond.
+
+Talk soon,
+The InStyle Cleaning Team
+
+P.S. Follow us on Instagram @instylecleaningfl for cleaning tips and satisfying before/afters!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post-Clean Follow-Up -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#F5F3FF;color:#7C3AED">✉</div>
+          <div>
+            <div class="card-title">Post-Clean Follow-Up</div>
+            <div class="card-subtitle">Automation — 24hrs after service</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="email-preview">
+          <div class="email-subject">Subject: How did we do? 🏠</div>
+          <div class="email-from">From: InStyle Cleaning &lt;hello@instylecleaningfl.com&gt;</div>
+          <div class="card-content">Hi [First Name],
+
+We hope your home is still feeling fresh after yesterday's clean!
+
+We'd love to hear how it went. Your feedback helps us stay at the top of our game.
+
+⭐ Leave us a quick review: [Google Review Link]
+
+It only takes 30 seconds and means the world to our small team.
+
+Not 100% happy? Reply to this email and we'll make it right — that's our guarantee.
+
+Thanks for choosing InStyle!
+
+Warm regards,
+The InStyle Team
+
+---
+
+P.S. Want this feeling every week? Ask us about recurring cleaning plans and save up to 20%. Just reply "RECURRING" and we'll send you options.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Re-Engagement Email -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#F5F3FF;color:#7C3AED">✉</div>
+          <div>
+            <div class="card-title">Win-Back Email</div>
+            <div class="card-subtitle">Automation — 60 days since last clean</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="email-preview">
+          <div class="email-subject">Subject: We miss your home (and we have an offer) 💛</div>
+          <div class="email-from">From: InStyle Cleaning &lt;hello@instylecleaningfl.com&gt;</div>
+          <div class="card-content">Hi [First Name],
+
+It's been a little while since your last InStyle clean, and we wanted to check in.
+
+Life gets busy — we get it. That's literally why we exist. 😄
+
+We'd love to have you back, and to make it easy, here's something special:
+
+🎁 [X]% off your next booking when you schedule by [Date].
+
+Just reply "BOOK" with your preferred date, or schedule directly at instylecleaningfl.com.
+
+No pressure, no contracts — just a sparkling clean home whenever you need it.
+
+Hope to see you soon!
+
+— Team InStyle</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Referral Email -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#F5F3FF;color:#7C3AED">✉</div>
+          <div>
+            <div class="card-title">Referral Program</div>
+            <div class="card-subtitle">Manual send — to happy clients</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="email-preview">
+          <div class="email-subject">Subject: Know someone who needs a great cleaner? 🤝</div>
+          <div class="email-from">From: InStyle Cleaning &lt;hello@instylecleaningfl.com&gt;</div>
+          <div class="card-content">Hi [First Name],
+
+Thank you for being an amazing InStyle client! We genuinely appreciate your trust.
+
+Quick question — do you know anyone in Gainesville (or Orlando/Tampa) who could use a reliable cleaning service?
+
+Here's our referral deal:
+
+🎁 You get: $[X] off your next clean
+🎁 They get: $[X] off their first clean
+
+It's a win-win. Just have them mention your name when they book, and we'll apply the credit to both accounts.
+
+Thanks for spreading the word — small businesses like ours grow through recommendations from people like you.
+
+With gratitude,
+The InStyle Team</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== SEO & BLOG ==================== -->
+<div class="section" id="seo">
+  <h2 class="section-title">SEO & Blog Content</h2>
+  <p class="section-desc">Target keywords, blog post drafts, and local SEO content to drive organic traffic.</p>
+
+  <!-- Keyword Table -->
+  <div class="card" style="margin-bottom:24px">
+    <div class="card-header">
+      <div class="card-header-left">
+        <div class="card-icon" style="background:#FEF3C7;color:#D97706">🔑</div>
+        <div>
+          <div class="card-title">Target Keywords</div>
+          <div class="card-subtitle">Priority keywords for Gainesville market</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body" style="padding:0">
+      <table class="kw-table">
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Est. Monthly Volume</th>
+            <th>Competition</th>
+            <th>Intent</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>cleaning service gainesville fl</strong></td>
+            <td class="kw-volume">720</td>
+            <td><div class="kw-diff"><div class="kw-diff-fill" style="width:75%;background:var(--orange)"></div></div></td>
+            <td>Transactional</td>
+            <td><span class="tag" style="background:#FEF2F2;color:#DC2626">High</span></td>
+          </tr>
+          <tr>
+            <td><strong>house cleaning gainesville</strong></td>
+            <td class="kw-volume">480</td>
+            <td><div class="kw-diff"><div class="kw-diff-fill" style="width:65%;background:var(--orange)"></div></div></td>
+            <td>Transactional</td>
+            <td><span class="tag" style="background:#FEF2F2;color:#DC2626">High</span></td>
+          </tr>
+          <tr>
+            <td><strong>move out cleaning gainesville</strong></td>
+            <td class="kw-volume">320</td>
+            <td><div class="kw-diff"><div class="kw-diff-fill" style="width:50%;background:var(--gold)"></div></div></td>
+            <td>Transactional</td>
+            <td><span class="tag" style="background:#FEF2F2;color:#DC2626">High</span></td>
+          </tr>
+          <tr>
+            <td><strong>deep cleaning service near me</strong></td>
+            <td class="kw-volume">2,400</td>
+            <td><div class="kw-diff"><div class="kw-diff-fill" style="width:85%;background:var(--red)"></div></div></td>
+            <td>Transactional</td>
+            <td><span class="tag" style="background:#FEF3C7;color:#D97706">Medium</span></td>
+          </tr>
+          <tr>
+            <td><strong>maid service gainesville fl</strong></td>
+            <td class="kw-volume">210</td>
+            <td><div class="kw-diff"><div class="kw-diff-fill" style="width:45%;background:var(--gold)"></div></div></td>
+            <td>Transactional</td>
+            <td><span class="tag" style="background:#FEF3C7;color:#D97706">Medium</span></td>
+          </tr>
+          <tr>
+            <td><strong>office cleaning gainesville</strong></td>
+            <td class="kw-volume">170</td>
+            <td><div class="kw-diff"><div class="kw-diff-fill" style="width:35%;background:var(--green)"></div></div></td>
+            <td>Transactional</td>
+            <td><span class="tag" style="background:#FEF3C7;color:#D97706">Medium</span></td>
+          </tr>
+          <tr>
+            <td><strong>how to clean before moving out</strong></td>
+            <td class="kw-volume">1,900</td>
+            <td><div class="kw-diff"><div class="kw-diff-fill" style="width:30%;background:var(--green)"></div></div></td>
+            <td>Informational</td>
+            <td><span class="tag" style="background:#F0FDF4;color:#059669">Content</span></td>
+          </tr>
+          <tr>
+            <td><strong>how often should you deep clean</strong></td>
+            <td class="kw-volume">1,300</td>
+            <td><div class="kw-diff"><div class="kw-diff-fill" style="width:25%;background:var(--green)"></div></div></td>
+            <td>Informational</td>
+            <td><span class="tag" style="background:#F0FDF4;color:#059669">Content</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid-2">
+
+    <!-- Blog Post 1 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#FFF7ED;color:#EA580C">📝</div>
+          <div>
+            <div class="card-title">Blog: Move-Out Cleaning Checklist</div>
+            <div class="card-subtitle">Target: move out cleaning gainesville — 1,200 words</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">Title: The Ultimate Move-Out Cleaning Checklist for Gainesville Renters (2026)
+
+Meta Description: Moving out in Gainesville, FL? Use this room-by-room deep cleaning checklist to get your full security deposit back. Free printable + pro tips from InStyle Cleaning.
+
+---
+
+H1: The Ultimate Move-Out Cleaning Checklist for Gainesville Renters
+
+Intro (150 words):
+Moving out is stressful enough without worrying about whether your apartment is clean enough to get your deposit back. Whether you're a UF student leaving your off-campus apartment or a family moving to a new neighborhood, this checklist covers everything your landlord expects.
+
+At InStyle Cleaning, we've done hundreds of move-out cleans across Gainesville — and we know exactly what property managers look for during walkthroughs.
+
+H2: Kitchen Checklist
+- Clean inside oven, stovetop, and range hood
+- Wipe down all cabinet fronts (inside and out)
+- Clean refrigerator interior (remove shelves, wipe)
+- Degrease backsplash and countertops
+- Clean sink and disposal
+- Wipe down dishwasher interior
+- Clean microwave inside and out
+- Sweep and mop floors
+
+H2: Bathroom Checklist
+- Scrub tub/shower, remove all buildup
+- Clean toilet inside, outside, and behind
+- Wipe mirrors and glass
+- Clean vanity, sink, and faucets
+- Scrub tile grout
+- Clean exhaust fan
+- Sweep and mop floors
+
+H2: Bedrooms & Living Areas
+- Dust all surfaces, ceiling fans, light fixtures
+- Clean inside all closets
+- Wipe baseboards and door frames
+- Clean windows (inside)
+- Vacuum carpets or mop hard floors
+- Clean light switches and outlets
+- Remove all nails/hooks, fill holes if required
+
+H2: Don't Forget These Often-Missed Spots
+- Inside the garage
+- Patio or balcony
+- Laundry area (lint trap, behind washer)
+- Interior of all light fixtures
+- Blinds (every slat)
+- AC vents and returns
+
+H2: Pro Tip — When to Hire Professionals
+If your apartment is 2+ bedrooms, or if you haven't deep cleaned in 6+ months, a professional move-out clean pays for itself. Most Gainesville landlords charge $200-500 from deposits for cleaning — a professional clean typically costs less and produces better results.
+
+CTA: Need a move-out clean in Gainesville? InStyle Cleaning has done hundreds. We know what landlords look for. Get a free estimate at instylecleaningfl.com.
+
+Internal Links: [Deep Cleaning Services] [Our Cleaning Checklist] [Contact Us]
+Schema Markup: HowTo, FAQ</div>
+      </div>
+    </div>
+
+    <!-- Blog Post 2 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#FFF7ED;color:#EA580C">📝</div>
+          <div>
+            <div class="card-title">Blog: How Often to Deep Clean</div>
+            <div class="card-subtitle">Target: how often should you deep clean — 1,000 words</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">Title: How Often Should You Deep Clean Your Home? A Practical Guide
+
+Meta Description: Not sure how often to deep clean? This guide breaks it down by room, lifestyle, and household size — plus when to call in the pros.
+
+---
+
+H1: How Often Should You Deep Clean Your Home?
+
+Intro:
+There's regular cleaning — the weekly vacuum, wipe-the-counters kind. Then there's deep cleaning — the behind-the-fridge, scrub-the-grout, clean-the-baseboards kind. Both matter. But how often do you really need a deep clean?
+
+H2: The General Rule
+- Light cleaning: weekly
+- Standard cleaning: biweekly
+- Deep cleaning: every 3-6 months
+- Move-in/out: once (but make it count)
+
+H2: Adjust Based on Your Household
+- Pets: Deep clean every 2-3 months (dander, fur, odors)
+- Kids under 10: Every 2-3 months (spills, germs, sticky everything)
+- Allergies/asthma: Every 2 months (dust mites, mold prevention)
+- Just adults, no pets: Every 4-6 months
+- Home office: Monthly for the office area
+
+H2: Room-by-Room Schedule
+Kitchen: Deep clean every 2-3 months (grease buildup, appliance interiors)
+Bathrooms: Every 2-3 months (mold, mineral deposits)
+Bedrooms: Every 4-6 months (mattress, under furniture)
+Living areas: Every 3-4 months (upholstery, vents, blinds)
+
+H2: Signs You're Overdue
+- Visible dust on ceiling fan blades
+- Grout between tiles has darkened
+- Musty smell that won't go away
+- Sticky residue on kitchen surfaces
+- Sneezing more than usual indoors
+
+H2: DIY vs. Professional Deep Clean
+(Comparison table: time, thoroughness, cost, equipment)
+Honest take: Regular maintenance is DIY-friendly. Deep cleans are where professionals make the biggest difference — we have the tools, products, and training to reach what you can't.
+
+CTA: Ready for a deep clean in Gainesville? InStyle Cleaning makes it easy. Book online or call for a free estimate.</div>
+      </div>
+    </div>
+
+    <!-- Google Business Profile Posts -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#FEF3C7;color:#D97706">G</div>
+          <div>
+            <div class="card-title">Google Business Profile Posts</div>
+            <div class="card-subtitle">Weekly GBP updates — 4 posts</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">POST 1 — What's New:
+Spring is here and so is our deep cleaning season! 🌸 Book a spring deep clean with InStyle and we'll make sure your home is fresh from top to bottom. We clean what others forget — vents, baseboards, behind appliances, and more. Serving Gainesville, Orlando & Tampa. Book today!
+
+POST 2 — Offer:
+New clients: Mention this post for a special offer on your first InStyle clean! We bring all supplies, show up on time, and guarantee your satisfaction. Professional cleaning done right — since 2020. 📞 Call or book online at instylecleaningfl.com
+
+POST 3 — Event:
+Moving season is here! 🎓 UF students and Gainesville renters — book your move-out clean now before slots fill up. We know exactly what landlords look for and we'll help you get that deposit back. Limited availability for May/June — book early!
+
+POST 4 — Update:
+Did you know InStyle Cleaning now serves Orlando and Tampa? Same trusted team. Same InStyle standard. Whether you need recurring cleaning, a one-time deep clean, or move-in/out service — we've got all of Central Florida covered. 🧹</div>
+      </div>
+    </div>
+
+    <!-- Local SEO Checklist -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:#ECFDF5;color:#047857">📍</div>
+          <div>
+            <div class="card-title">Local SEO Action Items</div>
+            <div class="card-subtitle">Quick wins for local search visibility</div>
+          </div>
+        </div>
+        <button class="copy-btn" onclick="copyContent(this)">Copy</button>
+      </div>
+      <div class="card-body">
+        <div class="card-content">LOCAL SEO CHECKLIST FOR INSTYLE CLEANING:
+
+✅ Google Business Profile
+  - Complete all sections (hours, services, description, photos)
+  - Post weekly (use GBP posts above)
+  - Respond to every review within 24 hours
+  - Add 10+ photos (team, equipment, before/after, office)
+  - List all service areas explicitly
+
+✅ Directory Listings (NAP Consistency)
+  - Yelp — claim and optimize
+  - Thumbtack — create profile
+  - Angi (formerly Angie's List) — list services
+  - BBB — register business
+  - Nextdoor — claim business page
+  - Facebook Business — ensure address matches
+
+✅ Website SEO
+  - Create city-specific landing pages:
+    → /cleaning-service-gainesville-fl
+    → /cleaning-service-orlando-fl
+    → /cleaning-service-tampa-fl
+  - Add LocalBusiness schema markup (JSON-LD)
+  - Add FAQ schema to service pages
+  - Embed Google Map on contact page
+  - Ensure mobile speed score 90+ (critical for local)
+
+✅ Review Strategy
+  - Send post-service review request email (template above)
+  - Goal: 5+ new Google reviews per month
+  - Never buy or fake reviews
+  - Respond professionally to negative reviews (empathy + resolution)</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== CAMPAIGNS ==================== -->
+<div class="section" id="campaigns">
+  <h2 class="section-title">Seasonal Campaigns</h2>
+  <p class="section-desc">Four ready-to-launch campaigns with messaging, channels, timing, and execution playbooks.</p>
+
+  <div class="grid-2">
+
+    <!-- Spring Campaign -->
+    <div class="campaign-card">
+      <div class="campaign-banner" style="background: linear-gradient(90deg, #10B981, #34D399)"></div>
+      <div class="campaign-body">
+        <div class="campaign-title">🌸 Spring Fresh Start</div>
+        <div class="campaign-period">March 15 — April 30</div>
+        <p style="font-size:14px;color:var(--gray-600);margin-bottom:16px">
+          Capitalize on the natural "spring cleaning" mindset. Position InStyle as the obvious choice for families who want it done right without doing it themselves.
+        </p>
+        <div style="font-size:13px;color:var(--gray-700);line-height:1.8">
+          <strong>Offer:</strong> 15% off first deep clean (new clients)<br>
+          <strong>Hook:</strong> "Spring clean like you mean it — without lifting a finger"<br>
+          <strong>Target:</strong> Homeowners 30-55, Gainesville + 25mi<br>
+          <strong>Budget:</strong> $500-800 (Facebook/Instagram ads + Google)<br>
+          <strong>Goal:</strong> 30 new leads, 15 conversions<br><br>
+          <strong>Execution:</strong><br>
+          Week 1: Launch FB/IG ad + GBP post + email to past clients<br>
+          Week 2: TikTok reel (spring cleaning montage) + IG Stories<br>
+          Week 3: Nextdoor post + boost top-performing ad<br>
+          Week 4: Last-chance email + retargeting ads
+        </div>
+        <div class="campaign-channels">
+          <span class="tag tag-facebook">Facebook</span>
+          <span class="tag tag-instagram">Instagram</span>
+          <span class="tag tag-google">Google</span>
+          <span class="tag tag-tiktok">TikTok</span>
+          <span class="tag tag-email">Email</span>
+          <span class="tag tag-nextdoor">Nextdoor</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Move-Out Season -->
+    <div class="campaign-card">
+      <div class="campaign-banner" style="background: linear-gradient(90deg, #3B82F6, #60A5FA)"></div>
+      <div class="campaign-body">
+        <div class="campaign-title">🎓 Move-Out Season Blitz</div>
+        <div class="campaign-period">April 15 — August 15</div>
+        <p style="font-size:14px;color:var(--gray-600);margin-bottom:16px">
+          Gainesville's biggest cleaning demand window. UF students and renters need move-out cleans. Property managers need turnover cleaning. Capture both sides.
+        </p>
+        <div style="font-size:13px;color:var(--gray-700);line-height:1.8">
+          <strong>Offer:</strong> "Deposit Saver" move-out package at fixed rate<br>
+          <strong>Hook:</strong> "Get your deposit back. We know what landlords check."<br>
+          <strong>Target:</strong> UF students 18-25, renters, property managers<br>
+          <strong>Budget:</strong> $800-1,200 (Google Search + FB + Nextdoor)<br>
+          <strong>Goal:</strong> 50 move-out bookings over 4 months<br><br>
+          <strong>Execution:</strong><br>
+          April: Google Ads live (move out cleaning keywords), GBP post, blog post<br>
+          May: Ramp ad spend, UF-targeted IG/TikTok ads, flyers at apartment complexes<br>
+          June-July: Peak — max budget, retargeting, SMS reminders to leads<br>
+          August: Wind down, pivot to "move-in" messaging
+        </div>
+        <div class="campaign-channels">
+          <span class="tag tag-google">Google Ads</span>
+          <span class="tag tag-facebook">Facebook</span>
+          <span class="tag tag-instagram">Instagram</span>
+          <span class="tag tag-tiktok">TikTok</span>
+          <span class="tag tag-nextdoor">Nextdoor</span>
+          <span class="tag tag-sms">SMS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Holiday Prep -->
+    <div class="campaign-card">
+      <div class="campaign-banner" style="background: linear-gradient(90deg, #8B5CF6, #A78BFA)"></div>
+      <div class="campaign-body">
+        <div class="campaign-title">🏡 Holiday Home Prep</div>
+        <div class="campaign-period">November 1 — December 20</div>
+        <p style="font-size:14px;color:var(--gray-600);margin-bottom:16px">
+          Thanksgiving + Christmas hosting anxiety is real. People want their homes guest-ready but don't have time. Position InStyle as the stress reliever.
+        </p>
+        <div style="font-size:13px;color:var(--gray-700);line-height:1.8">
+          <strong>Offer:</strong> "Guest-Ready" deep clean package<br>
+          <strong>Hook:</strong> "Your in-laws are coming. We've got you."<br>
+          <strong>Target:</strong> Homeowners 30-55, families, hosts<br>
+          <strong>Budget:</strong> $400-600 (FB/IG + email)<br>
+          <strong>Goal:</strong> 25 holiday bookings<br><br>
+          <strong>Execution:</strong><br>
+          Nov 1: Email blast to client list (early bird booking)<br>
+          Nov 10: FB/IG ad (humorous "in-laws coming" creative)<br>
+          Nov 20: Thanksgiving push — "Still time to book!"<br>
+          Dec 1: Pivot to Christmas messaging, retarget engaged users<br>
+          Dec 15: Final push — "Last slots before Christmas"
+        </div>
+        <div class="campaign-channels">
+          <span class="tag tag-facebook">Facebook</span>
+          <span class="tag tag-instagram">Instagram</span>
+          <span class="tag tag-email">Email</span>
+          <span class="tag tag-nextdoor">Nextdoor</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- New Year -->
+    <div class="campaign-card">
+      <div class="campaign-banner" style="background: linear-gradient(90deg, #F59E0B, #FBBF24)"></div>
+      <div class="campaign-body">
+        <div class="campaign-title">✨ New Year, Clean Slate</div>
+        <div class="campaign-period">January 2 — January 31</div>
+        <p style="font-size:14px;color:var(--gray-600);margin-bottom:16px">
+          New Year's resolution energy is high. Convert the "I'm going to be more organized this year" crowd into recurring cleaning clients.
+        </p>
+        <div style="font-size:13px;color:var(--gray-700);line-height:1.8">
+          <strong>Offer:</strong> First month of recurring cleaning at special rate<br>
+          <strong>Hook:</strong> "Your best resolution? Stop cleaning your own house."<br>
+          <strong>Target:</strong> Professionals 25-50, dual-income households<br>
+          <strong>Budget:</strong> $400-600 (FB/IG + email + Google)<br>
+          <strong>Goal:</strong> 20 new recurring clients<br><br>
+          <strong>Execution:</strong><br>
+          Jan 2: "New Year, Clean Slate" email + social post<br>
+          Jan 5: FB/IG ad with resolution angle<br>
+          Jan 15: Mid-month push — "Still keeping that resolution?"<br>
+          Jan 25: Last chance messaging + retargeting<br><br>
+          <strong>Key Metric:</strong> Recurring sign-ups (not one-time). This campaign's success is measured in LTV, not single bookings.
+        </div>
+        <div class="campaign-channels">
+          <span class="tag tag-facebook">Facebook</span>
+          <span class="tag tag-instagram">Instagram</span>
+          <span class="tag tag-google">Google</span>
+          <span class="tag tag-email">Email</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== CONTENT CALENDAR ==================== -->
+<div class="section" id="calendar">
+  <h2 class="section-title">12-Week Content Calendar</h2>
+  <p class="section-desc">A structured weekly plan with themes, channels, and content types. Adapt dates to your launch timing.</p>
+
+  <div class="card">
+    <div class="card-body" style="padding:0">
+      <div class="calendar-row" style="background:var(--gray-50);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:var(--gray-500)">
+        <div>Week</div>
+        <div>Theme & Content</div>
+        <div>Channel</div>
+        <div>Type</div>
+      </div>
+
+      <div class="calendar-row">
+        <div class="calendar-day">Week 1</div>
+        <div class="calendar-topic"><strong>Brand Introduction</strong> — "Meet InStyle Cleaning" story post + team photo</div>
+        <div><span class="tag tag-instagram">IG</span> <span class="tag tag-facebook">FB</span></div>
+        <div>Feed</div>
+      </div>
+      <div class="calendar-row">
+        <div class="calendar-day">Week 2</div>
+        <div class="calendar-topic"><strong>Before/After #1</strong> — Kitchen transformation carousel</div>
+        <div><span class="tag tag-instagram">IG</span> <span class="tag tag-tiktok">TT</span></div>
+        <div>Carousel</div>
+      </div>
+      <div class="calendar-row">
+        <div class="calendar-day">Week 3</div>
+        <div class="calendar-topic"><strong>Client Review Spotlight</strong> — Feature 5-star review with quote graphic</div>
+        <div><span class="tag tag-facebook">FB</span> <span class="tag tag-instagram">IG</span></div>
+        <div>Feed</div>
+      </div>
+      <div class="calendar-row">
+        <div class="calendar-day">Week 4</div>
+        <div class="calendar-topic"><strong>Reel: "Things We Actually Clean"</strong> — Satisfying cleaning montage</div>
+        <div><span class="tag tag-instagram">IG</span> <span class="tag tag-tiktok">TT</span></div>
+        <div>Reel</div>
+      </div>
+      <div class="calendar-row">
+        <div class="calendar-day">Week 5</div>
+        <div class="calendar-topic"><strong>Blog Post</strong> — Move-Out Cleaning Checklist + promote on social</div>
+        <div><span class="tag tag-blog">Blog</span> <span class="tag tag-facebook">FB</span></div>
+        <div>Article</div>
+      </div>
+      <div class="calendar-row">
+        <div class="calendar-day">Week 6</div>
+        <div class="calendar-topic"><strong>Before/After #2</strong> — Bathroom deep clean with close-up details</div>
+        <div><span class="tag tag-instagram">IG</span> <span class="tag tag-nextdoor">ND</span></div>
+        <div>Carousel</div>
+      </div>
+      <div class="calendar-row">
+        <div class="calendar-day">Week 7</div>
+        <div class="calendar-topic"><strong>Story: Would You Rather</strong> — Interactive poll series (5 slides)</div>
+        <div><span class="tag tag-instagram">IG</span></div>
+        <div>Stories</div>
+      </div>
+      <div class="calendar-row">
+        <div class="calendar-day">Week 8</div>
+        <div class="calendar-topic"><strong>Reel: Day in the Life</strong> — Follow the team through a full clean</div>
+        <div><span class="tag tag-tiktok">TT</span> <span class="tag tag-instagram">IG</span></div>
+        <div>Reel</div>
+      </div>
+      <div class="calendar-row">
+        <div class="calendar-day">Week 9</div>
+        <div class="calendar-topic"><strong>Cleaning Tip Tuesday</strong> — "3 things you're cleaning wrong" post</div>
+        <div><span class="tag tag-facebook">FB</span> <span class="tag tag-instagram">IG</span></div>
+        <div>Feed</div>
+      </div>
+      <div class="calendar-row">
+        <div class="calendar-day">Week 10</div>
+        <div class="calendar-topic"><strong>Blog Post</strong> — How Often Should You Deep Clean + promote</div>
+        <div><span class="tag tag-blog">Blog</span> <span class="tag tag-facebook">FB</span></div>
+        <div>Article</div>
+      </div>
+      <div class="calendar-row">
+        <div class="calendar-day">Week 11</div>
+        <div class="calendar-topic"><strong>Community Post</strong> — Nextdoor introduction + neighborhood offer</div>
+        <div><span class="tag tag-nextdoor">ND</span> <span class="tag tag-facebook">FB</span></div>
+        <div>Feed</div>
+      </div>
+      <div class="calendar-row">
+        <div class="calendar-day">Week 12</div>
+        <div class="calendar-topic"><strong>Client UGC Repost</strong> — Share client's clean-home photo/video (with permission)</div>
+        <div><span class="tag tag-instagram">IG</span> <span class="tag tag-tiktok">TT</span></div>
+        <div>Reel/Feed</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;padding:16px 20px;background:white;border:1px solid var(--gray-200);border-radius:var(--radius);font-size:13px;color:var(--gray-600);line-height:1.8">
+    <strong style="color:var(--navy)">Recurring weekly additions (every week):</strong><br>
+    • <strong>Monday:</strong> IG Story — cleaning tip or behind-the-scenes<br>
+    • <strong>Wednesday:</strong> GBP post (use templates from SEO section)<br>
+    • <strong>Friday:</strong> IG Story — fun poll or team moment<br>
+    • <strong>Ongoing:</strong> Respond to all comments within 2 hours. Engage with local Gainesville pages/hashtags daily.
+  </div>
+</div>
+
+<!-- ==================== BRAND VOICE ==================== -->
+<div class="section" id="voice">
+  <h2 class="section-title">Brand Voice Guide</h2>
+  <p class="section-desc">Consistent messaging guidelines so every piece of content sounds unmistakably InStyle.</p>
+
+  <div class="voice-grid">
+    <div class="voice-card">
+      <h4>🎯 Professional but Warm</h4>
+      <p style="font-size:13px;color:var(--gray-500)">We're experts, not robots. Competent and caring.</p>
+      <div class="voice-do">✅ "We treat every home like our own"</div>
+      <div class="voice-do">✅ "Our team is fully trained and insured"</div>
+      <div class="voice-dont">❌ "Our operatives execute cleaning protocols"</div>
+      <div class="voice-dont">❌ "Hey bestie!! We're SO obsessed with cleaning!!"</div>
+    </div>
+    <div class="voice-card">
+      <h4>💪 Confident, Not Arrogant</h4>
+      <p style="font-size:13px;color:var(--gray-500)">We know we're good. We let the work speak.</p>
+      <div class="voice-do">✅ "This is what InStyle standard looks like"</div>
+      <div class="voice-do">✅ "We clean what others forget"</div>
+      <div class="voice-dont">❌ "We're the BEST cleaning company EVER"</div>
+      <div class="voice-dont">❌ "Nobody else even comes close"</div>
+    </div>
+    <div class="voice-card">
+      <h4>🏠 Local & Relatable</h4>
+      <p style="font-size:13px;color:var(--gray-500)">We're your neighbor, not a franchise.</p>
+      <div class="voice-do">✅ "Serving Gainesville families since 2020"</div>
+      <div class="voice-do">✅ "We know what Gainesville landlords check"</div>
+      <div class="voice-dont">❌ "Our nationwide operations..."</div>
+      <div class="voice-dont">❌ Generic content with no local mentions</div>
+    </div>
+    <div class="voice-card">
+      <h4>✨ Detail-Oriented</h4>
+      <p style="font-size:13px;color:var(--gray-500)">Show the thoroughness. Be specific.</p>
+      <div class="voice-do">✅ "Every baseboard, every vent, every light switch"</div>
+      <div class="voice-do">✅ "We do a walkthrough checklist before we leave"</div>
+      <div class="voice-dont">❌ "We clean really well"</div>
+      <div class="voice-dont">❌ "Your home will be nice and clean"</div>
+    </div>
+    <div class="voice-card">
+      <h4>🤝 Trustworthy</h4>
+      <p style="font-size:13px;color:var(--gray-500)">Trust is everything when you let people into your home.</p>
+      <div class="voice-do">✅ "Insured, trained, and background-checked"</div>
+      <div class="voice-do">✅ "Same trusted team every visit"</div>
+      <div class="voice-dont">❌ Overpromise ("We guarantee perfection!")</div>
+      <div class="voice-dont">❌ Ignore concerns or negative feedback</div>
+    </div>
+    <div class="voice-card">
+      <h4>📣 Action-Oriented CTAs</h4>
+      <p style="font-size:13px;color:var(--gray-500)">Always tell people what to do next.</p>
+      <div class="voice-do">✅ "Book in 60 seconds" / "DM us CLEAN"</div>
+      <div class="voice-do">✅ "Get a free estimate" / "Link in bio"</div>
+      <div class="voice-dont">❌ End posts without any CTA</div>
+      <div class="voice-dont">❌ "Contact us maybe if you want"</div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <div class="card-icon" style="background:var(--cream);color:var(--gold-dark)">#</div>
+          <div>
+            <div class="card-title">Hashtag Library</div>
+            <div class="card-subtitle">Pre-built sets — mix and match per post</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div style="margin-bottom:12px">
+          <strong style="font-size:13px;color:var(--navy)">Core Brand (use on every post):</strong>
+          <div class="hashtag-cloud">
+            <span class="hashtag">#InStyleCleaning</span>
+            <span class="hashtag">#GainesvilleCleaning</span>
+            <span class="hashtag">#GainesvilleFL</span>
+            <span class="hashtag">#CleanHome</span>
+          </div>
+        </div>
+        <div style="margin-bottom:12px">
+          <strong style="font-size:13px;color:var(--navy)">Service-Specific:</strong>
+          <div class="hashtag-cloud">
+            <span class="hashtag">#DeepClean</span>
+            <span class="hashtag">#MoveOutCleaning</span>
+            <span class="hashtag">#RecurringCleaning</span>
+            <span class="hashtag">#OfficeCleaning</span>
+            <span class="hashtag">#PostConstructionClean</span>
+          </div>
+        </div>
+        <div style="margin-bottom:12px">
+          <strong style="font-size:13px;color:var(--navy)">Discovery (reach new people):</strong>
+          <div class="hashtag-cloud">
+            <span class="hashtag">#CleanTok</span>
+            <span class="hashtag">#SatisfyingClean</span>
+            <span class="hashtag">#CleaningMotivation</span>
+            <span class="hashtag">#BeforeAndAfter</span>
+            <span class="hashtag">#HomeTransformation</span>
+            <span class="hashtag">#CleanWithMe</span>
+          </div>
+        </div>
+        <div>
+          <strong style="font-size:13px;color:var(--navy)">Local (Gainesville community):</strong>
+          <div class="hashtag-cloud">
+            <span class="hashtag">#GainesvilleSmallBusiness</span>
+            <span class="hashtag">#LocalBusinessFL</span>
+            <span class="hashtag">#UFGators</span>
+            <span class="hashtag">#AlachuaCounty</span>
+            <span class="hashtag">#SupportLocalGNV</span>
+            <span class="hashtag">#GainesvilleLife</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">Copied to clipboard!</div>
+
+<script>
+// Tab navigation
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+
+// Copy to clipboard
+function copyContent(btn) {
+  const card = btn.closest('.card');
+  const content = card.querySelector('.card-content');
+  if (!content) return;
+
+  navigator.clipboard.writeText(content.textContent.trim()).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    showToast();
+    setTimeout(() => {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+function showToast() {
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+</script>
+
+</body>
+</html>

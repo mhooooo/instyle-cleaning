@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InStyle Cleaning — Competitive Intelligence Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1B2A4A;
+            --navy-light: #2a3d66;
+            --gold: #C9A84C;
+            --gold-light: #d4ba6a;
+            --bg: #0f1419;
+            --card: #1a1f2e;
+            --card-hover: #1e2538;
+            --border: #2a3042;
+            --text: #e4e8f0;
+            --text-muted: #8892a4;
+            --green: #34d399;
+            --red: #f87171;
+            --orange: #fbbf24;
+            --blue: #60a5fa;
+            --purple: #a78bfa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--navy) 0%, #0d1a30 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 24px 32px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .logo-badge {
+            width: 44px;
+            height: 44px;
+            background: var(--gold);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--navy);
+        }
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--gold);
+        }
+        .header-sub {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .badge {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-live { background: rgba(52, 211, 153, 0.15); color: var(--green); }
+        .badge-date { background: rgba(96, 165, 250, 0.15); color: var(--blue); }
+
+        /* Layout */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px 32px 60px;
+        }
+
+        /* KPI Strip */
+        .kpi-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .kpi-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .kpi-card:hover { background: var(--card-hover); transform: translateY(-2px); }
+        .kpi-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .kpi-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--gold);
+        }
+        .kpi-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .kpi-trend-up { color: var(--green); }
+        .kpi-trend-down { color: var(--red); }
+
+        /* Section */
+        .section {
+            margin-bottom: 28px;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title .icon { font-size: 18px; }
+
+        /* Grid layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            transition: all 0.2s;
+        }
+        .card:hover { background: var(--card-hover); }
+        .card-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        /* Chart containers */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+        .chart-container-lg {
+            height: 380px;
+        }
+
+        /* Competitor table */
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .comp-table th {
+            text-align: left;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .comp-table td {
+            padding: 12px;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(42, 48, 66, 0.5);
+            vertical-align: middle;
+        }
+        .comp-table tr:hover td { background: rgba(201, 168, 76, 0.03); }
+        .comp-name {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .comp-rank {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            background: rgba(201, 168, 76, 0.15);
+            color: var(--gold);
+        }
+        .instyle-row { background: rgba(201, 168, 76, 0.05); }
+        .instyle-row td { color: var(--gold); font-weight: 500; }
+
+        /* Star rating */
+        .stars { color: var(--gold); font-size: 13px; letter-spacing: 1px; }
+
+        /* Score bars */
+        .score-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .score-bar {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        /* SWOT */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .swot-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+        }
+        .swot-card h3 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .swot-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .swot-card li {
+            font-size: 13px;
+            color: var(--text-muted);
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.5;
+        }
+        .swot-card li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .swot-s li::before { background: var(--green); }
+        .swot-w li::before { background: var(--red); }
+        .swot-o li::before { background: var(--blue); }
+        .swot-t li::before { background: var(--orange); }
+
+        /* Recommendations */
+        .rec-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .rec-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            transition: all 0.2s;
+        }
+        .rec-item:hover { background: var(--card-hover); border-color: var(--gold); }
+        .rec-priority {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+        .rec-p1 { background: rgba(248, 113, 113, 0.15); color: var(--red); }
+        .rec-p2 { background: rgba(251, 191, 36, 0.15); color: var(--orange); }
+        .rec-p3 { background: rgba(96, 165, 250, 0.15); color: var(--blue); }
+        .rec-content h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+        .rec-content p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+        .rec-impact {
+            margin-left: auto;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .impact-high { background: rgba(52, 211, 153, 0.15); color: var(--green); }
+        .impact-med { background: rgba(251, 191, 36, 0.15); color: var(--orange); }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 32px;
+            color: var(--text-muted);
+            font-size: 12px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .footer a { color: var(--gold); text-decoration: none; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .grid-2, .grid-3, .swot-grid { grid-template-columns: 1fr; }
+            .container { padding: 16px; }
+            .header { padding: 16px; }
+            .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .kpi-strip { grid-template-columns: 1fr; }
+            .header-inner { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-inner">
+        <div class="header-left">
+            <div class="logo-badge">IC</div>
+            <div>
+                <h1>InStyle Cleaning</h1>
+                <div class="header-sub">Competitive Intelligence Dashboard — Gainesville, FL</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="badge badge-live">Live Data</span>
+            <span class="badge badge-date">March 2026</span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- KPI Strip -->
+    <div class="kpi-strip">
+        <div class="kpi-card">
+            <div class="kpi-label">Market Position</div>
+            <div class="kpi-value">#7</div>
+            <div class="kpi-sub">of 17 rated companies</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Review Gap</div>
+            <div class="kpi-value kpi-trend-down">-107</div>
+            <div class="kpi-sub">vs. top competitor</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Google Reviews</div>
+            <div class="kpi-value kpi-trend-down">~0</div>
+            <div class="kpi-sub">No visible GBP profile</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Est. Market Size</div>
+            <div class="kpi-value">$4.2M</div>
+            <div class="kpi-sub">Gainesville residential</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Avg. Market Rate</div>
+            <div class="kpi-value">$19</div>
+            <div class="kpi-sub">per hour, residential</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">InStyle Price</div>
+            <div class="kpi-value" style="color: var(--green)">$80</div>
+            <div class="kpi-sub">per visit — competitive</div>
+        </div>
+    </div>
+
+    <!-- Row 1: Review comparison + Rating radar -->
+    <div class="section">
+        <div class="section-title"><span class="icon">&#x1f3c6;</span> Competitor Landscape</div>
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Review Count by Competitor</div>
+                <div class="chart-container chart-container-lg">
+                    <canvas id="reviewChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Overall Rating Comparison</div>
+                <div class="chart-container chart-container-lg">
+                    <canvas id="ratingChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 2: Market pricing + Service coverage -->
+    <div class="section">
+        <div class="section-title"><span class="icon">&#x1f4b0;</span> Pricing & Market Analysis</div>
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Hourly Rate Comparison ($/hr)</div>
+                <div class="chart-container">
+                    <canvas id="pricingChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Service Coverage Matrix</div>
+                <div class="chart-container">
+                    <canvas id="serviceChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 3: Digital presence + Market opportunity -->
+    <div class="section">
+        <div class="section-title"><span class="icon">&#x1f310;</span> Digital Presence & Market Opportunity</div>
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Digital Presence Score (0-100)</div>
+                <div class="chart-container">
+                    <canvas id="digitalChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Gainesville Market Segments ($M)</div>
+                <div class="chart-container">
+                    <canvas id="marketChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full competitor table -->
+    <div class="section">
+        <div class="section-title"><span class="icon">&#x1f4ca;</span> Full Competitor Breakdown</div>
+        <div class="card" style="overflow-x: auto;">
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Company</th>
+                        <th>Rating</th>
+                        <th>Reviews</th>
+                        <th>Est. Years</th>
+                        <th>Specialty</th>
+                        <th>Digital Score</th>
+                        <th>Threat Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="comp-rank">1</span></td>
+                        <td class="comp-name">Gainesville Turnover Specialists</td>
+                        <td><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9</td>
+                        <td><strong>107</strong></td>
+                        <td>8+</td>
+                        <td>Turnover / Move-out</td>
+                        <td>
+                            <div class="score-bar-bg"><div class="score-bar" style="width:85%; background:var(--green);"></div></div>
+                        </td>
+                        <td><span class="badge" style="background:rgba(248,113,113,0.15);color:var(--red);">HIGH</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="comp-rank">2</span></td>
+                        <td class="comp-name">Mini Maid</td>
+                        <td><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9</td>
+                        <td><strong>115</strong></td>
+                        <td>15+</td>
+                        <td>Eco-Friendly Full-Service</td>
+                        <td>
+                            <div class="score-bar-bg"><div class="score-bar" style="width:80%; background:var(--green);"></div></div>
+                        </td>
+                        <td><span class="badge" style="background:rgba(248,113,113,0.15);color:var(--red);">HIGH</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="comp-rank">3</span></td>
+                        <td class="comp-name">Can Do Cleaning</td>
+                        <td><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0</td>
+                        <td><strong>52</strong></td>
+                        <td>5+</td>
+                        <td>Full Service Premium</td>
+                        <td>
+                            <div class="score-bar-bg"><div class="score-bar" style="width:70%; background:var(--gold);"></div></div>
+                        </td>
+                        <td><span class="badge" style="background:rgba(251,191,36,0.15);color:var(--orange);">MED</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="comp-rank">4</span></td>
+                        <td class="comp-name">Maid Professionally</td>
+                        <td><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9</td>
+                        <td><strong>47</strong></td>
+                        <td>10+</td>
+                        <td>Customized Packages</td>
+                        <td>
+                            <div class="score-bar-bg"><div class="score-bar" style="width:72%; background:var(--gold);"></div></div>
+                        </td>
+                        <td><span class="badge" style="background:rgba(251,191,36,0.15);color:var(--orange);">MED</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="comp-rank">5</span></td>
+                        <td class="comp-name">Kings Legacy</td>
+                        <td><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span> 4.8</td>
+                        <td><strong>35</strong></td>
+                        <td>13</td>
+                        <td>Student Housing</td>
+                        <td>
+                            <div class="score-bar-bg"><div class="score-bar" style="width:60%; background:var(--gold);"></div></div>
+                        </td>
+                        <td><span class="badge" style="background:rgba(251,191,36,0.15);color:var(--orange);">MED</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="comp-rank">6</span></td>
+                        <td class="comp-name">Pro-Care Janitorial</td>
+                        <td><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9</td>
+                        <td><strong>29</strong></td>
+                        <td>35+</td>
+                        <td>Commercial / ISSA Cert</td>
+                        <td>
+                            <div class="score-bar-bg"><div class="score-bar" style="width:65%; background:var(--gold);"></div></div>
+                        </td>
+                        <td><span class="badge" style="background:rgba(251,191,36,0.15);color:var(--orange);">MED</span></td>
+                    </tr>
+                    <tr class="instyle-row">
+                        <td><span class="comp-rank" style="background:rgba(201,168,76,0.3);">7</span></td>
+                        <td class="comp-name">&#x2b50; InStyle Cleaning</td>
+                        <td><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span> ~4.5</td>
+                        <td><strong>~5</strong></td>
+                        <td>6</td>
+                        <td>Post-Construction</td>
+                        <td>
+                            <div class="score-bar-bg"><div class="score-bar" style="width:35%; background:var(--red);"></div></div>
+                        </td>
+                        <td><span class="badge" style="background:rgba(96,165,250,0.15);color:var(--blue);">YOU</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- SWOT -->
+    <div class="section">
+        <div class="section-title"><span class="icon">&#x1f9e0;</span> SWOT Analysis</div>
+        <div class="swot-grid">
+            <div class="swot-card swot-s">
+                <h3 style="color: var(--green);">&#x1f4aa; Strengths</h3>
+                <ul>
+                    <li>Marriott/hospitality-trained — quality signal to customers</li>
+                    <li>Post-construction niche — less competition, higher margins</li>
+                    <li>Strong Instagram game — consistent Reels content</li>
+                    <li>Multi-city ambition (GNV + Orlando + Tampa)</li>
+                    <li>"Luxury at affordable prices" positioning hits the sweet spot</li>
+                </ul>
+            </div>
+            <div class="swot-card swot-w">
+                <h3 style="color: var(--red);">&#x26a0;&#xfe0f; Weaknesses</h3>
+                <ul>
+                    <li>Near-zero Google reviews — invisible in local search</li>
+                    <li>Wix website — poor SEO, slow, unprofessional at scale</li>
+                    <li>No Google Business Profile visible</li>
+                    <li>Young brand (est. 2020) vs. decades-old competitors</li>
+                    <li>Small team limits capacity for multi-city service</li>
+                </ul>
+            </div>
+            <div class="swot-card swot-o">
+                <h3 style="color: var(--blue);">&#x1f3af; Opportunities</h3>
+                <ul>
+                    <li>UF student turnover — massive seasonal demand (May, Aug, Dec)</li>
+                    <li>Housing market growing 8.3% YoY — more post-construction jobs</li>
+                    <li>Airbnb/short-term rental cleaning market expanding</li>
+                    <li>Google Business optimization — easy win, immediate visibility</li>
+                    <li>Apartment complex partnerships for turnover contracts</li>
+                </ul>
+            </div>
+            <div class="swot-card swot-t">
+                <h3 style="color: var(--orange);">&#x26a1; Threats</h3>
+                <ul>
+                    <li>Established competitors with 100+ reviews and loyal bases</li>
+                    <li>National franchises (JAN-PRO, Anago) with brand muscle</li>
+                    <li>Low median income ($46K) — extreme price sensitivity</li>
+                    <li>Premature expansion risk — Gainesville not yet dominated</li>
+                    <li>Labor market competition for cleaning staff</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendations -->
+    <div class="section">
+        <div class="section-title"><span class="icon">&#x1f680;</span> Priority Action Items</div>
+        <div class="rec-list">
+            <div class="rec-item">
+                <div class="rec-priority rec-p1">1</div>
+                <div class="rec-content">
+                    <h4>Claim & Optimize Google Business Profile</h4>
+                    <p>This is the single highest-ROI action. Most "cleaning Gainesville FL" searches show Maps results first. Without a GBP, InStyle is invisible to the largest lead source.</p>
+                </div>
+                <div class="rec-impact impact-high">HIGH IMPACT</div>
+            </div>
+            <div class="rec-item">
+                <div class="rec-priority rec-p1">2</div>
+                <div class="rec-content">
+                    <h4>Launch Review Generation Campaign</h4>
+                    <p>After every completed job, send an automated SMS/email requesting a Google review. Target: 50+ reviews at 4.8+ stars within 3 months. This alone changes the competitive picture.</p>
+                </div>
+                <div class="rec-impact impact-high">HIGH IMPACT</div>
+            </div>
+            <div class="rec-item">
+                <div class="rec-priority rec-p1">3</div>
+                <div class="rec-content">
+                    <h4>Replace Wix Website</h4>
+                    <p>Current Wix site doesn't render for crawlers and lacks SEO fundamentals. A proper, fast-loading landing page with schema markup will improve organic search ranking immediately.</p>
+                </div>
+                <div class="rec-impact impact-high">HIGH IMPACT</div>
+            </div>
+            <div class="rec-item">
+                <div class="rec-priority rec-p2">4</div>
+                <div class="rec-content">
+                    <h4>Double Down on Post-Construction Niche</h4>
+                    <p>This is InStyle's natural moat. Create dedicated landing pages, case studies, and contractor partnerships. Higher ticket, less price sensitivity, fewer competitors.</p>
+                </div>
+                <div class="rec-impact impact-med">MED IMPACT</div>
+            </div>
+            <div class="rec-item">
+                <div class="rec-priority rec-p2">5</div>
+                <div class="rec-content">
+                    <h4>Create UF Student Turnover Packages</h4>
+                    <p>Seasonal packages for May move-out and August move-in. Partner with 5-10 apartment complexes near UF campus. Predictable recurring revenue.</p>
+                </div>
+                <div class="rec-impact impact-med">MED IMPACT</div>
+            </div>
+            <div class="rec-item">
+                <div class="rec-priority rec-p3">6</div>
+                <div class="rec-content">
+                    <h4>Hold on Multi-City Expansion</h4>
+                    <p>Orlando & Tampa can wait. Dominate Gainesville first — build reviews, reputation, and systems. Then replicate the playbook. Expanding too early dilutes everything.</p>
+                </div>
+                <div class="rec-impact impact-med">STRATEGIC</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>InStyle Cleaning Competitive Intelligence Dashboard &mdash; Generated by <a href="#">Monie</a> (mhoooo JARVIS) &mdash; March 2026</p>
+    <p style="margin-top: 6px;">Data sources: Expertise.com, Yelp, Google, Redfin, Homeyou, Census ACS, Grand View Research</p>
+</div>
+
+<script>
+// Chart defaults
+Chart.defaults.color = '#8892a4';
+Chart.defaults.borderColor = 'rgba(42, 48, 66, 0.5)';
+Chart.defaults.font.family = "'Inter', sans-serif";
+
+const gold = '#C9A84C';
+const goldAlpha = 'rgba(201, 168, 76, 0.7)';
+const navy = '#1B2A4A';
+const green = '#34d399';
+const red = '#f87171';
+const blue = '#60a5fa';
+const purple = '#a78bfa';
+const orange = '#fbbf24';
+
+// 1. Review Count Chart (Horizontal Bar)
+new Chart(document.getElementById('reviewChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Mini Maid', 'GNV Turnover Spec.', 'Can Do Cleaning', 'Maid Professionally', 'Kings Legacy', 'Pro-Care Janitorial', 'InStyle Cleaning'],
+        datasets: [{
+            label: 'Reviews',
+            data: [115, 107, 52, 47, 35, 29, 5],
+            backgroundColor: [
+                'rgba(96, 165, 250, 0.7)',
+                'rgba(96, 165, 250, 0.7)',
+                'rgba(96, 165, 250, 0.7)',
+                'rgba(96, 165, 250, 0.7)',
+                'rgba(96, 165, 250, 0.7)',
+                'rgba(96, 165, 250, 0.7)',
+                goldAlpha
+            ],
+            borderColor: [
+                blue, blue, blue, blue, blue, blue, gold
+            ],
+            borderWidth: 1,
+            borderRadius: 6,
+        }]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    label: (ctx) => `${ctx.raw} reviews`
+                }
+            }
+        },
+        scales: {
+            x: { grid: { color: 'rgba(42, 48, 66, 0.3)' }, ticks: { font: { size: 11 } } },
+            y: { grid: { display: false }, ticks: { font: { size: 12, weight: '500' } } }
+        }
+    }
+});
+
+// 2. Rating Radar Chart
+new Chart(document.getElementById('ratingChart'), {
+    type: 'radar',
+    data: {
+        labels: ['Rating', 'Reviews', 'Years Active', 'Digital Presence', 'Service Range', 'Price Competitiveness'],
+        datasets: [
+            {
+                label: 'InStyle Cleaning',
+                data: [4.5, 1, 3, 2, 4, 5],
+                backgroundColor: 'rgba(201, 168, 76, 0.15)',
+                borderColor: gold,
+                borderWidth: 2,
+                pointBackgroundColor: gold,
+                pointRadius: 4,
+            },
+            {
+                label: 'Top Competitor Avg',
+                data: [4.9, 5, 4, 4, 3, 3],
+                backgroundColor: 'rgba(96, 165, 250, 0.1)',
+                borderColor: blue,
+                borderWidth: 2,
+                pointBackgroundColor: blue,
+                pointRadius: 4,
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            r: {
+                beginAtZero: true,
+                max: 5,
+                ticks: { stepSize: 1, font: { size: 10 }, backdropColor: 'transparent' },
+                grid: { color: 'rgba(42, 48, 66, 0.4)' },
+                angleLines: { color: 'rgba(42, 48, 66, 0.4)' },
+                pointLabels: { font: { size: 11 } }
+            }
+        },
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: { boxWidth: 12, padding: 16, font: { size: 12 } }
+            }
+        }
+    }
+});
+
+// 3. Pricing Chart (Bar)
+new Chart(document.getElementById('pricingChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Market Low', 'InStyle', 'Market Avg', 'Market High', 'Premium'],
+        datasets: [{
+            label: '$/hour',
+            data: [18, 20, 19.24, 25, 28],
+            backgroundColor: [
+                'rgba(96, 165, 250, 0.5)',
+                goldAlpha,
+                'rgba(96, 165, 250, 0.5)',
+                'rgba(96, 165, 250, 0.5)',
+                'rgba(167, 139, 250, 0.5)'
+            ],
+            borderColor: [blue, gold, blue, blue, purple],
+            borderWidth: 1,
+            borderRadius: 6,
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: { label: (ctx) => `$${ctx.raw}/hr` }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                grid: { color: 'rgba(42, 48, 66, 0.3)' },
+                ticks: { callback: (v) => `$${v}`, font: { size: 11 } }
+            },
+            x: { grid: { display: false }, ticks: { font: { size: 11 } } }
+        }
+    }
+});
+
+// 4. Service Coverage (Stacked bar)
+new Chart(document.getElementById('serviceChart'), {
+    type: 'bar',
+    data: {
+        labels: ['InStyle', 'GNV Turnover', 'Mini Maid', 'Can Do', 'Kings Legacy', 'Pro-Care'],
+        datasets: [
+            {
+                label: 'Residential',
+                data: [1, 1, 1, 1, 1, 0],
+                backgroundColor: 'rgba(96, 165, 250, 0.6)',
+                borderRadius: 4,
+            },
+            {
+                label: 'Commercial',
+                data: [1, 0, 1, 1, 0, 1],
+                backgroundColor: 'rgba(167, 139, 250, 0.6)',
+                borderRadius: 4,
+            },
+            {
+                label: 'Post-Construction',
+                data: [1, 0, 0, 0, 0, 0],
+                backgroundColor: 'rgba(201, 168, 76, 0.7)',
+                borderRadius: 4,
+            },
+            {
+                label: 'Move-out/Turnover',
+                data: [1, 1, 1, 1, 1, 0],
+                backgroundColor: 'rgba(52, 211, 153, 0.6)',
+                borderRadius: 4,
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: { boxWidth: 10, padding: 12, font: { size: 11 } }
+            },
+            tooltip: {
+                callbacks: {
+                    label: (ctx) => ctx.raw === 1 ? `${ctx.dataset.label}: Yes` : `${ctx.dataset.label}: No`
+                }
+            }
+        },
+        scales: {
+            x: { stacked: true, grid: { display: false }, ticks: { font: { size: 10 } } },
+            y: {
+                stacked: true,
+                max: 4,
+                grid: { color: 'rgba(42, 48, 66, 0.3)' },
+                ticks: { stepSize: 1, font: { size: 11 }, callback: (v) => `${v} services` }
+            }
+        }
+    }
+});
+
+// 5. Digital Presence (Horizontal bar)
+new Chart(document.getElementById('digitalChart'), {
+    type: 'bar',
+    data: {
+        labels: ['GNV Turnover', 'Mini Maid', 'Maid Professional', 'Can Do', 'Pro-Care', 'Kings Legacy', 'InStyle'],
+        datasets: [
+            {
+                label: 'Website',
+                data: [30, 28, 25, 24, 22, 20, 10],
+                backgroundColor: 'rgba(96, 165, 250, 0.6)',
+                borderRadius: 4,
+            },
+            {
+                label: 'Google/SEO',
+                data: [28, 27, 25, 22, 22, 18, 5],
+                backgroundColor: 'rgba(52, 211, 153, 0.6)',
+                borderRadius: 4,
+            },
+            {
+                label: 'Social Media',
+                data: [15, 14, 12, 14, 10, 12, 20],
+                backgroundColor: 'rgba(201, 168, 76, 0.7)',
+                borderRadius: 4,
+            },
+            {
+                label: 'Directories',
+                data: [12, 11, 10, 10, 11, 10, 0],
+                backgroundColor: 'rgba(167, 139, 250, 0.6)',
+                borderRadius: 4,
+            }
+        ]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: { boxWidth: 10, padding: 12, font: { size: 11 } }
+            }
+        },
+        scales: {
+            x: {
+                stacked: true,
+                max: 100,
+                grid: { color: 'rgba(42, 48, 66, 0.3)' },
+                ticks: { font: { size: 10 } }
+            },
+            y: { stacked: true, grid: { display: false }, ticks: { font: { size: 11 } } }
+        }
+    }
+});
+
+// 6. Market Segments (Doughnut)
+new Chart(document.getElementById('marketChart'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Residential Regular', 'Move-out/Turnover', 'Commercial', 'Post-Construction', 'Airbnb/STR'],
+        datasets: [{
+            data: [1.5, 0.9, 0.8, 0.6, 0.4],
+            backgroundColor: [
+                'rgba(96, 165, 250, 0.7)',
+                'rgba(52, 211, 153, 0.7)',
+                'rgba(167, 139, 250, 0.7)',
+                'rgba(201, 168, 76, 0.7)',
+                'rgba(251, 191, 36, 0.7)'
+            ],
+            borderColor: '#1a1f2e',
+            borderWidth: 3,
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '60%',
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: { boxWidth: 10, padding: 12, font: { size: 11 } }
+            },
+            tooltip: {
+                callbacks: {
+                    label: (ctx) => `$${ctx.raw}M estimated`
+                }
+            }
+        }
+    }
+});
+</script>
+
+</body>
+</html>

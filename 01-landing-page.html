@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InStyle Cleaning | Premium Cleaning Services in Florida</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1a2332;
+            --navy-light: #243447;
+            --teal: #00b4d8;
+            --teal-dark: #0096b7;
+            --teal-glow: rgba(0, 180, 216, 0.15);
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
+            --shadow-glow: 0 0 40px rgba(0, 180, 216, 0.2);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray-700);
+            background: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ── Animations ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-up.delay-1 { transition-delay: 0.1s; }
+        .fade-up.delay-2 { transition-delay: 0.2s; }
+        .fade-up.delay-3 { transition-delay: 0.3s; }
+        .fade-up.delay-4 { transition-delay: 0.4s; }
+        .fade-up.delay-5 { transition-delay: 0.5s; }
+
+        /* ── Utility ── */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 800;
+            color: var(--navy);
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-500);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            border-radius: 60px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-primary {
+            background: var(--teal);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(0, 180, 216, 0.35);
+        }
+        .btn-primary:hover {
+            background: var(--teal-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 180, 216, 0.45);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .btn-outline:hover {
+            border-color: var(--white);
+            background: rgba(255,255,255,0.08);
+        }
+
+        /* ── Navigation ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.35s ease;
+        }
+        nav.scrolled {
+            background: rgba(26, 35, 50, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 14px 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+        }
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        .logo span {
+            color: var(--teal);
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--white);
+        }
+        .nav-links .btn {
+            padding: 10px 24px;
+            font-size: 0.9rem;
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            margin: 6px 0;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--navy) 0%, #0f1923 50%, var(--navy-light) 100%);
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 180, 216, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 180, 216, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-content {
+            padding: 40px 0;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(0, 180, 216, 0.1);
+            border: 1px solid rgba(0, 180, 216, 0.2);
+            border-radius: 60px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--teal);
+            margin-bottom: 28px;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5.5vw, 4rem);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, var(--teal), #48d1e8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 480px;
+        }
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 48px;
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 440px;
+        }
+        .hero-card-stat {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .hero-card-stat:last-child { margin-bottom: 0; }
+        .hero-card-stat .number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--teal);
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+        .hero-card-stat .label {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+            font-weight: 500;
+            margin-top: 6px;
+        }
+        .hero-card-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+            margin: 24px 0;
+        }
+        .trust-row {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .trust-item .icon {
+            font-size: 1.1rem;
+        }
+
+        /* ── Services ── */
+        .services {
+            padding: 120px 0;
+            background: var(--white);
+        }
+        .services-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        .services-header .section-subtitle {
+            margin: 0 auto;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .service-card {
+            padding: 40px 32px;
+            border-radius: 20px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--teal), #48d1e8);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .service-card:hover {
+            border-color: transparent;
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
+        }
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: var(--teal-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            font-size: 0.92rem;
+            color: var(--gray-500);
+            line-height: 1.65;
+        }
+
+        /* ── Why Choose Us ── */
+        .why-us {
+            padding: 120px 0;
+            background: var(--gray-50);
+        }
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .why-us-content .section-subtitle {
+            margin-bottom: 48px;
+        }
+        .differentiators {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .diff-card {
+            padding: 28px 24px;
+            border-radius: 16px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+        .diff-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+        .diff-icon {
+            font-size: 1.6rem;
+            margin-bottom: 14px;
+        }
+        .diff-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+        .diff-card p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+        .why-us-visual {
+            position: relative;
+        }
+        .stats-showcase {
+            background: var(--navy);
+            border-radius: 24px;
+            padding: 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+            position: relative;
+            overflow: hidden;
+        }
+        .stats-showcase::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -30%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0,180,216,0.15), transparent 70%);
+            border-radius: 50%;
+        }
+        .stat-item {
+            position: relative;
+            z-index: 1;
+        }
+        .stat-item .number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--teal);
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+        .stat-item .label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        /* ── Pricing ── */
+        .pricing {
+            padding: 120px 0;
+            background: var(--white);
+        }
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        .pricing-header .section-subtitle {
+            margin: 0 auto;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            align-items: stretch;
+        }
+        .pricing-card {
+            border-radius: 24px;
+            padding: 44px 36px;
+            border: 1px solid var(--gray-200);
+            background: var(--white);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .pricing-card.featured {
+            background: var(--navy);
+            border-color: transparent;
+            box-shadow: var(--shadow-glow);
+            transform: scale(1.03);
+        }
+        .pricing-card:not(.featured):hover {
+            border-color: transparent;
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
+        }
+        .pricing-popular {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--teal), #48d1e8);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 6px 20px;
+            border-radius: 60px;
+        }
+        .pricing-tier {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--teal);
+            margin-bottom: 8px;
+        }
+        .pricing-card.featured .pricing-tier { color: var(--teal); }
+        .pricing-name {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+        .pricing-card.featured .pricing-name { color: var(--white); }
+        .pricing-amount {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--navy);
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .pricing-card.featured .pricing-amount { color: var(--white); }
+        .pricing-amount span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--gray-400);
+        }
+        .pricing-card.featured .pricing-amount span { color: rgba(255,255,255,0.4); }
+        .pricing-range {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            margin-bottom: 28px;
+        }
+        .pricing-card.featured .pricing-range { color: rgba(255,255,255,0.4); }
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 36px;
+            flex-grow: 1;
+        }
+        .pricing-features li {
+            padding: 10px 0;
+            font-size: 0.92rem;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .pricing-card.featured .pricing-features li {
+            color: rgba(255,255,255,0.7);
+            border-color: rgba(255,255,255,0.08);
+        }
+        .pricing-features li:last-child { border-bottom: none; }
+        .pricing-features .check {
+            color: var(--teal);
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .pricing-card .btn {
+            width: 100%;
+            justify-content: center;
+        }
+        .pricing-card:not(.featured) .btn-primary {
+            background: var(--navy);
+            box-shadow: none;
+        }
+        .pricing-card:not(.featured) .btn-primary:hover {
+            background: var(--navy-light);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ── Testimonials ── */
+        .testimonials {
+            padding: 120px 0;
+            background: var(--gray-50);
+        }
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        .testimonials-header .section-subtitle {
+            margin: 0 auto;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .testimonial-card {
+            padding: 40px 32px;
+            border-radius: 20px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+        .testimonial-stars {
+            color: #f59e0b;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .testimonial-card blockquote {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.75;
+            margin-bottom: 24px;
+            font-style: normal;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--teal), #48d1e8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .testimonial-name {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        .testimonial-role {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        /* ── CTA ── */
+        .cta {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--navy), #0f1923);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(0, 180, 216, 0.08), transparent 70%);
+            border-radius: 50%;
+        }
+        .cta-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .cta-content .section-title {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .cta-content p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        .cta-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .cta-contact {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 56px;
+            flex-wrap: wrap;
+        }
+        .cta-contact-item {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cta-contact-item .icon {
+            color: var(--teal);
+            font-size: 1.1rem;
+        }
+
+        /* ── Footer ── */
+        footer {
+            padding: 40px 0;
+            background: #0d1520;
+            text-align: center;
+        }
+        footer p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.3);
+        }
+        footer a {
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-visual { display: none; }
+            .hero { min-height: auto; padding: 140px 0 80px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .why-us-grid { grid-template-columns: 1fr; gap: 48px; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+            .pricing-card.featured { transform: scale(1); }
+            .testimonials-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(26, 35, 50, 0.98);
+                backdrop-filter: blur(20px);
+                padding: 24px;
+                gap: 20px;
+            }
+            .nav-toggle { display: block; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-actions { flex-direction: column; align-items: flex-start; }
+            .trust-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .differentiators { grid-template-columns: 1fr; }
+            .stats-showcase { grid-template-columns: 1fr 1fr; gap: 24px; padding: 32px; }
+            .cta-contact { flex-direction: column; align-items: center; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="logo">InStyle<span>.</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact" class="btn btn-primary">Get Free Quote</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge fade-up">
+                        Serving All of Florida
+                    </div>
+                    <h1 class="fade-up delay-1">A Cleaner Space.<br><em>A Better Life.</em></h1>
+                    <p class="fade-up delay-2">Premium residential and commercial cleaning that transforms your space. Eco-friendly products, insured professionals, and results that speak for themselves.</p>
+                    <div class="hero-actions fade-up delay-3">
+                        <a href="#contact" class="btn btn-primary">Get Free Quote &rarr;</a>
+                        <a href="#services" class="btn btn-outline">Our Services</a>
+                    </div>
+                    <div class="trust-row fade-up delay-4">
+                        <div class="trust-item"><span class="icon">&#9989;</span> Insured & Bonded</div>
+                        <div class="trust-item"><span class="icon">&#127807;</span> Eco-Friendly</div>
+                        <div class="trust-item"><span class="icon">&#11088;</span> 5-Star Rated</div>
+                    </div>
+                </div>
+                <div class="hero-visual fade-up delay-3">
+                    <div class="hero-card">
+                        <div class="hero-card-stat">
+                            <div class="number">2,500+</div>
+                            <div class="label">Homes Cleaned</div>
+                        </div>
+                        <div class="hero-card-divider"></div>
+                        <div class="hero-card-stat">
+                            <div class="number">4.9</div>
+                            <div class="label">Average Rating</div>
+                        </div>
+                        <div class="hero-card-divider"></div>
+                        <div class="hero-card-stat">
+                            <div class="number">8+</div>
+                            <div class="label">Years in Florida</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="services-header fade-up">
+                <div class="section-label">What We Do</div>
+                <h2 class="section-title">Cleaning Solutions for<br>Every Need</h2>
+                <p class="section-subtitle">From routine maintenance to specialized deep cleans, we deliver spotless results tailored to your space.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-up delay-1">
+                    <div class="service-icon">&#128171;</div>
+                    <h3>Regular Cleaning</h3>
+                    <p>Weekly or bi-weekly maintenance to keep your home consistently fresh, organized, and welcoming.</p>
+                </div>
+                <div class="service-card fade-up delay-2">
+                    <div class="service-icon">&#10024;</div>
+                    <h3>Deep Cleaning</h3>
+                    <p>Thorough top-to-bottom cleaning that reaches every corner, surface, and hidden spot in your home.</p>
+                </div>
+                <div class="service-card fade-up delay-3">
+                    <div class="service-icon">&#127968;</div>
+                    <h3>Move-In / Move-Out</h3>
+                    <p>Start fresh or leave it spotless. Complete cleaning for smooth transitions between homes.</p>
+                </div>
+                <div class="service-card fade-up delay-1">
+                    <div class="service-icon">&#9992;&#65039;</div>
+                    <h3>Airbnb Turnover</h3>
+                    <p>Fast, reliable turnover cleaning that keeps your rental guest-ready and earning 5-star reviews.</p>
+                </div>
+                <div class="service-card fade-up delay-2">
+                    <div class="service-icon">&#127970;</div>
+                    <h3>Office Cleaning</h3>
+                    <p>Professional commercial cleaning to maintain a productive, healthy workplace for your team.</p>
+                </div>
+                <div class="service-card fade-up delay-3">
+                    <div class="service-icon">&#128679;</div>
+                    <h3>Post-Construction</h3>
+                    <p>Specialized cleanup after renovations. We handle the dust, debris, and detail work so you don't have to.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="why-us-grid">
+                <div class="why-us-content">
+                    <div class="section-label fade-up">Why InStyle</div>
+                    <h2 class="section-title fade-up delay-1">Trusted by Thousands<br>Across Florida</h2>
+                    <p class="section-subtitle fade-up delay-2">We don't just clean spaces, we elevate them. Every detail matters, and it shows in our results.</p>
+                    <div class="differentiators">
+                        <div class="diff-card fade-up delay-1">
+                            <div class="diff-icon">&#127807;</div>
+                            <h4>Eco-Friendly</h4>
+                            <p>Safe, non-toxic products that protect your family, pets, and the planet.</p>
+                        </div>
+                        <div class="diff-card fade-up delay-2">
+                            <div class="diff-icon">&#128737;&#65039;</div>
+                            <h4>Insured & Bonded</h4>
+                            <p>Full coverage for your peace of mind. Licensed, vetted professionals.</p>
+                        </div>
+                        <div class="diff-card fade-up delay-3">
+                            <div class="diff-icon">&#11088;</div>
+                            <h4>5-Star Rated</h4>
+                            <p>Hundreds of perfect reviews from happy homeowners and businesses.</p>
+                        </div>
+                        <div class="diff-card fade-up delay-4">
+                            <div class="diff-icon">&#128197;</div>
+                            <h4>Flexible Scheduling</h4>
+                            <p>Book when it suits you. Same-day availability and easy rescheduling.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-us-visual fade-up delay-2">
+                    <div class="stats-showcase">
+                        <div class="stat-item">
+                            <div class="number">2,500+</div>
+                            <div class="label">Happy Clients</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="number">8+</div>
+                            <div class="label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="number">15K+</div>
+                            <div class="label">Cleans Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="number">99%</div>
+                            <div class="label">Satisfaction Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="pricing-header fade-up">
+                <div class="section-label">Pricing</div>
+                <h2 class="section-title">Transparent, Honest Pricing</h2>
+                <p class="section-subtitle">No hidden fees. No surprise charges. Just exceptional cleaning at fair rates.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-up delay-1">
+                    <div class="pricing-tier">Essential</div>
+                    <div class="pricing-name">Standard Clean</div>
+                    <div class="pricing-amount">$120<span> - $180</span></div>
+                    <div class="pricing-range">per session, based on home size</div>
+                    <ul class="pricing-features">
+                        <li><span class="check">&#10003;</span> Kitchen & bathroom sanitization</li>
+                        <li><span class="check">&#10003;</span> Vacuuming & mopping all floors</li>
+                        <li><span class="check">&#10003;</span> Dusting surfaces & fixtures</li>
+                        <li><span class="check">&#10003;</span> Trash removal & tidying</li>
+                        <li><span class="check">&#10003;</span> Eco-friendly products included</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card featured fade-up delay-2">
+                    <div class="pricing-popular">Most Popular</div>
+                    <div class="pricing-tier">Premium</div>
+                    <div class="pricing-name">Deep Clean</div>
+                    <div class="pricing-amount">$200<span> - $350</span></div>
+                    <div class="pricing-range">per session, based on home size</div>
+                    <ul class="pricing-features">
+                        <li><span class="check">&#10003;</span> Everything in Standard Clean</li>
+                        <li><span class="check">&#10003;</span> Inside appliances & cabinets</li>
+                        <li><span class="check">&#10003;</span> Baseboards, vents & light fixtures</li>
+                        <li><span class="check">&#10003;</span> Window sills & blinds</li>
+                        <li><span class="check">&#10003;</span> Detailed grout & tile scrubbing</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card fade-up delay-3">
+                    <div class="pricing-tier">Complete</div>
+                    <div class="pricing-name">Move In / Out</div>
+                    <div class="pricing-amount">$250<span> - $400</span></div>
+                    <div class="pricing-range">per session, based on home size</div>
+                    <ul class="pricing-features">
+                        <li><span class="check">&#10003;</span> Everything in Deep Clean</li>
+                        <li><span class="check">&#10003;</span> Inside all closets & storage</li>
+                        <li><span class="check">&#10003;</span> Garage & patio sweep</li>
+                        <li><span class="check">&#10003;</span> Wall spot-cleaning & scuff removal</li>
+                        <li><span class="check">&#10003;</span> Final walkthrough inspection</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="testimonials-header fade-up">
+                <div class="section-label">Testimonials</div>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Real feedback from real clients across Florida.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-up delay-1">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"InStyle has been cleaning our home for over a year now and the consistency is unmatched. They treat our space like it's their own. I've referred them to everyone I know."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MR</div>
+                        <div>
+                            <div class="testimonial-name">Maria Rodriguez</div>
+                            <div class="testimonial-role">Homeowner, Tampa</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-up delay-2">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"We manage 12 Airbnb properties and InStyle handles all our turnovers. They're fast, thorough, and have never let us down. Our guest ratings have noticeably improved."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JT</div>
+                        <div>
+                            <div class="testimonial-name">James Thompson</div>
+                            <div class="testimonial-role">Property Manager, Orlando</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-up delay-3">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"After our renovation, InStyle did the post-construction cleanup and the result was incredible. Dust in places I never would have thought to check, all gone. Truly professional."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SK</div>
+                        <div>
+                            <div class="testimonial-name">Sarah Kim</div>
+                            <div class="testimonial-role">Homeowner, Miami</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <div class="section-label fade-up">Ready to Get Started?</div>
+                <h2 class="section-title fade-up delay-1">Get Your Free<br>Cleaning Quote Today</h2>
+                <p class="fade-up delay-2">Tell us about your space and we'll put together a custom quote within hours. No obligations, no pressure.</p>
+                <div class="cta-actions fade-up delay-3">
+                    <a href="tel:+15551234567" class="btn btn-primary">Call (555) 123-4567</a>
+                    <a href="mailto:hello@instylecleaning.com" class="btn btn-outline">Email Us</a>
+                </div>
+                <div class="cta-contact fade-up delay-4">
+                    <div class="cta-contact-item">
+                        <span class="icon">&#128205;</span>
+                        Serving All of Florida
+                    </div>
+                    <div class="cta-contact-item">
+                        <span class="icon">&#128339;</span>
+                        Mon - Sat, 7AM - 7PM
+                    </div>
+                    <div class="cta-contact-item">
+                        <span class="icon">&#9993;</span>
+                        hello@instylecleaning.com
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 InStyle Cleaning. All rights reserved. Licensed & Insured in the State of Florida.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll-triggered fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close mobile nav on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+</html>
