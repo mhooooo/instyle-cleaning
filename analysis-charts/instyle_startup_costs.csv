@@ -1,0 +1,28 @@
+category,item,startup_cost,monthly_recurring,notes
+Equipment,Professional vacuum (x2),800,0,Backpack commercial grade
+Equipment,Mop & bucket systems (x2),200,0,Microfiber commercial
+Equipment,Cleaning caddy supplies (x4),400,0,Initial stock
+Equipment,Ladder & extension poles,150,0,For high areas
+Equipment,Floor machine / buffer,600,0,Commercial jobs
+Vehicle,Cargo van down payment,3000,450,Lease - wrapped with branding
+Vehicle,Van wrap / branding,2500,0,Full vehicle wrap
+Vehicle,Gas & maintenance,0,400,Monthly average
+Insurance,General liability ($1M),0,250,Required for commercial
+Insurance,Workers compensation,0,180,Per employee pair
+Insurance,Commercial auto,0,200,Per vehicle
+Marketing,Website + SEO setup,2000,150,WordPress + local SEO
+Marketing,Google Business + ads,500,600,Local service ads
+Marketing,Flyers & door hangers (5000),400,100,Monthly reprints
+Marketing,UF campus marketing,300,200,Bulletin boards + student orgs
+Marketing,Uniforms & branded materials,600,50,Polo shirts + ID badges
+Legal,LLC formation,200,0,Florida LLC
+Legal,Business license (Gainesville),75,0,Annual renewal
+Legal,Cleaning bond,200,0,Janitorial bond
+Software,Booking & CRM software,0,80,Jobber or Housecall Pro
+Software,Accounting software,0,30,QuickBooks
+Software,Communication tools,0,25,Phone + messaging
+Supplies,Initial cleaning supply stock,800,350,Monthly replenishment
+Supplies,PPE and safety equipment,200,50,Gloves masks etc
+Labor,Owner salary (reduced Y1),0,3000,Below market to bootstrap
+Labor,Team lead (per team),0,3200,Experienced cleaner
+Labor,Team member (per team),0,2800,Entry-level cleaner

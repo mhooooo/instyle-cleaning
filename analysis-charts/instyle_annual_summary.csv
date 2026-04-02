@@ -1,0 +1,4 @@
+scenario,annual_revenue,annual_costs,annual_profit,net_margin_pct,avg_monthly_revenue,lowest_month,highest_month
+Conservative (1 Team),261970,148500,113470,43.3,21831.0,14800,38720
+Growth (2 Teams),569700,291400,278300,48.9,47475.0,29600,79200
+Aggressive (3 Teams),942210,439800,502410,53.3,78518.0,45600,121440

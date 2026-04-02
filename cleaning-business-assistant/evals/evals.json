@@ -1,0 +1,67 @@
+{
+  "skill_name": "cleaning-business-assistant",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need a quote for a deep clean of a 4-bedroom house, 2200 sqft. They also want the fridge and oven cleaned inside, plus 8 windows. They're interested in biweekly recurring service.",
+      "expected_output": "A formatted quote showing deep clean base price + add-ons (fridge $35, oven $40, windows 8×$5=$40), subtotal, 10% biweekly discount, and final total. Estimated duration ~5 hours.",
+      "expectations": [
+        "The CLI quote command is used with --service-type deep --sqft 2200 --rooms 4",
+        "Add-ons for fridge, oven, and windows:8 are included",
+        "A 10% biweekly recurring discount is applied",
+        "The total price falls within the $250-$500 deep clean range before add-ons",
+        "Estimated duration is provided"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Show me today's full schedule and tell me if Alpha Team can fit in one more standard clean in the NW zone around 2pm.",
+      "expected_output": "Display today's schedule for all crews, then check Alpha Team's availability — show their current jobs, total hours, and whether a 2-hour standard clean starting at 2pm fits without overlap. Recommend the slot if available.",
+      "expectations": [
+        "The schedule-view command is run for today's date",
+        "The crew-status command is run to check Alpha Team availability",
+        "Alpha Team's current hours and remaining capacity are stated",
+        "A clear yes/no recommendation is given for the 2pm NW slot",
+        "If yes, the schedule-add command is shown or suggested"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We're coming up on May and August — our two biggest months because of UF. Run the forecast for April through September and tell me how many crews I need and what to do to prepare.",
+      "expected_output": "A 6-month seasonal forecast showing monthly multipliers, projected revenue, jobs/day, crews needed, and specific actionable recommendations for the May move-out surge and August move-in peak.",
+      "expectations": [
+        "The forecast command is run with --start-month for April and --months 6",
+        "May shows a 1.40x multiplier with move-out surge language",
+        "August shows a 1.80x multiplier as peak demand",
+        "Crew hiring recommendations are included for May and August",
+        "SW zone is specifically mentioned as the UF-area hotspot",
+        "Summer slow months (June/July) are flagged for training/maintenance"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Look up client Sarah Johnson — show me her full profile, service history, and what she's scheduled for next. Then search for any other clients in the NW zone.",
+      "expected_output": "Full client profile for Sarah Johnson with contact info, address, preferences (eco-friendly, two dogs), service history, upcoming jobs, lifetime value. Then a filtered list of all NW zone clients.",
+      "expectations": [
+        "The client-view command is used for Sarah Johnson's client ID",
+        "Her preferences (eco-friendly products, two dogs) are visible in the output",
+        "Service history with dates, types, prices, and ratings is shown",
+        "The client-list command is run with --zone NW filter",
+        "Multiple NW zone clients are listed with lifetime values"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Give me a commercial cleaning quote for a dental office that's 3500 sqft, and a standard apartment quote for a 2-bed 950 sqft unit near UF with the move-out add-on package (fridge, oven, carpet for 2 rooms).",
+      "expected_output": "Two separate quotes: (1) Commercial medical-rate quote for 3500 sqft dental office at $0.30/sqft = ~$1,050. (2) Standard clean for 2BR/950sqft apartment with fridge ($35), oven ($40), and carpet:2 ($50) add-ons.",
+      "expectations": [
+        "Two separate quote commands are run",
+        "The dental office uses --commercial-type medical at $0.30/sqft rate",
+        "The commercial quote totals around $1,050",
+        "The apartment quote uses --service-type standard with correct sqft and rooms",
+        "Add-ons fridge, oven, and carpet:2 are applied to the apartment quote",
+        "Both quotes show itemized line items and totals"
+      ]
+    }
+  ]
+}

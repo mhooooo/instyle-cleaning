@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InStyle Cleaning — Gator Season War Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --navy-deep: #0F1A2E;
+    --navy-light: #253A5E;
+    --gold: #C9A84C;
+    --gold-dim: #A08838;
+    --gold-bright: #E8C85A;
+    --white: #F4F1EB;
+    --cream: #FAF8F3;
+    --green: #2ECC71;
+    --green-dim: #27AE60;
+    --red: #E74C3C;
+    --orange: #F39C12;
+    --blue-accent: #3498DB;
+    --card-bg: rgba(27, 42, 74, 0.65);
+    --card-border: rgba(201, 168, 76, 0.2);
+    --glass: rgba(255, 255, 255, 0.04);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy-deep);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* === ANIMATED BACKGROUND === */
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(201, 168, 76, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201, 168, 76, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  .bg-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(180px);
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bg-glow.g1 { top: -200px; left: -100px; background: var(--gold); }
+  .bg-glow.g2 { bottom: -200px; right: -100px; background: var(--blue-accent); opacity: 0.08; }
+
+  /* === LAYOUT === */
+  .dashboard {
+    position: relative;
+    z-index: 1;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  /* === HEADER === */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    margin-bottom: 24px;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .logo-mark {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    color: var(--navy-deep);
+    letter-spacing: 1px;
+    box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
+  }
+
+  .header-title h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .header-title p {
+    font-size: 13px;
+    color: rgba(244, 241, 235, 0.5);
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .live-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(46, 204, 113, 0.12);
+    border: 1px solid rgba(46, 204, 113, 0.3);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--green);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(46, 204, 113, 0); }
+  }
+
+  .season-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: var(--navy-deep);
+    background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+    padding: 8px 18px;
+    border-radius: 8px;
+  }
+
+  /* === COUNTDOWN SECTION === */
+  .countdown-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .countdown-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .countdown-ring {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+  }
+
+  .countdown-ring svg {
+    width: 90px;
+    height: 90px;
+    transform: rotate(-90deg);
+  }
+
+  .countdown-ring .track {
+    fill: none;
+    stroke: rgba(201, 168, 76, 0.1);
+    stroke-width: 6;
+  }
+
+  .countdown-ring .progress {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 6;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease;
+  }
+
+  .countdown-ring .progress.green { stroke: var(--green); }
+  .countdown-ring .progress.orange { stroke: var(--orange); }
+
+  .countdown-number {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .countdown-number .big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--gold-bright);
+  }
+
+  .countdown-number .small {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(244, 241, 235, 0.4);
+    margin-top: 2px;
+  }
+
+  .countdown-info h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .countdown-info p {
+    font-size: 13px;
+    color: rgba(244, 241, 235, 0.5);
+    line-height: 1.5;
+  }
+
+  .countdown-info .date-tag {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: rgba(201, 168, 76, 0.1);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: var(--gold);
+  }
+
+  /* === KPI ROW === */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .kpi-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    padding: 22px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    border-radius: 16px 16px 0 0;
+  }
+
+  .kpi-card.green::before { background: linear-gradient(90deg, var(--green), transparent); }
+  .kpi-card.blue::before { background: linear-gradient(90deg, var(--blue-accent), transparent); }
+  .kpi-card.orange::before { background: linear-gradient(90deg, var(--orange), transparent); }
+
+  .kpi-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(244, 241, 235, 0.4);
+    margin-bottom: 8px;
+  }
+
+  .kpi-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    letter-spacing: 1px;
+    line-height: 1;
+    color: var(--gold-bright);
+  }
+
+  .kpi-card.green .kpi-value { color: var(--green); }
+  .kpi-card.blue .kpi-value { color: var(--blue-accent); }
+  .kpi-card.orange .kpi-value { color: var(--orange); }
+
+  .kpi-sub {
+    font-size: 12px;
+    color: rgba(244, 241, 235, 0.4);
+    margin-top: 6px;
+  }
+
+  /* === MAIN GRID === */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    padding: 24px;
+    overflow: hidden;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .card-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: var(--gold);
+  }
+
+  .card-header .tag {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--navy-deep);
+    background: var(--gold);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+  }
+
+  /* === PRICING TABLE === */
+  .pricing-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+  }
+
+  .pricing-table th {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(244, 241, 235, 0.35);
+    text-align: left;
+    padding: 0 12px 8px;
+    font-weight: 500;
+  }
+
+  .pricing-table td {
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    font-size: 14px;
+  }
+
+  .pricing-table tr td:first-child {
+    border-radius: 8px 0 0 8px;
+    font-weight: 600;
+  }
+
+  .pricing-table tr td:last-child {
+    border-radius: 0 8px 8px 0;
+  }
+
+  .pricing-table .price {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    color: var(--gold-bright);
+  }
+
+  .pricing-table .surge {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    color: var(--green);
+  }
+
+  .pricing-table .margin {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--green);
+    background: rgba(46, 204, 113, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  /* === TIMELINE === */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--gold-dim), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .timeline-item:last-child { margin-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -24px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--navy-deep);
+    border: 2px solid var(--gold);
+  }
+
+  .timeline-dot.active {
+    background: var(--gold);
+    box-shadow: 0 0 12px rgba(201, 168, 76, 0.5);
+  }
+
+  .timeline-dot.done {
+    background: var(--green);
+    border-color: var(--green);
+  }
+
+  .timeline-dot.urgent {
+    background: var(--red);
+    border-color: var(--red);
+    animation: pulse-red 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-red {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(231, 76, 60, 0); }
+  }
+
+  .timeline-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+
+  .timeline-title {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  .timeline-desc {
+    font-size: 12px;
+    color: rgba(244, 241, 235, 0.45);
+    line-height: 1.4;
+  }
+
+  /* === REVENUE CALCULATOR === */
+  .calc-section {
+    margin-bottom: 16px;
+  }
+
+  .calc-section label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(244, 241, 235, 0.4);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .slider-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .slider-row input[type="range"] {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(201, 168, 76, 0.15);
+    outline: none;
+  }
+
+  .slider-row input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--gold);
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(201, 168, 76, 0.4);
+  }
+
+  .slider-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gold-bright);
+    min-width: 60px;
+    text-align: right;
+  }
+
+  .calc-result {
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), rgba(201, 168, 76, 0.04));
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .calc-result .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(244, 241, 235, 0.4);
+    margin-bottom: 6px;
+  }
+
+  .calc-result .amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--gold-bright);
+    line-height: 1;
+    text-shadow: 0 0 40px rgba(201, 168, 76, 0.3);
+  }
+
+  .calc-result .breakdown {
+    font-size: 12px;
+    color: rgba(244, 241, 235, 0.45);
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* === COMPETITOR TABLE === */
+  .comp-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+  }
+
+  .comp-table th {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: rgba(244, 241, 235, 0.35);
+    text-align: left;
+    padding: 0 10px 8px;
+    font-weight: 500;
+  }
+
+  .comp-table td {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    font-size: 13px;
+  }
+
+  .comp-table tr td:first-child { border-radius: 8px 0 0 8px; }
+  .comp-table tr td:last-child { border-radius: 0 8px 8px 0; }
+
+  .comp-table .you {
+    background: rgba(201, 168, 76, 0.08);
+    font-weight: 700;
+  }
+
+  .comp-table .you td:first-child { border-left: 3px solid var(--gold); }
+
+  .rating {
+    color: var(--gold);
+    font-size: 12px;
+  }
+
+  .weakness {
+    font-size: 11px;
+    color: var(--red);
+    opacity: 0.8;
+  }
+
+  /* === DEMAND HEATMAP === */
+  .heatmap-grid {
+    display: grid;
+    grid-template-columns: auto repeat(12, 1fr);
+    gap: 3px;
+    margin-top: 8px;
+  }
+
+  .heatmap-label {
+    font-size: 10px;
+    color: rgba(244, 241, 235, 0.4);
+    display: flex;
+    align-items: center;
+    padding-right: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .heatmap-cell {
+    aspect-ratio: 1;
+    border-radius: 4px;
+    min-width: 0;
+    position: relative;
+    cursor: default;
+    transition: transform 0.15s;
+  }
+
+  .heatmap-cell:hover {
+    transform: scale(1.2);
+    z-index: 2;
+  }
+
+  .heatmap-cell[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--navy);
+    border: 1px solid var(--card-border);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    white-space: nowrap;
+    color: var(--white);
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .heat-0 { background: rgba(201, 168, 76, 0.05); }
+  .heat-1 { background: rgba(201, 168, 76, 0.15); }
+  .heat-2 { background: rgba(201, 168, 76, 0.3); }
+  .heat-3 { background: rgba(232, 200, 90, 0.5); }
+  .heat-4 { background: rgba(243, 156, 18, 0.6); }
+  .heat-5 { background: rgba(231, 76, 60, 0.7); }
+
+  .heatmap-month {
+    font-size: 9px;
+    color: rgba(244, 241, 235, 0.35);
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.5px;
+  }
+
+  .heatmap-legend {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    justify-content: flex-end;
+  }
+
+  .heatmap-legend span {
+    font-size: 10px;
+    color: rgba(244, 241, 235, 0.35);
+  }
+
+  .legend-cell {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+  }
+
+  /* === FULL-WIDTH SECTIONS === */
+  .full-width {
+    margin-bottom: 24px;
+  }
+
+  /* === CHECKLIST === */
+  .checklist {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .check-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .check-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(201, 168, 76, 0.3);
+    border-radius: 6px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    margin-top: 1px;
+  }
+
+  .check-item.checked .check-box {
+    background: var(--green);
+    border-color: var(--green);
+  }
+
+  .check-item.checked .check-box::after {
+    content: '✓';
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .check-item.checked .check-text {
+    text-decoration: line-through;
+    opacity: 0.4;
+  }
+
+  .check-text {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .check-text strong {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+
+  .check-text span {
+    font-size: 11px;
+    color: rgba(244, 241, 235, 0.4);
+  }
+
+  /* === SCENARIO CARDS === */
+  .scenario-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .scenario-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    padding: 24px;
+    text-align: center;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .scenario-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  .scenario-card.recommended {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), rgba(201, 168, 76, 0.02));
+  }
+
+  .scenario-card .scenario-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .scenario-card .scenario-desc {
+    font-size: 11px;
+    color: rgba(244, 241, 235, 0.4);
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+
+  .scenario-card .scenario-revenue {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--gold-bright);
+    line-height: 1;
+  }
+
+  .scenario-card .scenario-details {
+    margin-top: 12px;
+    font-size: 12px;
+    color: rgba(244, 241, 235, 0.5);
+    line-height: 1.8;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .rec-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--navy-deep);
+    background: var(--gold);
+    padding: 4px 12px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+  }
+
+  /* === QUICK STATS BAR === */
+  .stat-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+    gap: 10px;
+  }
+
+  .stat-bar-label {
+    font-size: 12px;
+    width: 120px;
+    flex-shrink: 0;
+    color: rgba(244, 241, 235, 0.6);
+  }
+
+  .stat-bar-track {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .stat-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1.5s ease-out;
+  }
+
+  .stat-bar-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    min-width: 50px;
+    text-align: right;
+    color: var(--gold);
+  }
+
+  /* === FOOTER === */
+  .footer {
+    text-align: center;
+    padding: 32px 0 16px;
+    font-size: 11px;
+    color: rgba(244, 241, 235, 0.2);
+  }
+
+  .footer a {
+    color: rgba(201, 168, 76, 0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer a:hover {
+    color: var(--gold);
+  }
+
+  /* === ANIMATIONS === */
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-in {
+    animation: fadeSlideUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .d1 { animation-delay: 0.1s; }
+  .d2 { animation-delay: 0.2s; }
+  .d3 { animation-delay: 0.3s; }
+  .d4 { animation-delay: 0.4s; }
+  .d5 { animation-delay: 0.5s; }
+  .d6 { animation-delay: 0.6s; }
+  .d7 { animation-delay: 0.7s; }
+  .d8 { animation-delay: 0.8s; }
+  .d9 { animation-delay: 0.9s; }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 1024px) {
+    .main-grid { grid-template-columns: 1fr; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .countdown-strip { grid-template-columns: 1fr; }
+    .checklist { grid-template-columns: 1fr; }
+    .scenario-row { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .kpi-row { grid-template-columns: 1fr; }
+    .header { flex-direction: column; gap: 12px; text-align: center; }
+    .header-right { justify-content: center; }
+    .dashboard { padding: 12px; }
+  }
+
+  /* === SPARKLINE === */
+  .sparkline-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .sparkline {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 24px;
+  }
+  .spark-bar {
+    width: 4px;
+    border-radius: 2px;
+    background: var(--gold);
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .spark-bar.peak {
+    opacity: 1;
+    background: var(--gold-bright);
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow g1"></div>
+<div class="bg-glow g2"></div>
+
+<div class="dashboard">
+
+  <!-- HEADER -->
+  <header class="header animate-in d1">
+    <div class="header-left">
+      <div class="logo-mark">IS</div>
+      <div class="header-title">
+        <h1>Gator Season War Room</h1>
+        <p>InStyle Cleaning — Gainesville · Orlando · Tampa</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="live-badge"><div class="live-dot"></div>Live Intel</div>
+      <div class="season-tag" id="seasonTag">SPRING SURGE</div>
+    </div>
+  </header>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-strip animate-in d2">
+    <div class="countdown-card" id="springCard">
+      <div class="countdown-ring">
+        <svg viewBox="0 0 90 90">
+          <circle class="track" cx="45" cy="45" r="38"/>
+          <circle class="progress orange" cx="45" cy="45" r="38" id="springProgress"
+            stroke-dasharray="238.76" stroke-dashoffset="0"/>
+        </svg>
+        <div class="countdown-number">
+          <span class="big" id="springDays">--</span>
+          <span class="small">Days</span>
+        </div>
+      </div>
+      <div class="countdown-info">
+        <h3>🔥 Spring Move-Out Wave</h3>
+        <p>UF finals end May 1 → Mass exodus May 1-7. Peak demand window for move-out cleaning.</p>
+        <span class="date-tag">APR 25 – MAY 7, 2026</span>
+      </div>
+    </div>
+    <div class="countdown-card" id="fallCard">
+      <div class="countdown-ring">
+        <svg viewBox="0 0 90 90">
+          <circle class="track" cx="45" cy="45" r="38"/>
+          <circle class="progress green" cx="45" cy="45" r="38" id="fallProgress"
+            stroke-dasharray="238.76" stroke-dashoffset="0"/>
+        </svg>
+        <div class="countdown-number">
+          <span class="big" id="fallDays">--</span>
+          <span class="small">Days</span>
+        </div>
+      </div>
+      <div class="countdown-info">
+        <h3>📦 Fall Move-In Tsunami</h3>
+        <p>60,000 students flood Gainesville. Apartments need pre-move-in deep cleans. Book early.</p>
+        <span class="date-tag">AUG 10 – AUG 20, 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI ROW -->
+  <div class="kpi-row animate-in d3">
+    <div class="kpi-card">
+      <div class="kpi-label">UF Students</div>
+      <div class="kpi-value">60,000</div>
+      <div class="kpi-sub">Enrolled Fall 2025 — all need housing</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">Avg Move-Out Clean</div>
+      <div class="kpi-value">$285</div>
+      <div class="kpi-sub">Market rate · 2BR/1BA apartment</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-label">Surge Pricing</div>
+      <div class="kpi-value">+40%</div>
+      <div class="kpi-sub">Peak weeks · Apr 25 – May 7</div>
+    </div>
+    <div class="kpi-card orange">
+      <div class="kpi-label">Competitors</div>
+      <div class="kpi-value">10+</div>
+      <div class="kpi-sub">Active on Yelp · most rated 3-4★</div>
+    </div>
+  </div>
+
+  <!-- MAIN GRID ROW 1 -->
+  <div class="main-grid animate-in d4">
+
+    <!-- PRICING MATRIX -->
+    <div class="card">
+      <div class="card-header">
+        <h2>📊 Move-Out Pricing Matrix</h2>
+        <span class="tag">Surge Ready</span>
+      </div>
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Unit Type</th>
+            <th>Sq Ft</th>
+            <th>Base</th>
+            <th>Surge (+40%)</th>
+            <th>Margin</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Studio</td>
+            <td>400-550</td>
+            <td class="price">$165</td>
+            <td class="surge">$231</td>
+            <td><span class="margin">72%</span></td>
+          </tr>
+          <tr>
+            <td>1BR / 1BA</td>
+            <td>550-750</td>
+            <td class="price">$225</td>
+            <td class="surge">$315</td>
+            <td><span class="margin">70%</span></td>
+          </tr>
+          <tr>
+            <td>2BR / 1BA</td>
+            <td>800-1,000</td>
+            <td class="price">$285</td>
+            <td class="surge">$399</td>
+            <td><span class="margin">68%</span></td>
+          </tr>
+          <tr>
+            <td>2BR / 2BA</td>
+            <td>1,000-1,200</td>
+            <td class="price">$330</td>
+            <td class="surge">$462</td>
+            <td><span class="margin">66%</span></td>
+          </tr>
+          <tr>
+            <td>3BR / 2BA</td>
+            <td>1,200-1,500</td>
+            <td class="price">$410</td>
+            <td class="surge">$574</td>
+            <td><span class="margin">65%</span></td>
+          </tr>
+          <tr>
+            <td>4BR / 3BA</td>
+            <td>1,500-2,000</td>
+            <td class="price">$495</td>
+            <td class="surge">$693</td>
+            <td><span class="margin">64%</span></td>
+          </tr>
+          <tr>
+            <td>Townhome 5BR+</td>
+            <td>2,000+</td>
+            <td class="price">$625</td>
+            <td class="surge">$875</td>
+            <td><span class="margin">62%</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 12px; font-size: 11px; color: rgba(244,241,235,0.3); font-style: italic;">
+        Add-ons: Carpet steam +$85 · Fridge deep clean +$45 · Oven +$35 · Balcony +$30
+      </div>
+    </div>
+
+    <!-- BATTLE TIMELINE -->
+    <div class="card">
+      <div class="card-header">
+        <h2>⚡ Battle Timeline — Spring 2026</h2>
+        <span class="tag">Action Plan</span>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot urgent"></div>
+          <div class="timeline-date">NOW → APR 7</div>
+          <div class="timeline-title">🚨 Launch "Early Bird" Campaign</div>
+          <div class="timeline-desc">Post on UF subreddit, Gator student FB groups, Swamp Rentals. Offer 15% early-bird discount for bookings before Apr 15.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot active"></div>
+          <div class="timeline-date">APR 7 – APR 14</div>
+          <div class="timeline-title">🤝 Hit Apartment Complexes</div>
+          <div class="timeline-desc">Visit top 20 complexes (The Standard, Lark, UFORA, Gainesville Place). Offer bulk deal: 10+ units = 20% off. Leave flyers at leasing offices.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">APR 14 – APR 20</div>
+          <div class="timeline-title">📱 Social Media Blitz</div>
+          <div class="timeline-desc">Daily posts: before/after transformations, student testimonials, "Don't lose your deposit" messaging. Run targeted IG/FB ads $10/day.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">APR 20 – APR 24</div>
+          <div class="timeline-title">👥 Hire Surge Team</div>
+          <div class="timeline-desc">Bring on 4-6 temporary cleaners. Train on InStyle standards. Target: 8-12 cleans/day capacity during peak.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">APR 25 – MAY 1</div>
+          <div class="timeline-title">🔥 FINALS WEEK = PEAK DEMAND</div>
+          <div class="timeline-desc">Activate surge pricing +40%. All hands on deck. Priority: same-day service premium ($75 extra). This is THE money week.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">MAY 1 – MAY 7</div>
+          <div class="timeline-title">🎓 Post-Commencement Sweep</div>
+          <div class="timeline-desc">Commencement May 1-3. Mass move-outs May 2-7. Maintain surge pricing. Capture landlord/property manager contracts for recurring.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">MAY 8 – MAY 15</div>
+          <div class="timeline-title">🔄 Convert to Recurring</div>
+          <div class="timeline-desc">Follow up with every customer. Offer summer maintenance plan: bi-weekly clean $120/visit. Convert surge clients to year-round revenue.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN GRID ROW 2 -->
+  <div class="main-grid animate-in d5">
+
+    <!-- DEMAND HEATMAP -->
+    <div class="card">
+      <div class="card-header">
+        <h2>🗓️ Annual Demand Heatmap</h2>
+        <span class="tag">12-Month View</span>
+      </div>
+      <div style="margin-bottom: 8px;">
+        <div class="heatmap-grid" id="heatmapMonths" style="grid-template-columns: auto repeat(12, 1fr);">
+          <div></div>
+          <div class="heatmap-month">JAN</div>
+          <div class="heatmap-month">FEB</div>
+          <div class="heatmap-month">MAR</div>
+          <div class="heatmap-month">APR</div>
+          <div class="heatmap-month" style="color:var(--red);">MAY</div>
+          <div class="heatmap-month">JUN</div>
+          <div class="heatmap-month">JUL</div>
+          <div class="heatmap-month" style="color:var(--red);">AUG</div>
+          <div class="heatmap-month">SEP</div>
+          <div class="heatmap-month">OCT</div>
+          <div class="heatmap-month">NOV</div>
+          <div class="heatmap-month">DEC</div>
+        </div>
+        <div class="heatmap-grid" id="heatmap"></div>
+      </div>
+      <div class="heatmap-legend">
+        <span>Low</span>
+        <div class="legend-cell heat-0"></div>
+        <div class="legend-cell heat-1"></div>
+        <div class="legend-cell heat-2"></div>
+        <div class="legend-cell heat-3"></div>
+        <div class="legend-cell heat-4"></div>
+        <div class="legend-cell heat-5"></div>
+        <span>🔥 Peak</span>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <div class="card-header" style="margin-bottom: 12px;">
+          <h2 style="font-size: 15px;">Revenue by Service Type</h2>
+        </div>
+        <div class="stat-bar">
+          <span class="stat-bar-label">Move-Out</span>
+          <div class="stat-bar-track"><div class="stat-bar-fill" style="width:85%;background:var(--gold);"></div></div>
+          <span class="stat-bar-value">42%</span>
+        </div>
+        <div class="stat-bar">
+          <span class="stat-bar-label">Move-In</span>
+          <div class="stat-bar-track"><div class="stat-bar-fill" style="width:55%;background:var(--green);"></div></div>
+          <span class="stat-bar-value">27%</span>
+        </div>
+        <div class="stat-bar">
+          <span class="stat-bar-label">Recurring</span>
+          <div class="stat-bar-track"><div class="stat-bar-fill" style="width:36%;background:var(--blue-accent);"></div></div>
+          <span class="stat-bar-value">18%</span>
+        </div>
+        <div class="stat-bar">
+          <span class="stat-bar-label">Deep Clean</span>
+          <div class="stat-bar-track"><div class="stat-bar-fill" style="width:26%;background:var(--orange);"></div></div>
+          <span class="stat-bar-value">13%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- REVENUE CALCULATOR -->
+    <div class="card">
+      <div class="card-header">
+        <h2>💰 Surge Revenue Calculator</h2>
+        <span class="tag">Interactive</span>
+      </div>
+
+      <div class="calc-section">
+        <label>Cleans per day during surge</label>
+        <div class="slider-row">
+          <input type="range" id="cleansPerDay" min="2" max="20" value="8" oninput="updateCalc()">
+          <span class="slider-value" id="cleansPerDayVal">8</span>
+        </div>
+      </div>
+
+      <div class="calc-section">
+        <label>Surge days (peak window)</label>
+        <div class="slider-row">
+          <input type="range" id="surgeDays" min="5" max="21" value="12" oninput="updateCalc()">
+          <span class="slider-value" id="surgeDaysVal">12</span>
+        </div>
+      </div>
+
+      <div class="calc-section">
+        <label>Average ticket (with surge)</label>
+        <div class="slider-row">
+          <input type="range" id="avgTicket" min="200" max="600" value="380" step="10" oninput="updateCalc()">
+          <span class="slider-value" id="avgTicketVal">$380</span>
+        </div>
+      </div>
+
+      <div class="calc-result">
+        <div class="label">Spring Surge Revenue</div>
+        <div class="amount" id="calcRevenue">$36,480</div>
+        <div class="breakdown" id="calcBreakdown">8 cleans × 12 days × $380 avg</div>
+      </div>
+
+      <div style="margin-top: 16px;">
+        <div class="calc-result" style="background: linear-gradient(135deg, rgba(46,204,113,0.12), rgba(46,204,113,0.04)); border-color: rgba(46,204,113,0.25);">
+          <div class="label">Est. Profit (65% margin)</div>
+          <div class="amount" style="color: var(--green);" id="calcProfit">$23,712</div>
+          <div class="breakdown" id="calcProfitBreak">After labor, supplies, transport</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPETITOR INTEL -->
+  <div class="card full-width animate-in d6">
+    <div class="card-header">
+      <h2>🕵️ Competitor Intel — Gainesville Move-Out Market</h2>
+      <span class="tag">Know Your Enemy</span>
+    </div>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Rating</th>
+          <th>Reviews</th>
+          <th>Move-Out Price</th>
+          <th>Surge?</th>
+          <th>Weakness</th>
+          <th>Your Edge</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="you">
+          <td>⭐ InStyle Cleaning</td>
+          <td class="rating">★★★★★ NEW</td>
+          <td>Building</td>
+          <td style="color:var(--gold-bright);font-weight:700;">$225-$625</td>
+          <td style="color:var(--green);">✓ +40%</td>
+          <td>—</td>
+          <td style="color:var(--gold);font-size:12px;">Premium + Reliable</td>
+        </tr>
+        <tr>
+          <td>A Maid 4 Me</td>
+          <td class="rating">★★★★☆ 4.2</td>
+          <td>48</td>
+          <td>$180-$400</td>
+          <td style="color:var(--red);">✗</td>
+          <td class="weakness">Slow booking, no online</td>
+          <td style="font-size:12px;color:rgba(244,241,235,0.4);">Online booking speed</td>
+        </tr>
+        <tr>
+          <td>Two Maids - GNV</td>
+          <td class="rating">★★★★☆ 4.0</td>
+          <td>62</td>
+          <td>$200-$450</td>
+          <td style="color:var(--red);">✗</td>
+          <td class="weakness">Franchise, impersonal</td>
+          <td style="font-size:12px;color:rgba(244,241,235,0.4);">Local, personal touch</td>
+        </tr>
+        <tr>
+          <td>Bonnie's Maids</td>
+          <td class="rating">★★★☆☆ 3.5</td>
+          <td>31</td>
+          <td>$150-$350</td>
+          <td style="color:var(--red);">✗</td>
+          <td class="weakness">Inconsistent quality</td>
+          <td style="font-size:12px;color:rgba(244,241,235,0.4);">Quality guarantee</td>
+        </tr>
+        <tr>
+          <td>Squeaky Clean Queen</td>
+          <td class="rating">★★★★☆ 4.1</td>
+          <td>22</td>
+          <td>$170-$380</td>
+          <td style="color:var(--red);">✗</td>
+          <td class="weakness">Solo operator, limited capacity</td>
+          <td style="font-size:12px;color:rgba(244,241,235,0.4);">Scale / team capacity</td>
+        </tr>
+        <tr>
+          <td>Florida Top Notch</td>
+          <td class="rating">★★★★☆ 4.3</td>
+          <td>55</td>
+          <td>$200-$500</td>
+          <td style="color:var(--orange);">~</td>
+          <td class="weakness">Overbooks in peak, cancels</td>
+          <td style="font-size:12px;color:rgba(244,241,235,0.4);">Never cancel policy</td>
+        </tr>
+        <tr>
+          <td>Homeaglow GNV</td>
+          <td class="rating">★★★☆☆ 3.2</td>
+          <td>89</td>
+          <td>$90-$250</td>
+          <td style="color:var(--red);">✗</td>
+          <td class="weakness">Gig workers, race to bottom</td>
+          <td style="font-size:12px;color:rgba(244,241,235,0.4);">Premium positioning</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top: 12px; font-size: 12px; color: rgba(244,241,235,0.4);">
+      💡 <strong style="color:var(--gold);">Key insight:</strong> No competitor does surge pricing. You'd be the only one charging premium during peak — and students will pay because they NEED it done before lease ends.
+    </div>
+  </div>
+
+  <!-- SCENARIO PLANNING -->
+  <div class="full-width animate-in d7">
+    <div style="margin-bottom: 16px;">
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--gold);">
+        📈 Gator Season Revenue Scenarios — Spring 2026
+      </h2>
+    </div>
+    <div class="scenario-row">
+      <div class="scenario-card">
+        <div class="scenario-name">Conservative</div>
+        <div class="scenario-desc">Solo + 1 helper · No marketing budget · Word of mouth only</div>
+        <div class="scenario-revenue">$12,540</div>
+        <div class="scenario-details">
+          4 cleans/day × 11 days<br>
+          Avg ticket: $285<br>
+          Margin: ~68%<br>
+          Net profit: ~$8,527
+        </div>
+      </div>
+      <div class="scenario-card recommended">
+        <div class="rec-badge">⭐ Recommended</div>
+        <div class="scenario-name">Aggressive</div>
+        <div class="scenario-desc">Team of 4 · $300 ad spend · Complex partnerships · Online booking</div>
+        <div class="scenario-revenue">$36,480</div>
+        <div class="scenario-details">
+          8 cleans/day × 12 days<br>
+          Avg ticket: $380 (surge)<br>
+          Margin: ~65%<br>
+          Net profit: ~$23,712
+        </div>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-name">Blitz Mode</div>
+        <div class="scenario-desc">Team of 8 · $1K ad spend · Property manager contracts · 2-shift ops</div>
+        <div class="scenario-revenue">$68,250</div>
+        <div class="scenario-details">
+          15 cleans/day × 13 days<br>
+          Avg ticket: $350 (volume deals)<br>
+          Margin: ~58%<br>
+          Net profit: ~$39,585
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAUNCH CHECKLIST -->
+  <div class="card full-width animate-in d8">
+    <div class="card-header">
+      <h2>✅ Gator Season Launch Checklist</h2>
+      <span class="tag" id="checkProgress">0 / 15</span>
+    </div>
+    <div class="checklist" id="checklist">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+
+  <!-- APARTMENT COMPLEX TARGETS -->
+  <div class="card full-width animate-in d9">
+    <div class="card-header">
+      <h2>🎯 Top 15 Apartment Complex Targets</h2>
+      <span class="tag">High Value</span>
+    </div>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Complex</th>
+          <th>Est. Units</th>
+          <th>Type</th>
+          <th>Walk-In Pitch</th>
+          <th>Bulk Deal Potential</th>
+        </tr>
+      </thead>
+      <tbody id="complexTable">
+      </tbody>
+    </table>
+    <div style="margin-top: 12px; font-size: 12px; color: rgba(244,241,235,0.4);">
+      🎯 <strong style="color:var(--gold);">Strategy:</strong> Offer property managers a "Preferred Vendor" deal — guaranteed availability + bulk discount = they recommend InStyle to every departing tenant. One complex contract = 20-50 cleans/season.
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Built for Up · InStyle Cleaning · <a href="https://deerflow.tech" target="_blank">Powered by Deerflow</a>
+  </div>
+
+</div>
+
+<script>
+// === COUNTDOWN LOGIC ===
+function updateCountdowns() {
+  const now = new Date();
+  const springPeak = new Date('2026-04-25T00:00:00');
+  const fallMoveIn = new Date('2026-08-15T00:00:00');
+
+  const springDiff = Math.max(0, Math.ceil((springPeak - now) / (1000 * 60 * 60 * 24)));
+  const fallDiff = Math.max(0, Math.ceil((fallMoveIn - now) / (1000 * 60 * 60 * 24)));
+
+  document.getElementById('springDays').textContent = springDiff;
+  document.getElementById('fallDays').textContent = fallDiff;
+
+  // Progress rings (based on how close we are within 90-day window)
+  const springTotal = 90;
+  const springElapsed = springTotal - Math.min(springDiff, springTotal);
+  const springPct = springElapsed / springTotal;
+  const circumference = 2 * Math.PI * 38;
+  document.getElementById('springProgress').style.strokeDashoffset =
+    circumference * (1 - springPct);
+
+  const fallTotal = 180;
+  const fallElapsed = fallTotal - Math.min(fallDiff, fallTotal);
+  const fallPct = fallElapsed / fallTotal;
+  document.getElementById('fallProgress').style.strokeDashoffset =
+    circumference * (1 - fallPct);
+
+  // Season tag
+  const tag = document.getElementById('seasonTag');
+  if (springDiff <= 7) {
+    tag.textContent = '🔥 GO TIME';
+    tag.style.background = 'linear-gradient(135deg, #E74C3C, #C0392B)';
+    tag.style.color = '#fff';
+  } else if (springDiff <= 30) {
+    tag.textContent = 'SPRING SURGE';
+  } else if (fallDiff <= 30) {
+    tag.textContent = 'FALL INCOMING';
+  }
+}
+
+// === REVENUE CALCULATOR ===
+function updateCalc() {
+  const cleans = parseInt(document.getElementById('cleansPerDay').value);
+  const days = parseInt(document.getElementById('surgeDays').value);
+  const ticket = parseInt(document.getElementById('avgTicket').value);
+
+  document.getElementById('cleansPerDayVal').textContent = cleans;
+  document.getElementById('surgeDaysVal').textContent = days;
+  document.getElementById('avgTicketVal').textContent = '$' + ticket;
+
+  const revenue = cleans * days * ticket;
+  const profit = Math.round(revenue * 0.65);
+
+  document.getElementById('calcRevenue').textContent = '$' + revenue.toLocaleString();
+  document.getElementById('calcBreakdown').textContent =
+    `${cleans} cleans × ${days} days × $${ticket} avg`;
+
+  document.getElementById('calcProfit').textContent = '$' + profit.toLocaleString();
+  document.getElementById('calcProfitBreak').textContent =
+    `After labor, supplies, transport (~35% cost)`;
+}
+
+// === DEMAND HEATMAP ===
+function buildHeatmap() {
+  const container = document.getElementById('heatmap');
+  // Rows: Move-Out, Move-In, Recurring, Deep Clean
+  const data = {
+    'Move-Out':   [1, 0, 0, 2, 5, 3, 1, 2, 1, 0, 0, 3],
+    'Move-In':    [1, 0, 0, 0, 1, 2, 1, 5, 3, 1, 0, 1],
+    'Recurring':  [2, 2, 2, 2, 1, 2, 2, 2, 3, 3, 3, 2],
+    'Deep Clean': [1, 1, 2, 1, 3, 2, 1, 3, 1, 1, 2, 4],
+  };
+
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const tooltips = {
+    'Move-Out': ['Low','Low','Low','Ramp up','🔥 PEAK','Winding down','Low','Pre-fall prep','Low','Low','Low','Holiday exodus'],
+    'Move-In':  ['Low','Low','Low','Low','Some','Summer A','Summer B','🔥 FALL RUSH','Settling','Low','Low','Low'],
+    'Recurring': ['Steady','Steady','Steady','Steady','Dip (move-outs)','Building','Building','Building','Strong','Strong','Strong','Holiday'],
+    'Deep Clean': ['Post-NYE','Low','Spring clean','Pre-move','Post-move','Steady','Steady','Pre-fall','Steady','Low','Pre-holiday','🔥 Holiday deep'],
+  };
+
+  container.innerHTML = '';
+  container.style.gridTemplateColumns = 'auto repeat(12, 1fr)';
+
+  for (const [label, values] of Object.entries(data)) {
+    const labelEl = document.createElement('div');
+    labelEl.className = 'heatmap-label';
+    labelEl.textContent = label;
+    container.appendChild(labelEl);
+
+    values.forEach((v, i) => {
+      const cell = document.createElement('div');
+      cell.className = `heatmap-cell heat-${v}`;
+      cell.setAttribute('data-tooltip', `${months[i]}: ${tooltips[label][i]}`);
+      container.appendChild(cell);
+    });
+  }
+}
+
+// === CHECKLIST ===
+function buildChecklist() {
+  const items = [
+    { title: 'Google Business Profile', desc: 'Verify & optimize with move-out keywords' },
+    { title: 'Online Booking System', desc: 'Set up Jobber or Housecall Pro' },
+    { title: 'Surge Pricing Rules', desc: 'Define +40% window Apr 25 – May 7' },
+    { title: 'UF Subreddit Post', desc: 'r/ufl "Move-out cleaning special" post' },
+    { title: 'Facebook Ads Campaign', desc: '$10/day targeting UF students 18-24' },
+    { title: 'Flyers for Complexes', desc: 'Design + print 500 door hangers' },
+    { title: 'Complex Partnerships', desc: 'Visit top 10 leasing offices this week' },
+    { title: 'Hire Surge Team', desc: 'Post on Indeed + UF job board for temp cleaners' },
+    { title: 'Supply Stockpile', desc: 'Order bulk cleaning supplies (2-week lead time)' },
+    { title: 'Before/After Portfolio', desc: 'Photograph 5 completed cleans for social proof' },
+    { title: 'Student Discount Code', desc: 'Create "GATOR15" promo code' },
+    { title: 'Yelp Profile', desc: 'Claim and optimize listing' },
+    { title: 'Deposit Guarantee', desc: 'Draft "Get Your Deposit Back" marketing copy' },
+    { title: 'Insurance Check', desc: 'Verify liability coverage for commercial volume' },
+    { title: 'Route Planning', desc: 'Map optimal routes between UF-area complexes' },
+  ];
+
+  const container = document.getElementById('checklist');
+  items.forEach((item, i) => {
+    const el = document.createElement('div');
+    el.className = 'check-item';
+    el.innerHTML = `
+      <div class="check-box"></div>
+      <div class="check-text">
+        <strong>${item.title}</strong>
+        <span>${item.desc}</span>
+      </div>
+    `;
+    el.addEventListener('click', () => {
+      el.classList.toggle('checked');
+      updateCheckProgress();
+    });
+    container.appendChild(el);
+  });
+}
+
+function updateCheckProgress() {
+  const total = document.querySelectorAll('.check-item').length;
+  const checked = document.querySelectorAll('.check-item.checked').length;
+  document.getElementById('checkProgress').textContent = `${checked} / ${total}`;
+}
+
+// === APARTMENT COMPLEX TABLE ===
+function buildComplexTable() {
+  const complexes = [
+    { name: 'The Standard at Gainesville', units: 750, type: 'Luxury Student', pitch: 'Premium partnership', potential: '🔥🔥🔥' },
+    { name: 'Lark Gainesville', units: 650, type: 'Student', pitch: 'Volume deal', potential: '🔥🔥🔥' },
+    { name: 'UFORA Gainesville', units: 500, type: 'Luxury Student', pitch: 'Preferred vendor', potential: '🔥🔥🔥' },
+    { name: 'Gainesville Place', units: 900, type: 'Student', pitch: 'Bulk rate card', potential: '🔥🔥🔥' },
+    { name: 'The Retreat at Gainesville', units: 600, type: 'Student', pitch: 'Move-out package', potential: '🔥🔥' },
+    { name: 'Stoneridge Apartments', units: 400, type: 'Mixed', pitch: 'Resident discount', potential: '🔥🔥' },
+    { name: 'Lexington Crossing', units: 800, type: 'Student', pitch: 'Flyer + partnership', potential: '🔥🔥🔥' },
+    { name: 'The Enclave', units: 350, type: 'Student', pitch: 'Direct to tenants', potential: '🔥🔥' },
+    { name: 'College Park', units: 500, type: 'Student', pitch: 'Leasing office deal', potential: '🔥🔥' },
+    { name: 'University Club', units: 450, type: 'Student', pitch: 'Referral program', potential: '🔥🔥' },
+    { name: 'Campus Lodge', units: 350, type: 'Student', pitch: 'Door-to-door flyers', potential: '🔥🔥' },
+    { name: 'Tivoli Apartments', units: 300, type: 'Student', pitch: 'Package insert deal', potential: '🔥' },
+    { name: 'Cabana Beach', units: 550, type: 'Student', pitch: 'Pool area flyers', potential: '🔥🔥' },
+    { name: 'The Polos', units: 700, type: 'Mixed/Family', pitch: 'Family-focused pitch', potential: '🔥🔥' },
+    { name: 'Bivens Cove', units: 400, type: 'Student/Mixed', pitch: 'Community board ad', potential: '🔥' },
+  ];
+
+  const tbody = document.getElementById('complexTable');
+  complexes.forEach((c, i) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:12px;">${String(i+1).padStart(2,'0')}</td>
+      <td style="font-weight:600;">${c.name}</td>
+      <td style="font-family:'JetBrains Mono',monospace;">${c.units.toLocaleString()}</td>
+      <td style="font-size:12px;color:rgba(244,241,235,0.5);">${c.type}</td>
+      <td style="font-size:12px;">${c.pitch}</td>
+      <td>${c.potential}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// === INIT ===
+updateCountdowns();
+updateCalc();
+buildHeatmap();
+buildChecklist();
+buildComplexTable();
+
+// Update countdown every minute
+setInterval(updateCountdowns, 60000);
+</script>
+
+</body>
+</html>

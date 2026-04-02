@@ -1,0 +1,13 @@
+month,demand_index,uf_calendar_event,residential_pct,deep_clean_pct,moveout_pct,commercial_pct,special_notes
+Jan,70,Spring semester starts,45,20,15,20,New semester move-ins
+Feb,65,Mid-spring,50,20,10,20,Valentine deep cleans
+Mar,80,Spring break prep,40,25,15,20,Spring cleaning season starts
+Apr,85,End of spring semester prep,35,20,25,20,Early move-outs begin
+May,120,Spring graduation + move-out,20,10,55,15,PEAK: 8000+ students moving out
+Jun,60,Summer session A,45,25,10,20,Summer slowdown
+Jul,55,Summer session B,50,25,5,20,Lowest demand month
+Aug,130,Fall semester move-in,15,10,60,15,PEAK: Biggest move-in month
+Sep,80,Fall semester underway,45,20,15,20,Settled students need recurring
+Oct,80,Homecoming season,45,25,10,20,Game day cleaning demand
+Nov,85,Pre-holiday + Thanksgiving,40,30,10,20,Holiday deep cleaning
+Dec,95,Fall finals + move-out,25,15,40,20,December graduation move-outs

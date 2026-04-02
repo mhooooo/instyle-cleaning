@@ -1,0 +1,7 @@
+service_type,avg_price,total_cost,gross_profit,gross_margin_pct,jobs_per_month_1team,monthly_revenue_potential,monthly_gross_profit
+Commercial (avg 3000sqft),540,261,279,51.7,10,5400,2790
+Post-Construction,650,355,295,45.4,6,3900,1770
+Deep Cleaning,375,234,141,37.6,22,8580,3102
+Move-In/Move-Out,300,192,108,36.0,35,10500,3780
+Recurring Biweekly,165,108,57,34.5,55,9075,3135
+Standard Residential,185,128,57,30.8,44,8140,2508
