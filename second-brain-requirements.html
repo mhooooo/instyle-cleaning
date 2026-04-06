@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Second Brain — Requirements Template | InStyle Cleaning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B2A4A;
+  --navy-light: #2A3D6B;
+  --gold: #C9A84C;
+  --gold-light: #E8D5A0;
+  --gold-dark: #A88A32;
+  --white: #FFFFFF;
+  --gray-50: #F8F9FA;
+  --gray-100: #F1F3F5;
+  --gray-200: #E9ECEF;
+  --gray-300: #DEE2E6;
+  --gray-400: #CED4DA;
+  --gray-500: #ADB5BD;
+  --gray-600: #868E96;
+  --gray-700: #495057;
+  --gray-800: #343A40;
+  --gray-900: #212529;
+  --green: #2D9F4A;
+  --green-light: #E6F7EC;
+  --red: #DC3545;
+  --red-light: #FDE8EA;
+  --blue: #3B82F6;
+  --blue-light: #EBF2FF;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--gray-50);
+  color: var(--gray-800);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Top Bar ─── */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-sm);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.top-bar-logo {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.top-bar-logo span {
+  color: var(--gold);
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.progress-bar-track {
+  flex: 1;
+  height: 6px;
+  background: var(--gray-200);
+  border-radius: 3px;
+  overflow: hidden;
+  min-width: 80px;
+  max-width: 240px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+  border-radius: 3px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+
+.progress-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-600);
+  white-space: nowrap;
+}
+
+.top-bar-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(201,168,76,0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(201,168,76,0.4);
+}
+
+.btn-secondary {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  border: 1px solid var(--gray-200);
+}
+
+.btn-secondary:hover {
+  background: var(--gray-200);
+}
+
+/* ─── Cover Page ─── */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, var(--navy) 0%, #0F1A2E 50%, var(--navy-light) 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 40px 24px;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+}
+
+.cover-badge {
+  display: inline-block;
+  padding: 6px 20px;
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 32px;
+}
+
+.cover h1 {
+  font-size: 56px;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.cover h1 span {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cover h2 {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--gray-400);
+  margin-bottom: 40px;
+}
+
+.cover-line {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+  border-radius: 2px;
+  margin: 0 auto 40px;
+}
+
+.cover-prepared {
+  font-size: 14px;
+  color: var(--gray-500);
+  margin-bottom: 4px;
+}
+
+.cover-prepared strong {
+  color: var(--gold-light);
+  font-weight: 600;
+}
+
+.cover-date {
+  font-size: 13px;
+  color: var(--gray-600);
+}
+
+.cover-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  color: var(--gray-500);
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.cover-scroll:hover {
+  color: var(--gold-light);
+}
+
+.cover-scroll-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(6px); }
+}
+
+/* ─── Main Content ─── */
+.main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px 120px;
+}
+
+/* ─── Info Box ─── */
+.info-box {
+  background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.04));
+  border: 1px solid rgba(201,168,76,0.2);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 40px;
+}
+
+.info-box-icon {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.info-box p {
+  color: var(--gray-700);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ─── Section Card ─── */
+.section-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 40px;
+  margin-bottom: 24px;
+  transition: box-shadow 0.2s;
+}
+
+.section-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.section-number {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.section-desc {
+  font-size: 14px;
+  color: var(--gray-600);
+  margin-top: 2px;
+}
+
+/* ─── Form Elements ─── */
+.field-group {
+  margin-bottom: 20px;
+}
+
+.field-group:last-child {
+  margin-bottom: 0;
+}
+
+.field-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.field-input,
+.field-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--gray-800);
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field-input:focus,
+.field-textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+}
+
+.field-input::placeholder,
+.field-textarea::placeholder {
+  color: var(--gray-400);
+}
+
+.field-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Radio Cards */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--white);
+}
+
+.radio-card:hover {
+  border-color: var(--gray-300);
+  background: var(--gray-50);
+}
+
+.radio-card.selected {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.04);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+
+.radio-card input[type="radio"] {
+  margin-top: 2px;
+  accent-color: var(--gold-dark);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.radio-card-content {
+  flex: 1;
+}
+
+.radio-card-title {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--navy);
+}
+
+.radio-card-desc {
+  font-size: 13px;
+  color: var(--gray-600);
+  margin-top: 2px;
+}
+
+/* Inline radio row */
+.radio-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.radio-row .radio-card {
+  flex: 1;
+  min-width: 120px;
+}
+
+/* Checkboxes */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.checkbox-item:hover {
+  background: var(--gray-50);
+}
+
+.checkbox-item.checked {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.04);
+}
+
+.checkbox-item input[type="checkbox"] {
+  accent-color: var(--gold-dark);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.checkbox-item label {
+  font-size: 15px;
+  color: var(--gray-700);
+  cursor: pointer;
+  flex: 1;
+}
+
+.checkbox-detail {
+  font-size: 13px;
+  color: var(--gray-500);
+  flex-shrink: 0;
+}
+
+.checkbox-sub-input {
+  padding: 6px 12px;
+  border: 1px solid var(--gray-300);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--gray-700);
+  width: 160px;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+}
+
+.checkbox-sub-input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+/* Numbered inputs */
+.numbered-input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.numbered-input:last-child {
+  margin-bottom: 0;
+}
+
+.numbered-input-num {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  background: var(--gray-100);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-600);
+}
+
+.numbered-input .field-input {
+  flex: 1;
+}
+
+/* ─── Nav Dots ─── */
+.nav-dots {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gray-300);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  position: relative;
+}
+
+.nav-dot:hover {
+  background: var(--gold-light);
+  transform: scale(1.3);
+}
+
+.nav-dot.active {
+  background: var(--gold);
+  transform: scale(1.3);
+}
+
+.nav-dot-tooltip {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--navy);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.nav-dot:hover .nav-dot-tooltip {
+  opacity: 1;
+}
+
+/* ─── Save Toast ─── */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--navy);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  z-index: 200;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast-icon {
+  color: var(--green);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .top-bar {
+    padding: 10px 16px;
+  }
+
+  .progress-bar-track {
+    max-width: 120px;
+  }
+
+  .btn span.btn-text {
+    display: none;
+  }
+
+  .main {
+    padding: 24px 16px 100px;
+  }
+
+  .section-card {
+    padding: 24px;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cover h1 {
+    font-size: 40px;
+  }
+
+  .cover h2 {
+    font-size: 18px;
+  }
+
+  .nav-dots {
+    right: 12px;
+  }
+
+  .radio-row {
+    flex-direction: column;
+  }
+
+  .checkbox-sub-input {
+    width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cover h1 {
+    font-size: 32px;
+  }
+
+  .cover h2 {
+    font-size: 16px;
+  }
+
+  .section-card {
+    padding: 20px;
+  }
+
+  .section-header {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-number {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  .section-title {
+    font-size: 17px;
+  }
+
+  .checkbox-sub-input {
+    width: 100px;
+    font-size: 12px;
+  }
+}
+
+/* ─── Print ─── */
+@media print {
+  .top-bar, .nav-dots, .cover-scroll, .toast {
+    display: none !important;
+  }
+
+  .cover {
+    min-height: auto;
+    padding: 60px 40px;
+    page-break-after: always;
+  }
+
+  .main {
+    padding: 0;
+  }
+
+  .section-card {
+    box-shadow: none;
+    border: 1px solid var(--gray-300);
+    page-break-inside: avoid;
+    margin-bottom: 16px;
+  }
+
+  body {
+    background: white;
+  }
+
+  .field-input, .field-textarea {
+    border-color: var(--gray-300);
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <div class="top-bar-logo">InStyle <span>Cleaning</span></div>
+    <div class="progress-container">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressFill"></div>
+      </div>
+      <span class="progress-label" id="progressLabel">0 / 8 sections</span>
+    </div>
+  </div>
+  <div class="top-bar-actions">
+    <button class="btn btn-secondary" onclick="exportMarkdown()" title="Export as Markdown">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <span class="btn-text">Markdown</span>
+    </button>
+    <button class="btn btn-primary" onclick="exportJSON()" title="Export as JSON">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span class="btn-text">Export JSON</span>
+    </button>
+  </div>
+</div>
+
+<!-- Cover -->
+<div class="cover" id="cover">
+  <div class="cover-content">
+    <div class="cover-badge">InStyle Cleaning</div>
+    <h1>My <span>Second Brain</span></h1>
+    <h2>Requirements Template</h2>
+    <div class="cover-line"></div>
+    <p class="cover-prepared">Prepared for <strong>Up</strong></p>
+    <p class="cover-date" id="coverDate"></p>
+  </div>
+  <a class="cover-scroll" href="#form-start">
+    Begin
+    <div class="cover-scroll-arrow"></div>
+  </a>
+</div>
+
+<!-- Main Form -->
+<div class="main" id="form-start">
+
+  <!-- Info Box -->
+  <div class="info-box">
+    <div class="info-box-icon">&#9733;</div>
+    <p>Fill out this form to define your personal AI Second Brain. Your answers will be used to generate a personalized build plan for your <strong>JARVIS</strong> assistant.</p>
+  </div>
+
+  <!-- Section 1: About You -->
+  <div class="section-card" id="section-1" data-section="1">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div>
+        <div class="section-title">About You</div>
+        <div class="section-desc">Basic info so your AI knows who it's working for</div>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label class="field-label" for="name">Name</label>
+        <input class="field-input" type="text" id="name" name="name" placeholder="Alex Rivera" data-section="1">
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="role">Role / Title</label>
+        <input class="field-input" type="text" id="role" name="role" placeholder="Engineering Manager" data-section="1">
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="field-label" for="daily">What I do daily</label>
+      <textarea class="field-textarea" id="daily" name="daily" placeholder="I lead a cross-functional team building a SaaS product..." data-section="1"></textarea>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label class="field-label" for="timezone">Timezone</label>
+        <input class="field-input" type="text" id="timezone" name="timezone" placeholder="Eastern (US)" data-section="1">
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="vault">Memory vault folder name</label>
+        <input class="field-input" type="text" id="vault" name="vault" placeholder="SecondBrain" data-section="1">
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Using Obsidian?</label>
+      <div class="radio-row">
+        <label class="radio-card" onclick="selectRadio(this)">
+          <input type="radio" name="obsidian" value="yes" data-section="1">
+          <div class="radio-card-content">
+            <div class="radio-card-title">Yes</div>
+          </div>
+        </label>
+        <label class="radio-card" onclick="selectRadio(this)">
+          <input type="radio" name="obsidian" value="no" data-section="1">
+          <div class="radio-card-content">
+            <div class="radio-card-title">No</div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Your Platforms -->
+  <div class="section-card" id="section-2" data-section="2">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div>
+        <div class="section-title">Your Platforms</div>
+        <div class="section-desc">Which tools and services does your AI need to connect to?</div>
+      </div>
+    </div>
+    <div class="checkbox-group">
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="platform_email" data-section="2">
+        <label>Email</label>
+        <input class="checkbox-sub-input" type="text" name="platform_email_detail" placeholder="Gmail" data-section="2">
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="platform_calendar" data-section="2">
+        <label>Calendar</label>
+        <input class="checkbox-sub-input" type="text" name="platform_calendar_detail" placeholder="Google Calendar" data-section="2">
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="platform_tasks" data-section="2">
+        <label>Task Management</label>
+        <input class="checkbox-sub-input" type="text" name="platform_tasks_detail" placeholder="Linear" data-section="2">
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="platform_chat" data-section="2">
+        <label>Chat / Messaging</label>
+        <input class="checkbox-sub-input" type="text" name="platform_chat_detail" placeholder="Slack" data-section="2">
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="platform_notes" data-section="2">
+        <label>Notes / Documents</label>
+        <input class="checkbox-sub-input" type="text" name="platform_notes_detail" placeholder="Obsidian" data-section="2">
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="platform_storage" data-section="2">
+        <label>Cloud Storage</label>
+        <input class="checkbox-sub-input" type="text" name="platform_storage_detail" placeholder="Google Drive" data-section="2">
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="platform_code" data-section="2">
+        <label>Code Hosting</label>
+        <input class="checkbox-sub-input" type="text" name="platform_code_detail" placeholder="GitHub" data-section="2">
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="platform_community" data-section="2">
+        <label>Community</label>
+        <input class="checkbox-sub-input" type="text" name="platform_community_detail" placeholder="Discord, forums" data-section="2">
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="platform_crm" data-section="2">
+        <label>CRM</label>
+        <input class="checkbox-sub-input" type="text" name="platform_crm_detail" placeholder="HubSpot" data-section="2">
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="platform_other" data-section="2">
+        <label>Other</label>
+        <input class="checkbox-sub-input" type="text" name="platform_other_detail" placeholder="Specify..." data-section="2">
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: Top Tasks for AI -->
+  <div class="section-card" id="section-3" data-section="3">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div>
+        <div class="section-title">Top Tasks for AI</div>
+        <div class="section-desc">What are the top 5 things you'd want your AI to handle?</div>
+      </div>
+    </div>
+    <div class="numbered-input">
+      <div class="numbered-input-num">1</div>
+      <input class="field-input" type="text" name="task_1" placeholder="Draft email replies to important messages" data-section="3">
+    </div>
+    <div class="numbered-input">
+      <div class="numbered-input-num">2</div>
+      <input class="field-input" type="text" name="task_2" placeholder="Track deadlines and remind me before they're due" data-section="3">
+    </div>
+    <div class="numbered-input">
+      <div class="numbered-input-num">3</div>
+      <input class="field-input" type="text" name="task_3" placeholder="Summarize what happened in Slack while I was away" data-section="3">
+    </div>
+    <div class="numbered-input">
+      <div class="numbered-input-num">4</div>
+      <input class="field-input" type="text" name="task_4" placeholder="Monitor Slack for messages from my team that need a response" data-section="3">
+    </div>
+    <div class="numbered-input">
+      <div class="numbered-input-num">5</div>
+      <input class="field-input" type="text" name="task_5" placeholder="Keep my meeting notes organized and searchable" data-section="3">
+    </div>
+  </div>
+
+  <!-- Section 4: Proactivity Level -->
+  <div class="section-card" id="section-4" data-section="4">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div>
+        <div class="section-title">Proactivity Level</div>
+        <div class="section-desc">How autonomous should your AI be?</div>
+      </div>
+    </div>
+    <div class="radio-group">
+      <label class="radio-card" onclick="selectRadio(this)">
+        <input type="radio" name="proactivity" value="observer" data-section="4">
+        <div class="radio-card-content">
+          <div class="radio-card-title">Observer</div>
+          <div class="radio-card-desc">Notify only, never take action</div>
+        </div>
+      </label>
+      <label class="radio-card" onclick="selectRadio(this)">
+        <input type="radio" name="proactivity" value="advisor" data-section="4">
+        <div class="radio-card-content">
+          <div class="radio-card-title">Advisor</div>
+          <div class="radio-card-desc">Draft things for my review, but never send or post</div>
+        </div>
+      </label>
+      <label class="radio-card" onclick="selectRadio(this)">
+        <input type="radio" name="proactivity" value="assistant" data-section="4">
+        <div class="radio-card-content">
+          <div class="radio-card-title">Assistant</div>
+          <div class="radio-card-desc">Act on low-risk items, ask for high-risk</div>
+        </div>
+      </label>
+      <label class="radio-card" onclick="selectRadio(this)">
+        <input type="radio" name="proactivity" value="partner" data-section="4">
+        <div class="radio-card-content">
+          <div class="radio-card-title">Partner</div>
+          <div class="radio-card-desc">Act autonomously on most things, ask only for irreversible actions</div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- Section 5: Security Boundaries -->
+  <div class="section-card" id="section-5" data-section="5">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div>
+        <div class="section-title">Security Boundaries</div>
+        <div class="section-desc">What is your AI allowed to do? Check all that apply.</div>
+      </div>
+    </div>
+    <div class="checkbox-group">
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="sec_email" data-section="5">
+        <label>Send emails or messages on my behalf</label>
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="sec_social" data-section="5">
+        <label>Post to social media</label>
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="sec_files" data-section="5">
+        <label>Modify files outside the memory vault</label>
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="sec_financial" data-section="5">
+        <label>Access financial data or make purchases</label>
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="sec_delete" data-section="5">
+        <label>Delete anything</label>
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="sec_other" data-section="5">
+        <label>Other</label>
+        <input class="checkbox-sub-input" type="text" name="sec_other_detail" placeholder="Specify..." data-section="5">
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 6: Memory Categories -->
+  <div class="section-card" id="section-6" data-section="6">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div>
+        <div class="section-title">Memory Categories</div>
+        <div class="section-desc">What types of information should your AI remember?</div>
+      </div>
+    </div>
+    <div class="checkbox-group">
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="mem_meetings" data-section="6">
+        <label>Meeting notes and decisions</label>
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="mem_projects" data-section="6">
+        <label>Project status and progress</label>
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="mem_clients" data-section="6">
+        <label>Client / customer information</label>
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="mem_research" data-section="6">
+        <label>Research and learning notes</label>
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="mem_goals" data-section="6">
+        <label>Personal goals and habits</label>
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="mem_content" data-section="6">
+        <label>Content ideas and drafts</label>
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="mem_team" data-section="6">
+        <label>Team context (who does what, preferences, timezones)</label>
+      </div>
+      <div class="checkbox-item" onclick="toggleCheck(this)">
+        <input type="checkbox" name="mem_other" data-section="6">
+        <label>Other</label>
+        <input class="checkbox-sub-input" type="text" name="mem_other_detail" placeholder="Specify..." data-section="6">
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 7: Infrastructure -->
+  <div class="section-card" id="section-7" data-section="7">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <div>
+        <div class="section-title">Infrastructure</div>
+        <div class="section-desc">Your technical environment</div>
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Operating System</label>
+      <div class="radio-row">
+        <label class="radio-card" onclick="selectRadio(this)">
+          <input type="radio" name="os" value="windows" data-section="7">
+          <div class="radio-card-content">
+            <div class="radio-card-title">Windows</div>
+          </div>
+        </label>
+        <label class="radio-card" onclick="selectRadio(this)">
+          <input type="radio" name="os" value="macos" data-section="7">
+          <div class="radio-card-content">
+            <div class="radio-card-title">macOS</div>
+          </div>
+        </label>
+        <label class="radio-card" onclick="selectRadio(this)">
+          <input type="radio" name="os" value="linux" data-section="7">
+          <div class="radio-card-content">
+            <div class="radio-card-title">Linux</div>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="field-group" style="margin-top: 20px;">
+      <label class="field-label">Deployment</label>
+      <div class="radio-row">
+        <label class="radio-card" onclick="selectRadio(this)">
+          <input type="radio" name="deployment" value="local" data-section="7">
+          <div class="radio-card-content">
+            <div class="radio-card-title">Local only</div>
+            <div class="radio-card-desc">Everything on my machine</div>
+          </div>
+        </label>
+        <label class="radio-card" onclick="selectRadio(this)">
+          <input type="radio" name="deployment" value="local-cloud" data-section="7">
+          <div class="radio-card-content">
+            <div class="radio-card-title">Local + Cloud</div>
+            <div class="radio-card-desc">Local machine with a cloud server</div>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="field-group" style="margin-top: 20px;">
+      <label class="field-label" for="existing_tools">Existing tools & infrastructure</label>
+      <textarea class="field-textarea" id="existing_tools" name="existing_tools" placeholder="I already use Obsidian and have a DigitalOcean droplet..." data-section="7"></textarea>
+    </div>
+  </div>
+
+  <!-- Section 8: Integration Priority -->
+  <div class="section-card" id="section-8" data-section="8">
+    <div class="section-header">
+      <div class="section-number">8</div>
+      <div>
+        <div class="section-title">Integration Priority</div>
+        <div class="section-desc">Rank your top 3 integrations by importance</div>
+      </div>
+    </div>
+    <div class="numbered-input">
+      <div class="numbered-input-num">1</div>
+      <input class="field-input" type="text" name="integration_1" placeholder="Gmail" data-section="8">
+    </div>
+    <div class="numbered-input">
+      <div class="numbered-input-num">2</div>
+      <input class="field-input" type="text" name="integration_2" placeholder="Slack" data-section="8">
+    </div>
+    <div class="numbered-input">
+      <div class="numbered-input-num">3</div>
+      <input class="field-input" type="text" name="integration_3" placeholder="GitHub" data-section="8">
+    </div>
+  </div>
+
+</div>
+
+<!-- Nav Dots -->
+<div class="nav-dots" id="navDots">
+  <button class="nav-dot" data-target="cover"><span class="nav-dot-tooltip">Cover</span></button>
+  <button class="nav-dot" data-target="section-1"><span class="nav-dot-tooltip">About You</span></button>
+  <button class="nav-dot" data-target="section-2"><span class="nav-dot-tooltip">Platforms</span></button>
+  <button class="nav-dot" data-target="section-3"><span class="nav-dot-tooltip">Tasks</span></button>
+  <button class="nav-dot" data-target="section-4"><span class="nav-dot-tooltip">Proactivity</span></button>
+  <button class="nav-dot" data-target="section-5"><span class="nav-dot-tooltip">Security</span></button>
+  <button class="nav-dot" data-target="section-6"><span class="nav-dot-tooltip">Memory</span></button>
+  <button class="nav-dot" data-target="section-7"><span class="nav-dot-tooltip">Infrastructure</span></button>
+  <button class="nav-dot" data-target="section-8"><span class="nav-dot-tooltip">Integrations</span></button>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span class="toast-icon">&#10003;</span>
+  <span id="toastMsg">Saved</span>
+</div>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'instyle-second-brain-form';
+  let saveTimeout = null;
+
+  // ─── Date ───
+  document.getElementById('coverDate').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  // ─── Toast ───
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  }
+
+  // ─── Collect Form Data ───
+  function collectData() {
+    const data = {};
+    // Text inputs and textareas
+    document.querySelectorAll('.field-input, .field-textarea, .checkbox-sub-input').forEach(el => {
+      if (el.name) data[el.name] = el.value;
+    });
+    // Radio buttons
+    document.querySelectorAll('input[type="radio"]:checked').forEach(el => {
+      data[el.name] = el.value;
+    });
+    // Checkboxes
+    document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+      if (el.name) data[el.name] = el.checked;
+    });
+    return data;
+  }
+
+  // ─── Restore Form Data ───
+  function restoreData(data) {
+    if (!data) return;
+    // Text inputs
+    document.querySelectorAll('.field-input, .field-textarea, .checkbox-sub-input').forEach(el => {
+      if (el.name && data[el.name] !== undefined) el.value = data[el.name];
+    });
+    // Radio buttons
+    document.querySelectorAll('input[type="radio"]').forEach(el => {
+      if (data[el.name] === el.value) {
+        el.checked = true;
+        el.closest('.radio-card')?.classList.add('selected');
+      }
+    });
+    // Checkboxes
+    document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+      if (el.name && data[el.name]) {
+        el.checked = true;
+        el.closest('.checkbox-item')?.classList.add('checked');
+      }
+    });
+  }
+
+  // ─── Auto-save ───
+  function autoSave() {
+    clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(() => {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(collectData()));
+      updateProgress();
+    }, 500);
+  }
+
+  // ─── Load from localStorage ───
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) restoreData(JSON.parse(saved));
+  } catch(e) {}
+
+  // ─── Event listeners for auto-save ───
+  document.addEventListener('input', autoSave);
+  document.addEventListener('change', autoSave);
+
+  // ─── Progress ───
+  function sectionHasData(sectionNum) {
+    const card = document.getElementById('section-' + sectionNum);
+    if (!card) return false;
+    const inputs = card.querySelectorAll('.field-input, .field-textarea');
+    for (const inp of inputs) {
+      if (inp.value.trim()) return true;
+    }
+    const radios = card.querySelectorAll('input[type="radio"]:checked');
+    if (radios.length > 0) return true;
+    const checks = card.querySelectorAll('input[type="checkbox"]:checked');
+    if (checks.length > 0) return true;
+    return false;
+  }
+
+  function updateProgress() {
+    let filled = 0;
+    for (let i = 1; i <= 8; i++) {
+      if (sectionHasData(i)) filled++;
+    }
+    const pct = Math.round((filled / 8) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = filled + ' / 8 sections';
+  }
+
+  // ─── Nav Dots ───
+  const dots = document.querySelectorAll('.nav-dot');
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const target = document.getElementById(dot.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  function updateActiveDot() {
+    const sections = ['cover','section-1','section-2','section-3','section-4','section-5','section-6','section-7','section-8'];
+    let active = 'cover';
+    for (const id of sections) {
+      const el = document.getElementById(id);
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight / 2) active = id;
+      }
+    }
+    dots.forEach(d => {
+      d.classList.toggle('active', d.dataset.target === active);
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveDot, { passive: true });
+  updateActiveDot();
+  updateProgress();
+
+  // ─── Radio Selection ───
+  window.selectRadio = function(card) {
+    const radio = card.querySelector('input[type="radio"]');
+    if (!radio) return;
+    const groupName = radio.name;
+    document.querySelectorAll('input[type="radio"][name="' + groupName + '"]').forEach(r => {
+      r.closest('.radio-card')?.classList.remove('selected');
+    });
+    radio.checked = true;
+    card.classList.add('selected');
+    autoSave();
+  };
+
+  // ─── Checkbox Toggle ───
+  window.toggleCheck = function(item) {
+    const cb = item.querySelector('input[type="checkbox"]');
+    if (!cb) return;
+    // Don't toggle if clicking the sub-input
+    if (event && event.target.classList.contains('checkbox-sub-input')) return;
+    cb.checked = !cb.checked;
+    item.classList.toggle('checked', cb.checked);
+    autoSave();
+  };
+
+  // ─── Export JSON ───
+  window.exportJSON = function() {
+    const data = collectData();
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'second-brain-requirements.json';
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('JSON exported');
+  };
+
+  // ─── Export Markdown ───
+  window.exportMarkdown = function() {
+    const d = collectData();
+    const checked = (key) => d[key] ? '- [x]' : '- [ ]';
+    const val = (key) => d[key] || '_not provided_';
+
+    let md = `# My Second Brain — Requirements\n\n`;
+    md += `**Generated:** ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}\n\n---\n\n`;
+
+    md += `## 1. About You\n\n`;
+    md += `- **Name:** ${val('name')}\n`;
+    md += `- **Role:** ${val('role')}\n`;
+    md += `- **Daily work:** ${val('daily')}\n`;
+    md += `- **Timezone:** ${val('timezone')}\n`;
+    md += `- **Vault folder:** ${val('vault')}\n`;
+    md += `- **Using Obsidian:** ${val('obsidian')}\n\n`;
+
+    md += `## 2. Platforms\n\n`;
+    const platforms = [
+      ['platform_email', 'Email', 'platform_email_detail'],
+      ['platform_calendar', 'Calendar', 'platform_calendar_detail'],
+      ['platform_tasks', 'Task Management', 'platform_tasks_detail'],
+      ['platform_chat', 'Chat/Messaging', 'platform_chat_detail'],
+      ['platform_notes', 'Notes/Documents', 'platform_notes_detail'],
+      ['platform_storage', 'Cloud Storage', 'platform_storage_detail'],
+      ['platform_code', 'Code Hosting', 'platform_code_detail'],
+      ['platform_community', 'Community', 'platform_community_detail'],
+      ['platform_crm', 'CRM', 'platform_crm_detail'],
+      ['platform_other', 'Other', 'platform_other_detail'],
+    ];
+    platforms.forEach(([key, label, detail]) => {
+      if (d[key]) {
+        md += `- [x] **${label}**${d[detail] ? ': ' + d[detail] : ''}\n`;
+      }
+    });
+    md += `\n`;
+
+    md += `## 3. Top Tasks for AI\n\n`;
+    for (let i = 1; i <= 5; i++) {
+      const t = d['task_' + i];
+      if (t) md += `${i}. ${t}\n`;
+    }
+    md += `\n`;
+
+    md += `## 4. Proactivity Level\n\n`;
+    const proLabels = { observer: 'Observer', advisor: 'Advisor', assistant: 'Assistant', partner: 'Partner' };
+    md += `**${proLabels[d.proactivity] || '_not selected_'}**\n\n`;
+
+    md += `## 5. Security Boundaries\n\n`;
+    md += `The AI is allowed to:\n\n`;
+    const secItems = [
+      ['sec_email', 'Send emails or messages on my behalf'],
+      ['sec_social', 'Post to social media'],
+      ['sec_files', 'Modify files outside the memory vault'],
+      ['sec_financial', 'Access financial data or make purchases'],
+      ['sec_delete', 'Delete anything'],
+    ];
+    secItems.forEach(([key, label]) => {
+      md += `${checked(key)} ${label}\n`;
+    });
+    if (d.sec_other) md += `${checked('sec_other')} Other: ${d.sec_other_detail || ''}\n`;
+    md += `\n`;
+
+    md += `## 6. Memory Categories\n\n`;
+    const memItems = [
+      ['mem_meetings', 'Meeting notes and decisions'],
+      ['mem_projects', 'Project status and progress'],
+      ['mem_clients', 'Client/customer information'],
+      ['mem_research', 'Research and learning notes'],
+      ['mem_goals', 'Personal goals and habits'],
+      ['mem_content', 'Content ideas and drafts'],
+      ['mem_team', 'Team context'],
+    ];
+    memItems.forEach(([key, label]) => {
+      md += `${checked(key)} ${label}\n`;
+    });
+    if (d.mem_other) md += `${checked('mem_other')} Other: ${d.mem_other_detail || ''}\n`;
+    md += `\n`;
+
+    md += `## 7. Infrastructure\n\n`;
+    md += `- **OS:** ${val('os')}\n`;
+    md += `- **Deployment:** ${val('deployment')}\n`;
+    md += `- **Existing tools:** ${val('existing_tools')}\n\n`;
+
+    md += `## 8. Integration Priority\n\n`;
+    for (let i = 1; i <= 3; i++) {
+      const t = d['integration_' + i];
+      if (t) md += `${i}. ${t}\n`;
+    }
+
+    const blob = new Blob([md], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'second-brain-requirements.md';
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('Markdown exported');
+  };
+
+})();
+</script>
+</body>
+</html>
