@@ -791,6 +791,46 @@ body {
     border-color: var(--gray-300);
   }
 }
+
+/* ─── Highlight Boxes ─── */
+.highlight {
+  padding: 20px 24px;
+  border-radius: var(--radius-sm);
+  margin: 20px 0;
+}
+
+.highlight-gold {
+  background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.04));
+  border-left: 4px solid var(--gold);
+}
+
+.highlight-green {
+  background: var(--green-light);
+  border-left: 4px solid var(--green);
+}
+
+.highlight-blue {
+  background: var(--blue-light);
+  border-left: 4px solid var(--blue);
+}
+
+.highlight-red {
+  background: var(--red-light);
+  border-left: 4px solid var(--red);
+}
+
+.highlight-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.highlight-gold .highlight-title { color: var(--gold-dark); }
+.highlight-green .highlight-title { color: var(--green); }
+.highlight-blue .highlight-title { color: var(--blue); }
+.highlight-red .highlight-title { color: var(--red); }
 </style>
 </head>
 <body>
@@ -803,10 +843,13 @@ body {
       <div class="progress-bar-track">
         <div class="progress-bar-fill" id="progressFill"></div>
       </div>
-      <span class="progress-label" id="progressLabel">0 / 8 sections</span>
+      <span class="progress-label" id="progressLabel">0 / 9 sections</span>
     </div>
   </div>
   <div class="top-bar-actions">
+    <button class="btn btn-primary" onclick="submitToSlack()" title="Submit to Moo" style="background:linear-gradient(135deg,var(--green),#237a3a);">
+      &#9993; Submit
+    </button>
     <button class="btn btn-secondary" onclick="exportMarkdown()" title="Export as Markdown">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       <span class="btn-text">Markdown</span>
@@ -1194,6 +1237,85 @@ body {
     </div>
   </div>
 
+  <!-- Section 9: Onboarding Preferences (from BOOTSTRAP.md) -->
+  <div class="section-card" id="section-9" data-section="9">
+    <div class="section-header">
+      <div class="section-number">9</div>
+      <div>
+        <div class="section-title">Onboarding &amp; Personalization</div>
+        <div class="section-desc">Help your AI get to know you on a personal level — the more context, the better it can assist</div>
+      </div>
+    </div>
+
+    <div class="highlight highlight-blue" style="margin-bottom:24px;">
+      <div class="highlight-title">Why This Matters</div>
+      <p style="font-size:14px;color:var(--gray-700);margin:0;">When your JARVIS starts for the first time, it runs an onboarding conversation to learn about you. Filling this out in advance means it can skip the interview and start working for you immediately.</p>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Email address</label>
+      <input class="field-input" type="email" name="email" placeholder="you@example.com" data-section="9">
+    </div>
+    <div class="field-group">
+      <label class="field-label">Location (city, country)</label>
+      <input class="field-input" type="text" name="location" placeholder="Gainesville, FL" data-section="9">
+    </div>
+    <div class="field-group">
+      <label class="field-label">What are your key projects right now?</label>
+      <textarea class="field-textarea" name="key_projects" placeholder="e.g., Scaling the cleaning business, launching wine imports, managing rental properties..." data-section="9"></textarea>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Who do you work with regularly? (team members, partners)</label>
+      <textarea class="field-textarea" name="team_members" placeholder="e.g., Moo (tech partner), cleaning crew leads, property managers..." data-section="9"></textarea>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Communication style preference</label>
+      <div class="radio-group">
+        <div class="radio-card" onclick="selectRadio(this)">
+          <input type="radio" name="comm_style" value="concise" data-section="9">
+          <div class="radio-card-label">Concise &amp; direct</div>
+          <div class="radio-card-desc">Get to the point, bullet points preferred</div>
+        </div>
+        <div class="radio-card" onclick="selectRadio(this)">
+          <input type="radio" name="comm_style" value="detailed" data-section="9">
+          <div class="radio-card-label">Detailed &amp; thorough</div>
+          <div class="radio-card-desc">Full explanations with context</div>
+        </div>
+        <div class="radio-card" onclick="selectRadio(this)">
+          <input type="radio" name="comm_style" value="casual" data-section="9">
+          <div class="radio-card-label">Casual &amp; friendly</div>
+          <div class="radio-card-desc">Relaxed tone, like texting a smart friend</div>
+        </div>
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Active hours (when should AI check in?)</label>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+        <input class="field-input" type="text" name="active_hours_start" placeholder="8:00 AM" data-section="9" style="flex:1;min-width:120px;">
+        <span style="color:var(--gray-500);font-weight:600;">to</span>
+        <input class="field-input" type="text" name="active_hours_end" placeholder="10:00 PM" data-section="9" style="flex:1;min-width:120px;">
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="field-label">What kind of proactive help is welcome? What would be annoying?</label>
+      <textarea class="field-textarea" name="proactive_prefs" placeholder="e.g., Remind me about meetings and deadlines, but don't nag about email. Suggest things when I ask, don't surprise me with big actions." data-section="9"></textarea>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Daily schedule patterns (optional)</label>
+      <textarea class="field-textarea" name="daily_schedule" placeholder="e.g., Mornings: deep work / client calls. Afternoons: admin, crew management. Evenings: planning, personal." data-section="9"></textarea>
+    </div>
+  </div>
+
+  <!-- Submit Section -->
+  <div class="section-card" id="section-submit" style="text-align:center;border:2px solid var(--gold-light);">
+    <div style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px;">Ready to Submit?</div>
+    <p style="font-size:15px;color:var(--gray-600);margin-bottom:24px;">Your answers will be sent to the mhoooo Slack workspace so Moo can set up your JARVIS.</p>
+    <button class="btn btn-primary" onclick="submitToSlack()" style="padding:14px 40px;font-size:16px;" id="submitBtn">
+      Submit to Moo
+    </button>
+    <div id="submitStatus" style="margin-top:16px;font-size:14px;color:var(--gray-600);display:none;"></div>
+  </div>
+
 </div>
 
 <!-- Nav Dots -->
@@ -1207,6 +1329,7 @@ body {
   <button class="nav-dot" data-target="section-6"><span class="nav-dot-tooltip">Memory</span></button>
   <button class="nav-dot" data-target="section-7"><span class="nav-dot-tooltip">Infrastructure</span></button>
   <button class="nav-dot" data-target="section-8"><span class="nav-dot-tooltip">Integrations</span></button>
+  <button class="nav-dot" data-target="section-9"><span class="nav-dot-tooltip">Onboarding</span></button>
 </div>
 
 <!-- Toast -->
@@ -1308,12 +1431,12 @@ body {
 
   function updateProgress() {
     let filled = 0;
-    for (let i = 1; i <= 8; i++) {
+    for (let i = 1; i <= 9; i++) {
       if (sectionHasData(i)) filled++;
     }
-    const pct = Math.round((filled / 8) * 100);
+    const pct = Math.round((filled / 9) * 100);
     document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('progressLabel').textContent = filled + ' / 8 sections';
+    document.getElementById('progressLabel').textContent = filled + ' / 9 sections';
   }
 
   // ─── Nav Dots ───
@@ -1326,7 +1449,7 @@ body {
   });
 
   function updateActiveDot() {
-    const sections = ['cover','section-1','section-2','section-3','section-4','section-5','section-6','section-7','section-8'];
+    const sections = ['cover','section-1','section-2','section-3','section-4','section-5','section-6','section-7','section-8','section-9'];
     let active = 'cover';
     for (const id of sections) {
       const el = document.getElementById(id);
@@ -1470,6 +1593,17 @@ body {
       const t = d['integration_' + i];
       if (t) md += `${i}. ${t}\n`;
     }
+    md += `\n`;
+
+    md += `## 9. Onboarding & Personalization\n\n`;
+    md += `- **Email:** ${val('email')}\n`;
+    md += `- **Location:** ${val('location')}\n`;
+    md += `- **Key projects:** ${val('key_projects')}\n`;
+    md += `- **Team members:** ${val('team_members')}\n`;
+    md += `- **Communication style:** ${val('comm_style')}\n`;
+    md += `- **Active hours:** ${val('active_hours_start')} to ${val('active_hours_end')}\n`;
+    md += `- **Proactive help preferences:** ${val('proactive_prefs')}\n`;
+    md += `- **Daily schedule:** ${val('daily_schedule')}\n`;
 
     const blob = new Blob([md], { type: 'text/markdown' });
     const url = URL.createObjectURL(blob);
@@ -1479,6 +1613,114 @@ body {
     a.click();
     URL.revokeObjectURL(url);
     showToast('Markdown exported');
+  };
+
+  // ─── Submit to Slack ───
+  window.submitToSlack = async function() {
+    const d = collectData();
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('submitStatus');
+
+    // Check if name is filled
+    if (!d.name || !d.name.trim()) {
+      status.style.display = 'block';
+      status.style.color = 'var(--red)';
+      status.textContent = 'Please fill in at least your name (Section 1) before submitting.';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+    status.style.display = 'block';
+    status.style.color = 'var(--gray-600)';
+    status.textContent = 'Sending to Slack...';
+
+    // Build Slack message
+    const val = (key) => d[key] || '_not provided_';
+    const check = (key) => d[key] ? ':white_check_mark:' : ':white_large_square:';
+
+    const platforms = [
+      ['platform_email', 'Email', 'platform_email_detail'],
+      ['platform_calendar', 'Calendar', 'platform_calendar_detail'],
+      ['platform_tasks', 'Tasks', 'platform_tasks_detail'],
+      ['platform_chat', 'Chat', 'platform_chat_detail'],
+      ['platform_notes', 'Notes', 'platform_notes_detail'],
+      ['platform_storage', 'Storage', 'platform_storage_detail'],
+      ['platform_code', 'Code', 'platform_code_detail'],
+      ['platform_community', 'Community', 'platform_community_detail'],
+      ['platform_crm', 'CRM', 'platform_crm_detail'],
+      ['platform_other', 'Other', 'platform_other_detail'],
+    ];
+    const platformLines = platforms.filter(([k]) => d[k]).map(([k,l,det]) => `${check(k)} *${l}*: ${d[det] || '—'}`).join('\n');
+
+    let tasks = '';
+    for (let i = 1; i <= 5; i++) {
+      if (d['task_' + i]) tasks += `${i}. ${d['task_' + i]}\n`;
+    }
+
+    let integrations = '';
+    for (let i = 1; i <= 3; i++) {
+      if (d['integration_' + i]) integrations += `${i}. ${d['integration_' + i]}\n`;
+    }
+
+    const proLabels = { observer: 'Observer', advisor: 'Advisor', assistant: 'Assistant', partner: 'Partner' };
+
+    const text = `:brain: *New Second Brain Requirements Submitted*\n` +
+      `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+      `*1. About*\n` +
+      `• Name: *${val('name')}*\n` +
+      `• Role: ${val('role')}\n` +
+      `• Daily: ${val('daily')}\n` +
+      `• Timezone: ${val('timezone')}\n` +
+      `• Vault: ${val('vault')}\n` +
+      `• Obsidian: ${val('obsidian')}\n\n` +
+      `*2. Platforms*\n${platformLines || '_none selected_'}\n\n` +
+      `*3. Top Tasks*\n${tasks || '_none_'}\n` +
+      `*4. Proactivity*: ${proLabels[d.proactivity] || '_not selected_'}\n\n` +
+      `*5. Security Boundaries (NEVER without permission)*\n` +
+      `${check('sec_email')} Send emails/messages\n` +
+      `${check('sec_social')} Post to social media\n` +
+      `${check('sec_files')} Modify files outside vault\n` +
+      `${check('sec_financial')} Access financial data\n` +
+      `${check('sec_delete')} Delete anything\n\n` +
+      `*6. Memory Categories*\n` +
+      `${check('mem_meetings')} Meetings  ${check('mem_projects')} Projects  ${check('mem_clients')} Clients\n` +
+      `${check('mem_research')} Research  ${check('mem_goals')} Goals  ${check('mem_content')} Content  ${check('mem_team')} Team\n\n` +
+      `*7. Infrastructure*\n` +
+      `• OS: ${val('os')} • Deploy: ${val('deployment')}\n` +
+      `• Tools: ${val('existing_tools')}\n\n` +
+      `*8. Integration Priority*\n${integrations || '_none_'}\n` +
+      `*9. Onboarding*\n` +
+      `• Email: ${val('email')}\n` +
+      `• Location: ${val('location')}\n` +
+      `• Projects: ${val('key_projects')}\n` +
+      `• Team: ${val('team_members')}\n` +
+      `• Style: ${val('comm_style')}\n` +
+      `• Hours: ${val('active_hours_start')} – ${val('active_hours_end')}\n` +
+      `• Proactive prefs: ${val('proactive_prefs')}\n` +
+      `• Schedule: ${val('daily_schedule')}`;
+
+    try {
+      const res = await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text })
+      });
+      const result = await res.json();
+      if (result.ok) {
+        status.style.color = 'var(--green)';
+        status.textContent = 'Submitted successfully! Moo will review your answers and set up your JARVIS.';
+        btn.textContent = 'Submitted ✓';
+        btn.style.background = 'var(--green)';
+      } else {
+        throw new Error(result.error || 'Slack API error');
+      }
+    } catch (e) {
+      status.style.color = 'var(--red)';
+      status.textContent = 'Could not submit — please export as Markdown and send to Moo directly. (' + e.message + ')';
+      btn.disabled = false;
+      btn.textContent = '⟳ Retry Submit';
+    }
   };
 
 })();
