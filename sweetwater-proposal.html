@@ -3,1416 +3,1486 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Turnover Cleaning Proposal — Sweetwater Apartments | InStyle Cleaning</title>
+<title>InStyle Cleaning — Turnover Cleaning Proposal for Sweetwater Gainesville</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --navy: #1B2A4A;
-  --navy-light: #2A3D6B;
-  --gold: #C9A84C;
-  --gold-light: #E8D5A0;
-  --gold-dark: #A88A32;
-  --white: #FFFFFF;
-  --gray-50: #F8F9FA;
-  --gray-100: #F1F3F5;
-  --gray-200: #E9ECEF;
-  --gray-300: #DEE2E6;
-  --gray-400: #CED4DA;
-  --gray-500: #ADB5BD;
-  --gray-600: #868E96;
-  --gray-700: #495057;
-  --gray-800: #343A40;
-  --gray-900: #212529;
-  --green: #2D9F4A;
-  --green-light: #E6F7EC;
-  --red: #DC3545;
-  --red-light: #FDE8EA;
-  --blue: #3B82F6;
-  --blue-light: #EBF2FF;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
-  --radius: 12px;
-  --radius-sm: 8px;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: var(--gray-50);
-  color: var(--gray-800);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ===== PRINT BUTTON ===== */
-.print-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--gray-200);
-  padding: 12px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.print-bar-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--gray-600);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
-.print-bar-brand svg { width: 18px; height: 18px; color: var(--navy); }
-
-.print-bar-actions { display: flex; gap: 8px; }
-
-.btn-print {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 22px;
-  border: none;
-  border-radius: var(--radius-sm);
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.btn-print svg { width: 16px; height: 16px; }
-
-.btn-print-primary {
-  background: var(--navy);
-  color: var(--white);
-}
-
-.btn-print-primary:hover {
-  background: var(--navy-light);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-print-secondary {
-  background: var(--gray-100);
-  color: var(--gray-600);
-  border: 1px solid var(--gray-200);
-}
-
-.btn-print-secondary:hover {
-  background: var(--gray-200);
-  color: var(--gray-800);
-}
-
-/* ===== COVER PAGE ===== */
-.cover {
-  min-height: 100vh;
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, #1a3a5c 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 60px 24px 40px;
-  position: relative;
-  overflow: hidden;
-}
-
-.cover::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -30%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
-  border-radius: 50%;
-}
-
-.cover::after {
-  content: '';
-  position: absolute;
-  bottom: -40%;
-  left: -20%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
-  border-radius: 50%;
-}
-
-.cover-content { position: relative; z-index: 1; max-width: 700px; }
-
-.cover-badge {
-  display: inline-block;
-  background: rgba(201,168,76,0.2);
-  border: 1px solid rgba(201,168,76,0.4);
-  color: var(--gold);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 8px 20px;
-  border-radius: 30px;
-  margin-bottom: 32px;
-}
-
-.cover h1 {
-  font-size: clamp(36px, 6vw, 56px);
-  font-weight: 800;
-  color: var(--white);
-  line-height: 1.1;
-  margin-bottom: 8px;
-}
-
-.cover h1 span { color: var(--gold); }
-
-.cover-subtitle {
-  font-size: clamp(16px, 2.5vw, 20px);
-  color: var(--gray-400);
-  font-weight: 300;
-  margin-bottom: 40px;
-  line-height: 1.5;
-}
-
-.cover-meta {
-  display: flex;
-  gap: 32px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 48px;
-}
-
-.cover-meta-item {
-  color: var(--gray-400);
-  font-size: 14px;
-}
-
-.cover-meta-item strong { color: var(--white); font-weight: 600; }
-
-.cover-toc {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius);
-  padding: 32px;
-  text-align: left;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.cover-toc h3 {
-  color: var(--gold);
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.cover-toc-list {
-  list-style: none;
-  counter-reset: toc;
-}
-
-.cover-toc-list li {
-  counter-increment: toc;
-  padding: 6px 0;
-  font-size: 15px;
-  color: var(--gray-300);
-  cursor: pointer;
-  transition: color 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.cover-toc-list li:hover { color: var(--gold); }
-
-.cover-toc-list li::before {
-  content: counter(toc, decimal-leading-zero);
-  color: var(--gold);
-  font-weight: 700;
-  font-size: 13px;
-  opacity: 0.7;
-  min-width: 24px;
-}
-
-/* ===== MAIN LAYOUT ===== */
-.main { max-width: 1000px; margin: 0 auto; padding: 40px 24px 80px; }
-
-.section {
-  background: var(--white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--gray-200);
-  padding: 40px;
-  margin-bottom: 32px;
-}
-
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 28px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid var(--gray-100);
-}
-
-.section-num {
-  background: var(--navy);
-  color: var(--gold);
-  font-size: 14px;
-  font-weight: 800;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.section-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--navy);
-}
-
-.section-subtitle {
-  font-size: 14px;
-  color: var(--gray-500);
-  margin-top: 2px;
-}
-
-/* ===== KPI CARDS ===== */
-.kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.kpi-card {
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-sm);
-  padding: 20px;
-  text-align: center;
-}
-
-.kpi-label {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--gray-600);
-  margin-bottom: 8px;
-}
-
-.kpi-value {
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--navy);
-}
-
-.kpi-value.gold { color: var(--gold-dark); }
-.kpi-value.green { color: var(--green); }
-
-.kpi-sub {
-  font-size: 13px;
-  color: var(--gray-500);
-  margin-top: 4px;
-}
-
-/* ===== TABLES ===== */
-.table-wrap {
-  overflow-x: auto;
-  margin: 20px 0;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--gray-200);
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-thead th {
-  background: var(--navy);
-  color: var(--white);
-  font-weight: 600;
-  text-align: left;
-  padding: 12px 16px;
-  white-space: nowrap;
-  font-size: 13px;
-  letter-spacing: 0.3px;
-}
-
-thead th:last-child { text-align: right; }
-
-tbody td {
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--gray-100);
-  vertical-align: top;
-}
-
-tbody td:last-child {
-  text-align: right;
-  font-weight: 700;
-  color: var(--navy);
-  font-variant-numeric: tabular-nums;
-}
-
-tbody tr:hover { background: var(--gray-50); }
-tbody tr:last-child td { border-bottom: none; }
-tbody tr.highlight-row { background: rgba(59,130,246,0.04); }
-tbody tr.highlight-row td { font-weight: 600; }
-
-/* ===== HIGHLIGHT BOXES ===== */
-.highlight {
-  padding: 20px 24px;
-  border-radius: var(--radius-sm);
-  margin: 20px 0;
-}
-
-.highlight-gold {
-  background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.04));
-  border-left: 4px solid var(--gold);
-}
-
-.highlight-green {
-  background: var(--green-light);
-  border-left: 4px solid var(--green);
-}
-
-.highlight-blue {
-  background: var(--blue-light);
-  border-left: 4px solid var(--blue);
-}
-
-.highlight-red {
-  background: var(--red-light);
-  border-left: 4px solid var(--red);
-}
-
-.highlight-title {
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-
-.highlight-gold .highlight-title { color: var(--gold-dark); }
-.highlight-green .highlight-title { color: var(--green); }
-.highlight-blue .highlight-title { color: var(--blue); }
-.highlight-red .highlight-title { color: var(--red); }
-
-.highlight p {
-  font-size: 15px;
-  color: var(--gray-700);
-  line-height: 1.7;
-  margin: 0;
-}
-
-/* ===== CONTENT BLOCKS ===== */
-.content-block { margin-bottom: 24px; }
-
-.content-block h3 {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 12px;
-}
-
-.content-block p {
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--gray-700);
-  margin-bottom: 12px;
-}
-
-/* ===== SCOPE CATEGORIES ===== */
-.scope-category { margin-bottom: 28px; }
-
-.scope-category-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding: 14px 20px;
-  background: var(--gray-50);
-  border-radius: var(--radius-sm);
-  border-left: 4px solid var(--navy);
-}
-
-.scope-category-header h3 {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--navy);
-}
-
-.scope-category-header svg {
-  width: 18px;
-  height: 18px;
-  color: var(--navy);
-  flex-shrink: 0;
-}
-
-.scope-list {
-  list-style: none;
-  padding: 0 8px;
-}
-
-.scope-list li {
-  position: relative;
-  padding: 8px 0 8px 28px;
-  font-size: 14px;
-  color: var(--gray-700);
-  line-height: 1.65;
-  border-bottom: 1px solid var(--gray-100);
-}
-
-.scope-list li:last-child { border-bottom: none; }
-
-.scope-list li::before {
-  content: '';
-  position: absolute;
-  left: 4px;
-  top: 16px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--navy);
-  opacity: 0.4;
-}
-
-.scope-list li.scope-highlight {
-  color: var(--red);
-  font-weight: 600;
-}
-
-.scope-list li.scope-highlight::before {
-  background: var(--red);
-  opacity: 1;
-}
-
-/* ===== QA CARDS ===== */
-.qa-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-bottom: 28px;
-}
-
-.qa-card {
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-sm);
-  padding: 28px 24px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.qa-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--navy), var(--navy-light));
-}
-
-.qa-card-step {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--gold-dark);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-
-.qa-card-title {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 10px;
-}
-
-.qa-card-desc {
-  font-size: 13px;
-  color: var(--gray-600);
-  line-height: 1.6;
-}
-
-/* ===== TERMS BOX ===== */
-.terms-box {
-  padding: 20px 24px;
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-sm);
-  margin-bottom: 20px;
-}
-
-.terms-box-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.terms-box-title svg {
-  width: 16px;
-  height: 16px;
-  color: var(--gold-dark);
-}
-
-.terms-list {
-  list-style: none;
-}
-
-.terms-list li {
-  padding: 6px 0;
-  font-size: 14px;
-  color: var(--gray-600);
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-}
-
-.terms-list li .t-label {
-  font-weight: 600;
-  color: var(--gray-800);
-  min-width: 140px;
-  flex-shrink: 0;
-}
-
-/* ===== TIMELINE ===== */
-.timeline { position: relative; padding-left: 32px; }
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 11px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--gray-200);
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 28px;
-}
-
-.timeline-item:last-child { margin-bottom: 0; }
-
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -27px;
-  top: 6px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--navy);
-  border: 3px solid var(--gold);
-}
-
-.timeline-item:first-child::before {
-  background: var(--gold);
-  border-color: var(--gold-dark);
-}
-
-.timeline-item:last-child::before {
-  background: var(--green);
-  border-color: var(--green);
-}
-
-.timeline-phase {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--gold-dark);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 4px;
-}
-
-.timeline-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 4px;
-}
-
-.timeline-desc {
-  font-size: 14px;
-  color: var(--gray-600);
-  line-height: 1.6;
-}
-
-/* ===== WHY CARDS ===== */
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-bottom: 28px;
-}
-
-.why-card {
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-sm);
-  padding: 28px;
-  transition: all 0.2s;
-}
-
-.why-card:hover {
-  border-color: var(--gray-300);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.why-card-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
-}
-
-.why-card-icon svg { width: 20px; height: 20px; }
-
-.why-card-icon.icon-blue { background: var(--blue-light); color: var(--blue); }
-.why-card-icon.icon-gold { background: rgba(201,168,76,0.12); color: var(--gold-dark); }
-.why-card-icon.icon-green { background: var(--green-light); color: var(--green); }
-.why-card-icon.icon-red { background: var(--red-light); color: var(--red); }
-
-.why-card-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 8px;
-}
-
-.why-card-desc {
-  font-size: 14px;
-  color: var(--gray-600);
-  line-height: 1.6;
-}
-
-/* ===== SIGNATURE BLOCK ===== */
-.sig-block {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin-top: 40px;
-}
-
-.sig-party {
-  padding: 32px;
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-sm);
-}
-
-.sig-party-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--gray-500);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-.sig-party-name {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--gray-200);
-}
-
-.sig-party-name span {
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--gray-500);
-}
-
-.sig-field { margin-bottom: 20px; }
-
-.sig-field-line {
-  width: 100%;
-  height: 1px;
-  background: var(--gray-400);
-  margin-bottom: 6px;
-  margin-top: 48px;
-}
-
-.sig-field-label {
-  font-size: 12px;
-  color: var(--gray-500);
-  letter-spacing: 0.5px;
-}
-
-/* ===== TABLE NOTE ===== */
-.table-note {
-  font-size: 14px;
-  color: var(--gray-600);
-  padding: 16px 20px;
-  background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.04));
-  border-radius: var(--radius-sm);
-  border-left: 4px solid var(--gold);
-  margin-top: 16px;
-  line-height: 1.7;
-}
-
-.table-note strong { color: var(--gray-800); }
-
-/* ===== CONFIDENTIAL ===== */
-.confidential {
-  text-align: center;
-  padding: 20px;
-  font-size: 12px;
-  color: var(--gray-500);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-/* ===== NAVIGATION DOTS ===== */
-.nav-float {
-  position: fixed;
-  right: 24px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.nav-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--gray-300);
-  cursor: pointer;
-  transition: all 0.3s;
-  border: none;
-  padding: 0;
-}
-
-.nav-dot:hover, .nav-dot.active {
-  background: var(--gold);
-  transform: scale(1.4);
-}
-
-/* ===== PRINT ===== */
-@media print {
-  .print-bar, .nav-float { display: none !important; }
-  body { background: white; }
-  .cover { min-height: auto; padding: 60px 40px; page-break-after: always; }
-  .section { page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
-  .main { padding: 0 24px; }
-  .qa-grid { grid-template-columns: 1fr 1fr 1fr; }
-  .why-grid { grid-template-columns: 1fr 1fr; }
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .section { padding: 24px 20px; }
-  .qa-grid { grid-template-columns: 1fr; }
-  .why-grid { grid-template-columns: 1fr; }
-  .sig-block { grid-template-columns: 1fr; gap: 24px; }
-  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-  .cover-meta { flex-direction: column; gap: 8px; }
-  .nav-float { display: none; }
-  .print-bar { padding: 10px 16px; }
-}
-
-@media (max-width: 480px) {
-  .kpi-grid { grid-template-columns: 1fr; }
-}
+  :root {
+    --ink: #0a1628;
+    --paper: #fafaf8;
+    --cream: #f5f3ee;
+    --slate: #3d4f6b;
+    --muted: #7a8ba6;
+    --accent: #1a6b4e;
+    --accent-light: #e8f5ee;
+    --accent-dark: #0f4a34;
+    --gold: #c9922e;
+    --gold-light: #fdf6e8;
+    --border: #ddd8ce;
+    --white: #ffffff;
+    --red: #c0392b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { break-after: page; box-shadow: none !important; margin: 0 !important; border-radius: 0 !important; }
+    .no-print { display: none !important; }
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #e8e6e1;
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Print button ─── */
+  .print-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--ink);
+    padding: 12px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .print-bar span {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .print-bar .actions { display: flex; gap: 10px; }
+  .print-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .print-btn:hover { background: var(--accent-dark); }
+  .print-btn.secondary { background: transparent; border: 1px solid var(--muted); color: var(--muted); }
+  .print-btn.secondary:hover { border-color: white; color: white; }
+
+  /* ─── Page containers ─── */
+  .pages {
+    max-width: 850px;
+    margin: 80px auto 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .page {
+    background: var(--paper);
+    border-radius: 4px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    padding: 60px 64px;
+    min-height: 1056px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ─── Cover Page ─── */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    background: var(--ink);
+    color: white;
+  }
+
+  .cover-top {
+    padding: 56px 64px 0;
+  }
+
+  .cover-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 40px;
+  }
+  .cover-badge .dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .cover-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px;
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+  .cover-title em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .cover-subtitle {
+    font-size: 17px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
+    max-width: 440px;
+    line-height: 1.7;
+  }
+
+  .cover-visual {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 64px;
+    position: relative;
+  }
+
+  .cover-visual .pattern {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 400px;
+    background: linear-gradient(135deg, rgba(26,107,78,0.15) 0%, rgba(201,146,46,0.08) 100%);
+    clip-path: polygon(0 40%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .cover-meta {
+    position: relative;
+    z-index: 2;
+    padding: 0 0 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    width: 100%;
+  }
+
+  .meta-block label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.35);
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .meta-block p {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+  }
+
+  /* ─── Section Headers ─── */
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .section-lead {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 36px;
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 32px 0;
+  }
+
+  .divider-accent {
+    height: 3px;
+    width: 48px;
+    background: var(--accent);
+    margin: 16px 0 32px;
+    border-radius: 2px;
+  }
+
+  /* ─── Pricing Tables ─── */
+  .pricing-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .pricing-header {
+    background: var(--cream);
+    padding: 20px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .pricing-header h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .pricing-header .tag {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  .pricing-body {
+    padding: 0;
+  }
+
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 28px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .price-row:last-child { border-bottom: none; }
+  .price-row:hover { background: var(--cream); }
+
+  .price-row .item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .price-row .item-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .price-row .item-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .price-row .item-desc {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+
+  .price-row .amount {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--accent-dark);
+    white-space: nowrap;
+  }
+  .price-row .amount small {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  /* ─── Estimate Table ─── */
+  .estimate-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  .estimate-table th {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 2px solid var(--border);
+  }
+  .estimate-table th:last-child { text-align: right; }
+  .estimate-table td {
+    padding: 14px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .estimate-table td:last-child {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .estimate-table .unit-type {
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .estimate-table .unit-detail {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .estimate-table .subtotal td {
+    border-bottom: none;
+    border-top: 2px solid var(--border);
+    font-weight: 700;
+    padding-top: 18px;
+  }
+  .estimate-table .total td {
+    border-bottom: none;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--accent-dark);
+    padding-top: 8px;
+  }
+  .estimate-table .total td:last-child {
+    font-size: 22px;
+  }
+
+  /* ─── Scope checklist ─── */
+  .scope-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 24px 0;
+  }
+
+  .scope-card {
+    background: var(--cream);
+    border-radius: 10px;
+    padding: 24px;
+    border: 1px solid var(--border);
+  }
+  .scope-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+  }
+  .scope-card h4 .ico {
+    width: 28px;
+    height: 28px;
+    background: var(--accent);
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .check-list {
+    list-style: none;
+  }
+  .check-list li {
+    font-size: 13px;
+    color: var(--slate);
+    padding: 5px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+  }
+  .check-list li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ─── Timeline ─── */
+  .timeline {
+    margin: 24px 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--border);
+  }
+  .tl-item {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .tl-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+  .tl-content h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .tl-content p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .tl-content .tl-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* ─── Guarantee boxes ─── */
+  .guarantee-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .guarantee-box {
+    text-align: center;
+    padding: 28px 20px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: all 0.2s;
+  }
+  .guarantee-box:hover {
+    border-color: var(--accent);
+    background: var(--accent-light);
+  }
+  .guarantee-box .g-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  .guarantee-box h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .guarantee-box p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ─── Signature block ─── */
+  .sig-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 40px;
+  }
+  .sig-block label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 48px;
+  }
+  .sig-line {
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+  }
+  .sig-meta {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ─── Footer ─── */
+  .page-footer {
+    position: absolute;
+    bottom: 28px;
+    left: 64px;
+    right: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+  }
+  .page-footer .page-num {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ─── Callout ─── */
+  .callout {
+    background: var(--gold-light);
+    border-left: 4px solid var(--gold);
+    padding: 20px 24px;
+    border-radius: 0 10px 10px 0;
+    margin: 24px 0;
+  }
+  .callout h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .callout p {
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+
+  .callout-green {
+    background: var(--accent-light);
+    border-left-color: var(--accent);
+  }
+  .callout-green h4 { color: var(--accent-dark); }
+
+  /* ─── Compact text ─── */
+  .body-text {
+    font-size: 14px;
+    color: var(--slate);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .highlight {
+    background: var(--accent-light);
+    color: var(--accent-dark);
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+
+  /* ─── Photo Verification mockup ─── */
+  .photo-demo {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: center;
+    margin: 24px 0;
+    padding: 24px;
+    background: var(--cream);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  .photo-box {
+    aspect-ratio: 4/3;
+    background: var(--border);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    gap: 8px;
+  }
+  .photo-box .camera-icon { font-size: 32px; opacity: 0.4; }
+  .photo-arrow {
+    font-size: 24px;
+    color: var(--accent);
+    font-weight: 800;
+  }
+
+  /* ─── Stats row ─── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .stat-box {
+    text-align: center;
+    padding: 20px;
+    background: var(--cream);
+    border-radius: 10px;
+  }
+  .stat-box .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: var(--accent-dark);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-box .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ─── Terms list ─── */
+  .terms-list {
+    counter-reset: term;
+    list-style: none;
+  }
+  .terms-list li {
+    counter-increment: term;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.6;
+    display: flex;
+    gap: 12px;
+  }
+  .terms-list li::before {
+    content: counter(term) ".";
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+    min-width: 24px;
+  }
+
+  /* ─── Watermark ─── */
+  .deerflow-mark {
+    position: fixed;
+    bottom: 12px;
+    right: 16px;
+    font-size: 10px;
+    color: rgba(0,0,0,0.15);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    z-index: 999;
+    transition: color 0.2s;
+  }
+  .deerflow-mark:hover { color: rgba(0,0,0,0.35); }
+
+  @media print {
+    .deerflow-mark { display: none; }
+    .print-bar { display: none !important; }
+    .pages { margin: 0; gap: 0; max-width: none; }
+    .page { padding: 48px 56px; min-height: auto; }
+  }
 </style>
 </head>
 <body>
 
-<!-- PRINT BAR -->
-<div class="print-bar">
-  <div class="print-bar-brand">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-    InStyle Cleaning — Sweetwater Proposal
-  </div>
-  <div class="print-bar-actions">
-    <button class="btn-print btn-print-secondary" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
-      Top
-    </button>
-    <button class="btn-print btn-print-primary" onclick="window.print()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-      Print / Save PDF
-    </button>
+<!-- ─── Print bar ─── -->
+<div class="print-bar no-print">
+  <span>InStyle Cleaning — Sweetwater Turnover Proposal</span>
+  <div class="actions">
+    <button class="print-btn secondary" onclick="window.print()">⎙ Print / Save PDF</button>
   </div>
 </div>
 
-<!-- NAV DOTS -->
-<div class="nav-float" id="navDots"></div>
+<div class="pages">
 
-<!-- ===== COVER PAGE ===== -->
-<div class="cover" id="cover">
-  <div class="cover-content">
-    <div class="cover-badge">Service Proposal</div>
-    <h1>InStyle <span>Cleaning</span></h1>
+<!-- ════════════════════════════════════════════ -->
+<!-- PAGE 1: COVER -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-top">
+    <div class="cover-badge">
+      <span class="dot"></span>
+      InStyle Cleaning Co.
+    </div>
+
+    <h1 class="cover-title">
+      Turnover Cleaning<br>
+      <em>Proposal</em>
+    </h1>
     <p class="cover-subtitle">
-      Turnover Cleaning Proposal<br>
-      Sweetwater Apartments — 1225 W University Ave, Gainesville, FL
+      Professional unit-turn cleaning services for Sweetwater Gainesville — 
+      delivering White Glove–ready apartments for the 2026–2027 lease cycle.
     </p>
+  </div>
+
+  <div class="cover-visual">
+    <div class="pattern"></div>
     <div class="cover-meta">
-      <div class="cover-meta-item"><strong>Property:</strong> Sweetwater Apartments</div>
-      <div class="cover-meta-item"><strong>Units:</strong> 144</div>
-      <div class="cover-meta-item"><strong>Total Beds:</strong> 502</div>
-      <div class="cover-meta-item"><strong>Terms:</strong> Net 30</div>
-    </div>
-    <div class="cover-toc">
-      <h3>Table of Contents</h3>
-      <ol class="cover-toc-list">
-        <li onclick="scrollTo_('s1')">Pricing Structure</li>
-        <li onclick="scrollTo_('s2')">Scope of Work — General Requirements</li>
-        <li onclick="scrollTo_('s3')">Scope of Work — General Detail Cleaning</li>
-        <li onclick="scrollTo_('s4')">Scope of Work — Kitchen &amp; Bathrooms</li>
-        <li onclick="scrollTo_('s5')">Quality Assurance Process</li>
-        <li onclick="scrollTo_('s6')">Execution Plan</li>
-        <li onclick="scrollTo_('s7')">Why InStyle Cleaning</li>
-        <li onclick="scrollTo_('s8')">Terms &amp; Authorization</li>
-      </ol>
+      <div class="meta-block">
+        <label>Prepared For</label>
+        <p>Sweetwater Gainesville<br>
+        1225 W. University Avenue<br>
+        Gainesville, FL 32601</p>
+      </div>
+      <div class="meta-block">
+        <label>Prepared By</label>
+        <p>InStyle Cleaning Co.<br>
+        Gainesville, FL<br>
+        instylecleaningco.com</p>
+      </div>
+      <div class="meta-block">
+        <label>Date</label>
+        <p>April 4, 2026</p>
+      </div>
+      <div class="meta-block">
+        <label>Valid Through</label>
+        <p>May 31, 2026</p>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="main">
+<!-- ════════════════════════════════════════════ -->
+<!-- PAGE 2: EXECUTIVE SUMMARY + PRICING -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-num">01 — Pricing</div>
+  <h2>Unit Turnover Pricing</h2>
+  <p class="section-lead">
+    Transparent, per-component pricing that scales with your exact unit mix.
+    Each unit is priced by its bedroom, bathroom, and common area count. Studios are a flat rate.
+  </p>
 
-<!-- ===== 1. PRICING ===== -->
-<div class="section" id="s1">
-  <div class="section-header">
-    <div class="section-num">01</div>
-    <div>
-      <div class="section-title">Pricing Structure</div>
-      <div class="section-subtitle">Transparent, per-unit pricing based on configuration</div>
+  <!-- Rate Card -->
+  <div class="pricing-card">
+    <div class="pricing-header">
+      <h4>Rate Card — Turnover Clean</h4>
+      <span class="tag">2026 Season</span>
+    </div>
+    <div class="pricing-body">
+      <div class="price-row">
+        <div class="item">
+          <div class="item-icon">🏠</div>
+          <div>
+            <div class="item-name">Studio Flat Rate</div>
+            <div class="item-desc">Studio units priced as a single open-concept space</div>
+          </div>
+        </div>
+        <div class="amount">$135</div>
+      </div>
+      <div class="price-row">
+        <div class="item">
+          <div class="item-icon">🛏</div>
+          <div>
+            <div class="item-name">Per Bedroom</div>
+            <div class="item-desc">Deep clean, closets, baseboards, windows, furniture surfaces</div>
+          </div>
+        </div>
+        <div class="amount">$25 <small>/ bedroom</small></div>
+      </div>
+      <div class="price-row">
+        <div class="item">
+          <div class="item-icon">🚿</div>
+          <div>
+            <div class="item-name">Per Bathroom</div>
+            <div class="item-desc">Toilet, tub/shower, vanity, mirrors, tile, grout, fixtures</div>
+          </div>
+        </div>
+        <div class="amount">$30 <small>/ bathroom</small></div>
+      </div>
+      <div class="price-row">
+        <div class="item">
+          <div class="item-icon">🛋</div>
+          <div>
+            <div class="item-name">Common Area (In-Unit)</div>
+            <div class="item-desc">Living room, dining area, hallways, balcony/patio</div>
+          </div>
+        </div>
+        <div class="amount">$80 <small>/ unit (flat)</small></div>
+      </div>
     </div>
   </div>
 
-  <div class="kpi-grid">
-    <div class="kpi-card">
-      <div class="kpi-label">Per Bedroom</div>
-      <div class="kpi-value">$25</div>
-      <div class="kpi-sub">per bedroom</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Per Bathroom</div>
-      <div class="kpi-value">$30</div>
-      <div class="kpi-sub">per bathroom</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Common Area</div>
-      <div class="kpi-value">$80</div>
-      <div class="kpi-sub">per unit (flat)</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Studio Flat Rate</div>
-      <div class="kpi-value gold">$135</div>
-      <div class="kpi-sub">per unit</div>
-    </div>
+  <!-- Example Estimates by Unit Type -->
+  <h3>Estimated Cost by Unit Type</h3>
+  <p class="body-text" style="margin-bottom: 16px;">
+    Based on Sweetwater Gainesville's published floor plans. Final pricing confirmed upon walk-through.
+  </p>
+
+  <table class="estimate-table">
+    <thead>
+      <tr>
+        <th>Unit Type</th>
+        <th>Breakdown</th>
+        <th>Est. Per Unit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="unit-type">Studio</div>
+          <div class="unit-detail">~400–500 SF · open concept</div>
+        </td>
+        <td>Flat rate</td>
+        <td>$135</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="unit-type">1 Bedroom</div>
+          <div class="unit-detail">~550–700 SF · 1 bed · 1 bath · 1 common</div>
+        </td>
+        <td>1 BR ($25) + 1 BA ($30) + CA ($80)</td>
+        <td>$135</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="unit-type">2 Bedroom</div>
+          <div class="unit-detail">~800–1,000 SF · 2 bed · 2 bath · 1 common</div>
+        </td>
+        <td>2 BR ($50) + 2 BA ($60) + CA ($80)</td>
+        <td>$190</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="unit-type">4 Bedroom</div>
+          <div class="unit-detail">~1,400+ SF · 4 bed · 4 bath · 1 common</div>
+        </td>
+        <td>4 BR ($100) + 4 BA ($120) + CA ($80)</td>
+        <td>$300</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="unit-type">5 Bedroom</div>
+          <div class="unit-detail">~1,700+ SF · 5 bed · 5 bath · 1 common</div>
+        </td>
+        <td>5 BR ($125) + 5 BA ($150) + CA ($80)</td>
+        <td>$355</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="unit-type">6 Bedroom</div>
+          <div class="unit-detail">~2,000+ SF · 6 bed · 6 bath · 1 common</div>
+        </td>
+        <td>6 BR ($150) + 6 BA ($180) + CA ($80)</td>
+        <td>$410</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <h4>💰 Volume Discount Available</h4>
+    <p>
+      For full-property turnover contracts (100+ units), we offer a <strong>10% volume discount</strong> 
+      on the total contract value. Additional discounts available for multi-year agreements.
+    </p>
   </div>
 
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Unit Configuration</th>
-          <th>Breakdown</th>
-          <th>Price Per Unit</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Studio</td>
-          <td>Flat rate</td>
-          <td><strong>$135</strong></td>
-        </tr>
-        <tr>
-          <td>1 BR / 1 BA</td>
-          <td>$25 (1 BR) + $30 (1 BA) + $80 (common)</td>
-          <td><strong>$135</strong></td>
-        </tr>
-        <tr class="highlight-row">
-          <td>2 BR / 2 BA</td>
-          <td>$50 (2 BR) + $60 (2 BA) + $80 (common)</td>
-          <td><strong>$190</strong></td>
-        </tr>
-        <tr>
-          <td>3 BR / 2 BA</td>
-          <td>$75 (3 BR) + $60 (2 BA) + $80 (common)</td>
-          <td><strong>$215</strong></td>
-        </tr>
-        <tr>
-          <td>3 BR / 3 BA</td>
-          <td>$75 (3 BR) + $90 (3 BA) + $80 (common)</td>
-          <td><strong>$245</strong></td>
-        </tr>
-        <tr>
-          <td>4 BR / 2 BA</td>
-          <td>$100 (4 BR) + $60 (2 BA) + $80 (common)</td>
-          <td><strong>$240</strong></td>
-        </tr>
-        <tr class="highlight-row">
-          <td>4 BR / 4 BA</td>
-          <td>$100 (4 BR) + $120 (4 BA) + $80 (common)</td>
-          <td><strong>$300</strong></td>
-        </tr>
-        <tr>
-          <td>5 BR / 5 BA</td>
-          <td>$125 (5 BR) + $150 (5 BA) + $80 (common)</td>
-          <td><strong>$355</strong></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="table-note">
-    <strong>Note:</strong> Pricing reflects the full scope of work detailed in this proposal. Each unit is priced as: (bedrooms × $25) + (bathrooms × $30) + $80 common area. Studio units are a flat $135. Final invoice shall not exceed contract price. Any change orders must be approved and signed by Property Manager before execution.
-  </div>
-</div>
-
-<!-- ===== 2. SCOPE — GENERAL ===== -->
-<div class="section" id="s2">
-  <div class="section-header">
-    <div class="section-num">02</div>
-    <div>
-      <div class="section-title">Scope of Work — General Requirements</div>
-      <div class="section-subtitle">Operational standards and on-site conduct requirements</div>
-    </div>
-  </div>
-
-  <div class="scope-category">
-    <div class="scope-category-header">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      <h3>On-Site Management &amp; Conduct</h3>
-    </div>
-    <ul class="scope-list">
-      <li>Vendor shall supply full time on-site supervision for the duration of the project</li>
-      <li>Vendor shall perform all work in compliance with all codes, ordinances, laws and regulations</li>
-      <li>Vendor shall perform all Unit Cleaning to industry standards and meet Manufacturer specs</li>
-      <li>Go-backs at no cost to property</li>
-      <li>No Smoking, no loud music, no animals, no alcohol on-site</li>
-      <li>Unit bathrooms off limits to workers</li>
-    </ul>
-  </div>
-
-  <div class="scope-category">
-    <div class="scope-category-header">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-      <h3>Occupied &amp; Partially Occupied Units</h3>
-    </div>
-    <ul class="scope-list">
-      <li>Some units partially occupied — common spaces get same service level, resident possessions not disturbed</li>
-      <li>Items found in vacant units go to General Manager, not removed from property</li>
-    </ul>
-  </div>
-
-  <div class="scope-category">
-    <div class="scope-category-header">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      <h3>Accountability &amp; Penalties</h3>
-    </div>
-    <ul class="scope-list">
-      <li class="scope-highlight">AC not less than 72 degrees, turn to 78 when leaving. Below 72 = $10/day/unit penalty</li>
-      <li>Contractor responsible for re-keying costs if keys lost. Keys returned daily</li>
-      <li>Failure to meet completion timeframe = Contractor reimburses Owner for completion by others</li>
-      <li>No disposing of debris in unit trash</li>
-      <li>Minor changes may occur before turn date due to student housing nature</li>
-    </ul>
-  </div>
-
-  <div class="highlight highlight-red">
-    <div class="highlight-title">AC Compliance Requirement</div>
-    <p><strong>Thermostat Policy:</strong> InStyle Cleaning acknowledges the thermostat requirement. All units will be set to no less than 72°F during service and adjusted to 78°F upon departure. Our supervisors will verify compliance on each unit check-out. Failure to comply results in a <strong>$10/day/unit penalty</strong>.</p>
+  <div class="page-footer">
+    <span>InStyle Cleaning Co. — Confidential Proposal</span>
+    <span class="page-num">01</span>
   </div>
 </div>
 
-<!-- ===== 3. SCOPE — GENERAL DETAIL ===== -->
-<div class="section" id="s3">
-  <div class="section-header">
-    <div class="section-num">03</div>
-    <div>
-      <div class="section-title">Scope of Work — General Detail Cleaning</div>
-      <div class="section-subtitle">Full-unit cleaning standards applicable to all spaces</div>
+<!-- ════════════════════════════════════════════ -->
+<!-- PAGE 3: SCOPE OF WORK — GENERAL -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-num">02 — Scope of Work</div>
+  <h2>General Requirements</h2>
+  <p class="section-lead">
+    InStyle Cleaning acknowledges and agrees to the following general requirements 
+    as specified by Sweetwater Gainesville management.
+  </p>
+
+  <div class="scope-grid" style="grid-template-columns: 1fr;">
+    <div class="scope-card">
+      <h4><span class="ico">👷</span> Supervision &amp; Compliance</h4>
+      <ul class="check-list">
+        <li>Full-time on-site supervision provided for the entire duration of the project</li>
+        <li>All work performed in compliance with City, County, State, and Federal codes, ordinances, laws, and regulations</li>
+        <li>All unit cleaning performed to industry standards and manufacturer's specifications, including all labor and materials</li>
+        <li>Contractor representative on-site on Move-In Day to assist with any issues</li>
+      </ul>
     </div>
   </div>
 
-  <div class="scope-category">
-    <div class="scope-category-header">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      <h3>Surfaces, Floors &amp; General</h3>
+  <div class="scope-grid">
+    <div class="scope-card">
+      <h4><span class="ico">🔄</span> Go-Backs &amp; Callbacks</h4>
+      <ul class="check-list">
+        <li>Units not meeting property quality inspection will be re-cleaned at no cost to the property</li>
+        <li>Minor scope changes may occur prior to actual turn date — finalized list provided by Manager before start</li>
+      </ul>
     </div>
-    <ul class="scope-list">
-      <li>All spaces cleaned inside and out, free of foreign matter, dirt, handprints, stickers, grease</li>
-      <li>Detail vacuum all carpet, tile, vinyl</li>
-      <li>Clean ceramic tile/vinyl with all-purpose cleaner, rinse with clean water, wipe with clean rags</li>
-      <li>Clean all windows, sliding glass doors, tracks, sills, registers, vents inside and outside</li>
-      <li>Vertical and mini blinds cleaned</li>
-      <li>All doors, windows, receptacles, light switches, covers, closet rods/shelves cleaned. Remove cobwebs</li>
-      <li>Light fixtures removed and cleaned including entry and patio lights</li>
-      <li>Patio and storage areas wiped down and swept</li>
-      <li>Wipe down all trim/baseboards</li>
-    </ul>
+
+    <div class="scope-card">
+      <h4><span class="ico">🏠</span> Partially Occupied Units</h4>
+      <ul class="check-list">
+        <li>Some assigned units may be partially occupied</li>
+        <li>Occupied "common" spaces receive the same level of service as fully vacant spaces</li>
+        <li>Resident's possessions will not be disturbed</li>
+      </ul>
+    </div>
   </div>
 
-  <div class="scope-category">
-    <div class="scope-category-header">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-      <h3>Furnished Units &amp; Appliances</h3>
-    </div>
-    <ul class="scope-list">
-      <li>Furnished homes: dust, wipe, clean underneath/behind all furniture. Vacuum under couch cushions</li>
-      <li>Pet hair/odor units: notify Property Manager immediately</li>
-      <li>All appliances pulled out and cleaned behind/next to</li>
-      <li>Drip pans, microwave vents, returns removed, cleaned, replaced. Notify if damaged</li>
-    </ul>
+  <div class="callout" style="border-left-color: var(--red); background: #fdf0ee;">
+    <h4 style="color: var(--red);">⚠ AC Temperature Policy</h4>
+    <p>
+      AC temperature shall not be set below <strong>72°F</strong> at any time. Upon leaving a unit, 
+      AC must be set to <strong>78°F</strong> with fan on AUTO. Settings below 72°F may result in a 
+      <strong>$10/day per unit</strong> deduction. Contractor acknowledges and will strictly enforce this policy with all crew members.
+    </p>
   </div>
 
-  <div class="scope-category">
-    <div class="scope-category-header">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-      <h3>Administrative</h3>
+  <div class="divider"></div>
+
+  <h3>Property Rules &amp; Conduct</h3>
+  <div class="divider-accent"></div>
+
+  <div class="scope-grid">
+    <div class="scope-card">
+      <h4><span class="ico">🚫</span> Prohibited On-Site</h4>
+      <ul class="check-list">
+        <li>No smoking in any units</li>
+        <li>No loud music (radios, boom boxes, etc.)</li>
+        <li>No animals allowed on-site</li>
+        <li>No alcohol on-site</li>
+        <li>No disposing of debris in unit trash</li>
+        <li>Unit bathrooms are off-limits for contractor use — alternative facilities provided by property</li>
+        <li>No use of any appliances or furniture in units</li>
+      </ul>
     </div>
-    <ul class="scope-list">
-      <li>Invoice shall not exceed contract price. Change orders must be approved and signed by Manager</li>
-      <li>Representative on-site on Move-In Day</li>
-      <li>Minor changes may occur before turn date due to student housing nature</li>
-    </ul>
+
+    <div class="scope-card">
+      <h4><span class="ico">🔑</span> Keys, Items &amp; Liability</h4>
+      <ul class="check-list">
+        <li>Contractor responsible for cost of re-keying due to lost keys</li>
+        <li>All property keys must be returned daily before departure</li>
+        <li>Items found in vacant units shall be presented to the General Manager — not removed from property</li>
+        <li>Contractor is responsible for their employees at all times</li>
+        <li>Units with extensive pet hair/odor must be reported to Property Manager immediately</li>
+        <li>Appliances requiring help to move — site team must be notified</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout callout-green">
+    <h4>✦ Invoice Policy</h4>
+    <p>
+      Contractor invoice shall not exceed contract price. Any amount invoiced different from the contract 
+      shall have an approved change order attached, signed by Manager.
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span>InStyle Cleaning Co. — Confidential Proposal</span>
+    <span class="page-num">02</span>
   </div>
 </div>
 
-<!-- ===== 4. SCOPE — KITCHEN & BATHROOMS ===== -->
-<div class="section" id="s4">
-  <div class="section-header">
-    <div class="section-num">04</div>
-    <div>
-      <div class="section-title">Scope of Work — Kitchen &amp; Bathrooms</div>
-      <div class="section-subtitle">Detailed cleaning specifications by room type</div>
+<!-- ════════════════════════════════════════════ -->
+<!-- PAGE 4: SCOPE OF WORK — GENERAL DETAIL -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-num">02 — Scope of Work (continued)</div>
+  <h2>General Unit Cleaning Detail</h2>
+  <p class="section-lead">
+    All spaces within units — kitchens, bathrooms, living rooms, bedrooms, closets, all appliances — 
+    cleaned inside and out, free of all foreign matter.
+  </p>
+
+  <div class="scope-grid" style="grid-template-columns: 1fr;">
+    <div class="scope-card">
+      <h4><span class="ico">✨</span> All-Unit Cleaning Standards</h4>
+      <ul class="check-list">
+        <li>Wipe down and clean all surfaces with all-purpose cleaner to remove all foreign matter, dirt, handprints, stickers, labels, stamps, grease, and other markings</li>
+        <li>Detail vacuum all carpet, tile, vinyl, and similar floor areas</li>
+        <li>Detail clean ceramic tile and vinyl flooring with all-purpose cleaner, rinse with clean water, and wipe down with clean rags</li>
+        <li>Clean all windows, sliding glass doors, window &amp; door tracks, sills, registers, and vents — inside and outside — including removal of paint, plaster, and debris</li>
+        <li>Vertical and mini blinds cleaned thoroughly</li>
+        <li>All unit entry doors, interior doors, windows, receptacles, light switches, covers, closet rods &amp; shelves cleaned; all cobwebs removed</li>
+        <li>All light fixtures removed and cleaned, including entry lights and patio lights</li>
+        <li>Patio and storage areas wiped down and swept</li>
+        <li>All unit trim and baseboards wiped down</li>
+      </ul>
     </div>
   </div>
 
-  <div class="scope-category">
-    <div class="scope-category-header">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3"/><path d="M21 7H17"/></svg>
-      <h3>Kitchen</h3>
+  <div class="scope-grid">
+    <div class="scope-card">
+      <h4><span class="ico">🪑</span> Furnished Units</h4>
+      <ul class="check-list">
+        <li>All furniture dusted, wiped out, and cleaned underneath and behind</li>
+        <li>All couch cushions removed, vacuumed under, and replaced</li>
+        <li>All furniture surfaces cleaned thoroughly</li>
+      </ul>
     </div>
-    <ul class="scope-list">
-      <li>Clean all kitchen areas and cabinets inside/outside</li>
-      <li>Remove water scales from sink and faucet</li>
-      <li>Clean light fixtures inside/outside</li>
-      <li>Pull out stove, clean behind/underneath, all surfaces, drip pans, broiler pans, oven racks, knobs. Burn off residual cleaning solution</li>
-      <li>Range hood cleaned, free of grease</li>
-      <li>Polish stainless steel</li>
-      <li>Deep clean inside stove including racks</li>
-      <li>Dishwasher inside/outside cleaned, labels removed</li>
-      <li>Pull out refrigerator, clean behind, kick plate, all surfaces, drawers, shelves, rubber seals, ice trays. Free of all food</li>
-      <li>Floor cleaned with all-purpose cleaner, rinsed, wiped</li>
-    </ul>
+
+    <div class="scope-card">
+      <h4><span class="ico">🔧</span> Appliances</h4>
+      <ul class="check-list">
+        <li>All appliances pulled out and cleaned behind/next to</li>
+        <li>Notify site team if help required to move appliances</li>
+        <li>All drip pans, microwave vents, and returns removed, cleaned, and replaced</li>
+        <li>Damaged drip pans reported to Property Manager for replacement</li>
+      </ul>
+    </div>
   </div>
 
-  <div class="scope-category">
-    <div class="scope-category-header">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/><rect x="2" y="2" width="20" height="20" rx="5"/></svg>
-      <h3>Bathrooms</h3>
-    </div>
-    <ul class="scope-list">
-      <li>Clean all bathroom areas inside/outside</li>
-      <li>Toilets inside/outside with non-acid bowl cleaner</li>
-      <li>Towel bars and paper holders cleaned and polished</li>
-      <li>Shower knobs and showerhead cleaned</li>
-      <li>Fans and fan covers removed and cleaned</li>
-      <li>Floor, bathtub, tub surrounds cleaned, rinsed, wiped. No abrasive cleaners on fiberglass</li>
-      <li>Glass shower doors spotless. Buffer approved after reviewing with property manager</li>
-      <li>Shower floors spotless</li>
-      <li>Caulking: remove mildew/growth, notify management for follow-up caulking</li>
-      <li>Light fixtures wiped down</li>
-      <li>Faucet cleaned with non-acid water deposit remover</li>
-      <li>Mirror and medicine cabinets cleaned</li>
-      <li>Vanity/counters cleaned, cabinet/drawer insides wiped</li>
-    </ul>
-  </div>
+  <div class="divider"></div>
 
-  <div class="highlight highlight-blue">
-    <div class="highlight-title">Material Safety</div>
-    <p>InStyle Cleaning uses only non-acid cleaners for toilets and faucets, and avoids abrasive products on fiberglass surfaces. All cleaning solutions are commercial-grade and EPA-compliant. MSDS sheets available upon request.</p>
+  <h3>Optional Add-On Services</h3>
+  <div class="divider-accent"></div>
+
+  <table class="estimate-table">
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="unit-type">Carpet Steam Clean</td>
+        <td>Hot water extraction per room</td>
+        <td>$45 / room</td>
+      </tr>
+      <tr>
+        <td class="unit-type">Mattress Sanitization</td>
+        <td>Vacuum, sanitize, and deodorize</td>
+        <td>$25 / mattress</td>
+      </tr>
+      <tr>
+        <td class="unit-type">Pressure Washing</td>
+        <td>Balcony/patio/walkway</td>
+        <td>$50 / unit</td>
+      </tr>
+      <tr>
+        <td class="unit-type">Trash &amp; Debris Removal</td>
+        <td>Left-behind items hauled away</td>
+        <td>$75 / unit</td>
+      </tr>
+      <tr>
+        <td class="unit-type">Touch-Up Painting</td>
+        <td>Spot painting for scuffs and marks</td>
+        <td>$60 / room</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <span>InStyle Cleaning Co. — Confidential Proposal</span>
+    <span class="page-num">03</span>
   </div>
 </div>
 
-<!-- ===== 5. QA PROCESS ===== -->
-<div class="section" id="s5">
-  <div class="section-header">
-    <div class="section-num">05</div>
-    <div>
-      <div class="section-title">Quality Assurance Process</div>
-      <div class="section-subtitle">Three-tier inspection system to ensure zero go-backs</div>
+<!-- ════════════════════════════════════════════ -->
+<!-- PAGE 5: SCOPE — KITCHEN + BATHROOMS -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-num">02 — Scope of Work (continued)</div>
+  <h2>Room-Specific Standards</h2>
+  <p class="section-lead">
+    Detailed cleaning specifications by room type, per Sweetwater Gainesville requirements.
+  </p>
+
+  <div class="scope-grid" style="grid-template-columns: 1fr;">
+    <div class="scope-card">
+      <h4><span class="ico">🍳</span> Kitchen — Detailed Scope</h4>
+      <ul class="check-list">
+        <li>Clean and wipe down all kitchen areas &amp; cabinets inside and outside with all-purpose cleaner to remove foreign matter, dirt, grease, handprints, stickers, labels, and stamps</li>
+        <li>Remove water scale and deposits from kitchen sink and around faucet — all edges and all sides</li>
+        <li>Clean light fixtures inside and outside</li>
+        <li>Pull out stove and clean behind &amp; underneath; clean all stove surfaces — front, rear, sides, doors; clean all storage drawers, drip pans, broiler pans, oven racks; wipe off range elements; pull all knobs and clean behind; ranges and range pans cleaned underneath, inside and out, free of all foreign matter and grease. After cleaning, all burners turned on to burn off residual cleaning solution</li>
+        <li>Range hood cleaned, wiped down, and free of all grease and foreign matter</li>
+        <li>Stainless steel polished in all applicable areas</li>
+        <li>Deep clean inside of stove including cooking racks</li>
+        <li>Dishwasher inside and outside cleaned and wiped down; all labels and stickers removed</li>
+        <li>Pull out refrigerator and clean behind; pull and clean bottom kick plate and underneath; clean all refrigerator &amp; freezer surfaces — front, rear, sides, doors; clean all storage drawers, shelves, racks, rubber seals, gaskets, ice cube trays, ice buckets; refrigerator cleaned inside and out, free of all food</li>
+        <li>Floor cleaned with all-purpose cleaner, rinsed with clean water, and wiped down with clean rags</li>
+      </ul>
     </div>
   </div>
 
-  <div class="qa-grid">
-    <div class="qa-card">
-      <div class="qa-card-step">Step 01</div>
-      <div class="qa-card-title">Crew Self-Check</div>
-      <div class="qa-card-desc">Each cleaning crew completes a 40-point checklist before leaving every unit. Items include all kitchen appliances, bathroom fixtures, floor surfaces, windows, blinds, and thermostat setting verification.</div>
-    </div>
-    <div class="qa-card">
-      <div class="qa-card-step">Step 02</div>
-      <div class="qa-card-title">Supervisor Walkthrough</div>
-      <div class="qa-card-desc">Full-time on-site supervisor performs independent walkthrough of every completed unit using white-glove standards. Photo documentation of each unit before and after for accountability records.</div>
-    </div>
-    <div class="qa-card">
-      <div class="qa-card-step">Step 03</div>
-      <div class="qa-card-title">Manager Sign-Off</div>
-      <div class="qa-card-desc">Joint walkthrough with Sweetwater Property Manager for final acceptance. Any deficiencies addressed immediately as go-backs at zero additional cost. Real-time communication channel for issue escalation.</div>
+  <div class="scope-grid" style="grid-template-columns: 1fr;">
+    <div class="scope-card">
+      <h4><span class="ico">🚿</span> Bathrooms — Detailed Scope</h4>
+      <ul class="check-list">
+        <li>Clean and wipe down all bathroom areas inside and outside with all-purpose cleaners to remove all foreign matter, handprints, stickers, and labels</li>
+        <li>Clean toilets inside and outside with general non-acid bowl cleaner</li>
+        <li>Towel bars and paper holders cleaned and polished</li>
+        <li>Shower knobs and showerhead cleaned and wiped</li>
+        <li>Fans and fan covers removed and cleaned</li>
+        <li>Bathroom floor, bathtub, and tub surrounds cleaned with all-purpose cleaner, rinsed with clean water, and wiped down with clean rags. Special attention to fiberglass fixtures — no abrasive cleaning agents allowed</li>
+        <li>Glass shower doors spotless at end of cleaning; buffer may be used after reviewing scope with Property Manager</li>
+        <li>Shower floors spotless under standard cleaning</li>
+        <li>Caulking — remove all mildew and growth in bathroom/kitchen areas; notify management once removed for maintenance follow-up caulking</li>
+        <li>Light fixtures wiped down</li>
+        <li>Faucets cleaned with non-acid water deposit remover</li>
+        <li>Mirrors and medicine cabinets cleaned including removal of paint, plaster, etc.</li>
+        <li>Vanity/counters cleaned and wiped down; cabinet and drawer insides wiped out</li>
+      </ul>
     </div>
   </div>
 
-  <div class="highlight highlight-green">
-    <div class="highlight-title">Go-Back Guarantee</div>
-    <p>All go-backs are handled at <strong>zero cost</strong> to the property with same-day turnaround. Photo evidence of resolution provided to management. Direct phone line to project supervisor maintained during entire turn.</p>
-  </div>
-
-  <div class="terms-box">
-    <div class="terms-box-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-      Key Management Protocol
-    </div>
-    <ul class="terms-list">
-      <li><span class="t-label">Daily Return:</span> All keys returned to property office at end of each work day</li>
-      <li><span class="t-label">Tracking:</span> Key sign-out/sign-in log maintained with supervisor signature</li>
-      <li><span class="t-label">Lost Keys:</span> InStyle assumes full responsibility for re-keying costs</li>
-      <li><span class="t-label">Security:</span> Keys stored in locked key box during working hours</li>
-    </ul>
+  <div class="page-footer">
+    <span>InStyle Cleaning Co. — Confidential Proposal</span>
+    <span class="page-num">04</span>
   </div>
 </div>
 
-<!-- ===== 6. EXECUTION PLAN ===== -->
-<div class="section" id="s6">
-  <div class="section-header">
-    <div class="section-num">06</div>
-    <div>
-      <div class="section-title">Execution Plan</div>
-      <div class="section-subtitle">Phased approach to complete all 144 units on schedule</div>
+<!-- ════════════════════════════════════════════ -->
+<!-- PAGE 6: QUALITY ASSURANCE + PHOTO VERIFICATION -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-num">03 — Quality Assurance</div>
+  <h2>Photo-Verified Cleaning</h2>
+  <p class="section-lead">
+    Every unit is documented with timestamped before-and-after photos, sent directly 
+    to your management team. No guesswork — just proof.
+  </p>
+
+  <div class="photo-demo">
+    <div class="photo-box">
+      <div class="camera-icon">📷</div>
+      Before
+    </div>
+    <div class="photo-arrow">→</div>
+    <div class="photo-box" style="background: var(--accent-light); color: var(--accent-dark);">
+      <div class="camera-icon" style="opacity: 1;">✓</div>
+      After
     </div>
   </div>
+
+  <p class="body-text">
+    Our proprietary photo verification process captures <strong>before-and-after images</strong> 
+    of every kitchen, bathroom, bedroom, and common area. Photos are timestamped, geotagged, 
+    and shared with your team via a secure digital dashboard in real time. 
+    If a unit doesn't pass our internal QA check, we re-clean it before marking it complete.
+  </p>
+
+  <div class="divider"></div>
+
+  <h3>Our 5-Point Quality Process</h3>
+  <div class="divider-accent"></div>
 
   <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-phase">Phase 1 — Pre-Turn</div>
-      <div class="timeline-title">Mobilization &amp; Planning</div>
-      <div class="timeline-desc">Site walkthrough with Sweetwater management. Receive unit list with configurations and priority order. Coordinate key distribution protocol. Stage supplies and equipment at designated on-site storage area. Confirm crew assignments and shift schedules with supervisor.</div>
+    <div class="tl-item">
+      <div class="tl-dot">1</div>
+      <div class="tl-content">
+        <h4>Pre-Walk Documentation</h4>
+        <p>Before photos captured. Unit condition noted. Any pre-existing damage flagged to management before cleaning begins.</p>
+      </div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-phase">Phase 2 — Execution</div>
-      <div class="timeline-title">Unit Turnover Cleaning</div>
-      <div class="timeline-desc">Dedicated crews deployed across floors following the property's priority sequence. Each crew handles 6-8 units per day depending on configuration. Supervisor conducts real-time quality checks. Daily progress reports submitted to property management. Partially occupied units handled per special protocol — common areas serviced, resident belongings undisturbed.</div>
+    <div class="tl-item">
+      <div class="tl-dot">2</div>
+      <div class="tl-content">
+        <h4>Systematic Deep Clean</h4>
+        <p>Cleaning crew follows a standardized room-by-room checklist. Every task checked off as completed.</p>
+      </div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-phase">Phase 3 — QA &amp; Handoff</div>
-      <div class="timeline-title">Quality Verification</div>
-      <div class="timeline-desc">Three-tier inspection of every completed unit. Go-backs addressed same-day. Joint walkthrough with Sweetwater team for final acceptance. Complete key return with documented sign-off. All items found in vacant units delivered to General Manager.</div>
+    <div class="tl-item">
+      <div class="tl-dot">3</div>
+      <div class="tl-content">
+        <h4>Crew Lead QA Inspection</h4>
+        <p>Crew lead inspects every room against the checklist. Any deficiencies corrected on the spot.</p>
+      </div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-phase">Phase 4 — Move-In Day</div>
-      <div class="timeline-title">On-Site Support</div>
-      <div class="timeline-desc">InStyle representative present on Move-In Day to handle any last-minute cleaning needs or resident concerns. Direct communication line maintained with property management for rapid response.</div>
+    <div class="tl-item">
+      <div class="tl-dot">4</div>
+      <div class="tl-content">
+        <h4>After Photos + Sign-Off</h4>
+        <p>After photos captured. Digital completion report generated. Crew lead signs off on the unit.</p>
+      </div>
     </div>
+    <div class="tl-item">
+      <div class="tl-dot">5</div>
+      <div class="tl-content">
+        <h4>Management Review</h4>
+        <p>Photo report delivered to your team within 1 hour of completion. Any callback requests handled within 4 hours.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-green">
+    <h4>✦ Callback Guarantee</h4>
+    <p>
+      If any unit fails to meet your standards within 24 hours of cleaning, 
+      we will re-clean it <strong>at no additional charge</strong>. Period.
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span>InStyle Cleaning Co. — Confidential Proposal</span>
+    <span class="page-num">05</span>
   </div>
 </div>
 
-<!-- ===== 7. WHY INSTYLE ===== -->
-<div class="section" id="s7">
-  <div class="section-header">
-    <div class="section-num">07</div>
-    <div>
-      <div class="section-title">Why InStyle Cleaning</div>
-      <div class="section-subtitle">What sets us apart for student housing turns</div>
+<!-- ════════════════════════════════════════════ -->
+<!-- PAGE 7: EXECUTION PLAN + TIMELINE -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-num">04 — Execution Plan</div>
+
+  <h2>Turnover Timeline</h2>
+  <p class="section-lead">
+    144 units in 18 days. Here's exactly how we'll deliver — on time, every time.
+  </p>
+
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="stat-num">144</div>
+      <div class="stat-label">Total Units</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">18</div>
+      <div class="stat-label">Working Days</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">8–10</div>
+      <div class="stat-label">Units Per Day</div>
     </div>
   </div>
 
-  <div class="why-grid">
-    <div class="why-card">
-      <div class="why-card-icon icon-blue">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+  <h3>Phased Execution</h3>
+  <div class="divider-accent"></div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot">A</div>
+      <div class="tl-content">
+        <div class="tl-date">July 20–25, 2026</div>
+        <h4>Pre-Turnover Setup</h4>
+        <p>Walk-through with management to finalize unit list and priorities. Supplies staged on-site. Crew schedules confirmed. Communication channels established.</p>
       </div>
-      <div class="why-card-title">Full-Time Supervision</div>
-      <div class="why-card-desc">Dedicated on-site supervisor for the entire project duration. Not rotating — the same person from day one to move-in day, ensuring consistency and accountability.</div>
     </div>
-    <div class="why-card">
-      <div class="why-card-icon icon-gold">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <div class="tl-item">
+      <div class="tl-dot">B</div>
+      <div class="tl-content">
+        <div class="tl-date">July 26 – Aug 1, 2026</div>
+        <h4>Phase 1 — High-Priority Units (Week 1)</h4>
+        <p>Early move-out units and White Glove VIP units cleaned first. ~50 units completed. Daily photo reports sent to management.</p>
       </div>
-      <div class="why-card-title">Zero-Cost Go-Backs</div>
-      <div class="why-card-desc">Our three-tier QA process virtually eliminates the need for callbacks. When they happen, we fix them the same day at absolutely no cost to the property.</div>
     </div>
-    <div class="why-card">
-      <div class="why-card-icon icon-green">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <div class="tl-item">
+      <div class="tl-dot">C</div>
+      <div class="tl-content">
+        <div class="tl-date">Aug 2 – Aug 8, 2026</div>
+        <h4>Phase 2 — Main Turnover (Week 2)</h4>
+        <p>Bulk of units cleaned. Surge crew deployed. ~60 units completed. Add-on services (carpet, pressure wash) completed in parallel.</p>
       </div>
-      <div class="why-card-title">Student Housing Expertise</div>
-      <div class="why-card-desc">We understand student housing turns — the tight timelines, partially occupied units, pet situations, and the chaos of move-in day. We have built our process around these realities.</div>
     </div>
-    <div class="why-card">
-      <div class="why-card-icon icon-red">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    <div class="tl-item">
+      <div class="tl-dot">D</div>
+      <div class="tl-content">
+        <div class="tl-date">Aug 9 – Aug 11, 2026</div>
+        <h4>Phase 3 — Final Push + QA (Days 15–18)</h4>
+        <p>Remaining ~34 units completed. Full property QA walk-through with management. Any callbacks handled same-day. Common areas final-cleaned.</p>
       </div>
-      <div class="why-card-title">Transparent Pricing</div>
-      <div class="why-card-desc">No hidden fees, no surprise charges. Per-unit pricing tied directly to configuration. Invoice will never exceed contract price. Change orders require written approval.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background: var(--gold);">★</div>
+      <div class="tl-content">
+        <div class="tl-date">Aug 12–15, 2026</div>
+        <h4>Move-In Day Ready</h4>
+        <p>All 144 units White Glove–ready. On-call crew available for last-minute touch-ups during move-in window. Final completion report delivered.</p>
+      </div>
     </div>
   </div>
 
-  <div class="highlight highlight-green">
-    <div class="highlight-title">Our Commitment</div>
-    <p>InStyle Cleaning is committed to delivering every unit at Sweetwater Apartments to move-in ready condition on schedule. We bring full-time on-site supervision, a proven three-tier QA process, zero-cost go-backs, and a dedicated Move-In Day representative. Our team is built for student housing turns.</p>
-  </div>
-</div>
-
-<!-- ===== 8. TERMS & AUTHORIZATION ===== -->
-<div class="section" id="s8">
-  <div class="section-header">
-    <div class="section-num">08</div>
-    <div>
-      <div class="section-title">Terms &amp; Authorization</div>
-      <div class="section-subtitle">Binding agreement upon signature by both parties</div>
-    </div>
+  <div class="callout">
+    <h4>⚡ Crew Capacity</h4>
+    <p>
+      InStyle will deploy <strong>3–4 dedicated cleaning teams</strong> (3 cleaners per team) 
+      for the turnover period, with additional surge capacity available. A dedicated 
+      <strong>on-site supervisor</strong> will coordinate daily with your management team.
+    </p>
   </div>
 
-  <div class="highlight highlight-gold">
-    <div class="highlight-title">Payment Terms</div>
-    <p><strong>Net 30</strong> from date of invoice. Invoice submitted upon completion and final acceptance of all units. Invoice shall not exceed contract price without approved change order. All change orders must be approved and signed by Property Manager before execution.</p>
-  </div>
-
-  <div class="terms-box">
-    <div class="terms-box-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Insurance &amp; Liability
-    </div>
-    <ul class="terms-list">
-      <li><span class="t-label">General Liability:</span> $1,000,000 per occurrence / $2,000,000 aggregate</li>
-      <li><span class="t-label">Workers' Comp:</span> Coverage per Florida state requirements</li>
-      <li><span class="t-label">Property Damage:</span> Full coverage for any damage caused during service</li>
-      <li><span class="t-label">COI Available:</span> Certificate of Insurance provided upon request with Sweetwater as additional insured</li>
-    </ul>
-  </div>
-
-  <div class="terms-box">
-    <div class="terms-box-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Validity
-    </div>
-    <ul class="terms-list">
-      <li><span class="t-label">Proposal Valid:</span> 60 days from date of issuance</li>
-      <li><span class="t-label">Service Period:</span> As mutually agreed upon contract execution</li>
-      <li><span class="t-label">Governing Law:</span> State of Florida</li>
-    </ul>
-  </div>
-
-  <div class="sig-block">
-    <div class="sig-party">
-      <div class="sig-party-label">Service Provider</div>
-      <div class="sig-party-name">INSTYLE CLEANING LLC<br><span>DBA InStyle Cleaning — Gainesville, FL</span></div>
-      <div class="sig-field">
-        <div class="sig-field-line"></div>
-        <div class="sig-field-label">Authorized Signature</div>
-      </div>
-      <div class="sig-field">
-        <div class="sig-field-line"></div>
-        <div class="sig-field-label">Printed Name &amp; Title</div>
-      </div>
-      <div class="sig-field">
-        <div class="sig-field-line"></div>
-        <div class="sig-field-label">Date</div>
-      </div>
-    </div>
-    <div class="sig-party">
-      <div class="sig-party-label">Property</div>
-      <div class="sig-party-name">Sweetwater Apartments<br><span>1225 W University Ave, Gainesville, FL</span></div>
-      <div class="sig-field">
-        <div class="sig-field-line"></div>
-        <div class="sig-field-label">Authorized Signature</div>
-      </div>
-      <div class="sig-field">
-        <div class="sig-field-line"></div>
-        <div class="sig-field-label">Printed Name &amp; Title</div>
-      </div>
-      <div class="sig-field">
-        <div class="sig-field-line"></div>
-        <div class="sig-field-label">Date</div>
-      </div>
-    </div>
+  <div class="page-footer">
+    <span>InStyle Cleaning Co. — Confidential Proposal</span>
+    <span class="page-num">06</span>
   </div>
 </div>
 
-<div class="confidential">
-  This document is confidential and intended solely for the named recipient. &copy; 2026 INSTYLE CLEANING LLC. All rights reserved.
+<!-- ════════════════════════════════════════════ -->
+<!-- PAGE 8: WHY INSTYLE + GUARANTEES -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-num">05 — Why InStyle</div>
+  <h2>Our Commitment</h2>
+  <p class="section-lead">
+    We don't overbook. We don't no-show. We show up, deliver, and prove it with photos.
+  </p>
+
+  <div class="guarantee-grid">
+    <div class="guarantee-box">
+      <div class="g-icon">🛡</div>
+      <h4>Fully Insured</h4>
+      <p>$1M General Liability<br>Workers' Compensation<br>COI provided on request</p>
+    </div>
+    <div class="guarantee-box">
+      <div class="g-icon">📸</div>
+      <h4>Photo Verified</h4>
+      <p>Before/after photos<br>every unit, every room<br>Real-time reporting</p>
+    </div>
+    <div class="guarantee-box">
+      <div class="g-icon">⏱</div>
+      <h4>On-Time Guarantee</h4>
+      <p>All 144 units completed<br>before move-in day<br>or your money back</p>
+    </div>
+    <div class="guarantee-box">
+      <div class="g-icon">🔄</div>
+      <h4>Free Callbacks</h4>
+      <p>Any unit re-cleaned<br>within 24 hours<br>at zero cost</p>
+    </div>
+    <div class="guarantee-box">
+      <div class="g-icon">👷</div>
+      <h4>Dedicated Supervisor</h4>
+      <p>On-site point of contact<br>daily coordination<br>with your team</p>
+    </div>
+    <div class="guarantee-box">
+      <div class="g-icon">📋</div>
+      <h4>Damage Flagging</h4>
+      <p>Pre-existing damage<br>documented before clean<br>protects your deposits</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>Terms & Conditions</h3>
+  <div class="divider-accent"></div>
+
+  <ol class="terms-list">
+    <li><strong>Proposal Validity:</strong> This proposal is valid through May 31, 2026. Pricing is locked for the 2026 turnover season upon signed agreement.</li>
+    <li><strong>Payment Terms:</strong> Payment due in full within 30 days of invoice date (Net 30). Invoice issued upon completion of all units.</li>
+    <li><strong>Invoice Compliance:</strong> Contractor invoice shall not exceed contract price. Any variance shall have an approved change order attached, signed by Manager.</li>
+    <li><strong>Volume Discount:</strong> 10% discount applied to total contract value for 100+ units. Multi-year contracts receive additional 5% discount.</li>
+    <li><strong>Go-Backs:</strong> Units not passing property quality inspection will be re-cleaned at no cost. Callbacks handled within 4 hours of notification.</li>
+    <li><strong>Access &amp; Keys:</strong> Contractor responsible for cost of re-keying units/buildings due to lost keys. All keys returned daily prior to departure.</li>
+    <li><strong>AC Policy:</strong> Temperature not set below 72°F at any time. Set to 78°F with fan on AUTO upon departure. Violations subject to $10/day per unit deduction.</li>
+    <li><strong>Completion Guarantee:</strong> Failure to comply with the completion timeframe prescribed by Manager may result in Contractor reimbursing Owner and Manager for completion by others.</li>
+    <li><strong>Scope Changes:</strong> Minor changes may occur prior to turn date. Manager shall provide finalized unit/bedroom list prior to start of turn.</li>
+    <li><strong>Liability:</strong> InStyle Cleaning carries $1M General Liability and Workers' Compensation insurance. Certificate of Insurance provided upon request.</li>
+  </ol>
+
+  <div class="page-footer">
+    <span>InStyle Cleaning Co. — Confidential Proposal</span>
+    <span class="page-num">07</span>
+  </div>
 </div>
 
-</div><!-- end .main -->
+<!-- ════════════════════════════════════════════ -->
+<!-- PAGE 9: SIGNATURE -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page" style="display: flex; flex-direction: column;">
+  <div style="flex: 1;">
+    <div class="section-num">06 — Agreement</div>
+    <h2>Let's Get Started</h2>
+    <p class="section-lead">
+      By signing below, both parties agree to the terms, scope, and pricing outlined in this proposal.
+    </p>
 
-<script>
-// Smooth scroll for TOC
-function scrollTo_(id) {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
+    <div class="callout callout-green" style="margin: 32px 0;">
+      <h4>✦ Next Steps</h4>
+      <p>
+        1. Sign and return this proposal<br>
+        2. We schedule a property walk-through<br>
+        3. Final unit count and pricing confirmed<br>
+        4. Turnover crews mobilized for your dates<br>
+        5. Invoice issued upon completion — Net 30
+      </p>
+    </div>
 
-// Nav dots
-(function() {
-  const sections = ['cover','s1','s2','s3','s4','s5','s6','s7','s8'];
-  const nav = document.getElementById('navDots');
-  sections.forEach(id => {
-    const dot = document.createElement('button');
-    dot.className = 'nav-dot';
-    dot.dataset.target = id;
-    dot.title = id === 'cover' ? 'Cover' : 'Section ' + id.replace('s','');
-    dot.addEventListener('click', () => scrollTo_(id));
-    nav.appendChild(dot);
-  });
+    <div class="sig-grid">
+      <div class="sig-block">
+        <label>InStyle Cleaning Co.</label>
+        <div class="sig-line"></div>
+        <div class="sig-meta">
+          Authorized Representative<br>
+          Date: ____________________
+        </div>
+      </div>
+      <div class="sig-block">
+        <label>Sweetwater Gainesville</label>
+        <div class="sig-line"></div>
+        <div class="sig-meta">
+          Authorized Representative<br>
+          Date: ____________________
+        </div>
+      </div>
+    </div>
 
-  function updateDots() {
-    const scrollY = window.scrollY + window.innerHeight / 3;
-    let active = 'cover';
-    sections.forEach(id => {
-      const el = document.getElementById(id);
-      if (el && el.offsetTop <= scrollY) active = id;
-    });
-    nav.querySelectorAll('.nav-dot').forEach(d => {
-      d.classList.toggle('active', d.dataset.target === active);
-    });
-  }
+    <div class="divider" style="margin-top: 48px;"></div>
 
-  window.addEventListener('scroll', updateDots, { passive: true });
-  updateDots();
-})();
-</script>
+    <div style="text-align: center; margin-top: 32px;">
+      <p style="font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 12px;">Ready to discuss? Let's talk.</p>
+      <p style="font-size: 14px; color: var(--muted); line-height: 2;">
+        📞 Call or Text: <strong style="color: var(--ink);">(253) 653-7548</strong><br>
+        ✉️ Email: <strong style="color: var(--ink);">instylecleaningco@gmail.com</strong><br>
+        🌐 Web: <strong style="color: var(--ink);">instylecleaningco.com</strong>
+      </p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>InStyle Cleaning Co. — Confidential Proposal</span>
+    <span class="page-num">08</span>
+  </div>
+</div>
+
+</div><!-- .pages -->
+
+<a href="https://deerflow.tech" target="_blank" class="deerflow-mark no-print">✦ Deerflow</a>
 
 </body>
 </html>
