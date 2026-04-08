@@ -1,5 +1,11 @@
 {
   "framework": null,
   "buildCommand": "",
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "functions": {
+    "api/pdf.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    }
+  }
 }

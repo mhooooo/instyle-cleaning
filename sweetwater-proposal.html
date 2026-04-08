@@ -882,9 +882,41 @@
 <div class="print-bar no-print">
   <span>InStyle Cleaning — Sweetwater Turnover Proposal</span>
   <div class="actions">
-    <button class="print-btn secondary" onclick="window.print()">⎙ Print / Save PDF</button>
+    <button class="print-btn secondary" onclick="window.print()" id="printBtn">⎙ Print</button>
+    <button class="print-btn" onclick="downloadPDF()" id="pdfBtn">⬇ Download PDF</button>
   </div>
 </div>
+
+<script>
+  async function downloadPDF() {
+    const btn = document.getElementById('pdfBtn');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Generating PDF…';
+    try {
+      const res = await fetch('/api/pdf?file=sweetwater-proposal.html');
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || 'PDF generation failed');
+      }
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'InStyle-Cleaning-Sweetwater-Turnover-Proposal.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      btn.textContent = '✓ Downloaded';
+      setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 2500);
+    } catch (e) {
+      alert('Could not generate PDF: ' + e.message);
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }
+  }
+</script>
 
 <div class="pages">
 

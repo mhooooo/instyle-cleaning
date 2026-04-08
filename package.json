@@ -1,0 +1,10 @@
+{
+  "name": "instyle-cleaning",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@sparticuz/chromium-min": "^131.0.1",
+    "puppeteer-core": "^23.9.0"
+  }
+}
