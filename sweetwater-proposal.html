@@ -30,8 +30,14 @@
   }
 
   @media print {
-    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .page { break-after: page; box-shadow: none !important; margin: 0 !important; border-radius: 0 !important; }
+    html, body {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+      background: white !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
     .no-print { display: none !important; }
   }
 
@@ -723,11 +729,115 @@
   }
   .deerflow-mark:hover { color: rgba(0,0,0,0.35); }
 
+  /* ═══════════════════════════════════════════
+     PRINT — Letter size, 0.5" margin, one page per section
+     ═══════════════════════════════════════════ */
   @media print {
-    .deerflow-mark { display: none; }
+    .deerflow-mark,
     .print-bar { display: none !important; }
-    .pages { margin: 0; gap: 0; max-width: none; }
-    .page { padding: 48px 56px; min-height: auto; }
+
+    body {
+      background: white !important;
+      font-size: 11pt;
+      line-height: 1.5;
+    }
+
+    .pages {
+      margin: 0 !important;
+      padding: 0 !important;
+      gap: 0 !important;
+      max-width: none !important;
+      width: 100% !important;
+      display: block !important;
+    }
+
+    /* Each .page fills exactly one letter sheet */
+    .page {
+      width: 8.5in !important;
+      min-height: 11in !important;
+      max-height: 11in !important;
+      padding: 0.5in 0.6in !important;
+      margin: 0 !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      background: var(--paper) !important;
+      page-break-after: always !important;
+      break-after: page !important;
+      page-break-inside: avoid;
+      overflow: hidden !important;
+      position: relative;
+    }
+
+    .page:last-child {
+      page-break-after: auto !important;
+      break-after: auto !important;
+    }
+
+    /* Cover page — full-bleed dark background */
+    .page.cover {
+      background: var(--ink) !important;
+      color: white !important;
+      padding: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+    }
+    .page.cover .cover-top {
+      padding: 0.7in 0.7in 0 !important;
+    }
+    .page.cover .cover-visual {
+      padding: 0 0.7in 0.6in !important;
+    }
+    .cover-title { font-size: 42pt !important; }
+    .cover-subtitle { font-size: 14pt !important; }
+
+    /* Section typography tuned for print */
+    h2 { font-size: 22pt !important; margin-bottom: 12pt !important; }
+    h3 { font-size: 14pt !important; margin: 14pt 0 6pt !important; }
+    h4 { font-size: 11pt !important; }
+    p, li, td, th { font-size: 10pt !important; }
+    .section-num { font-size: 9pt !important; margin-bottom: 8pt !important; }
+    .section-lead { font-size: 11pt !important; margin-bottom: 14pt !important; }
+
+    /* Keep critical content together */
+    table,
+    .pricing-card,
+    .scope-card,
+    .callout,
+    .stat-card,
+    .timeline-item,
+    .sig-block,
+    .photo-demo { page-break-inside: avoid !important; break-inside: avoid !important; }
+
+    table { width: 100% !important; }
+    thead { display: table-header-group; }
+    tr { page-break-inside: avoid !important; }
+
+    /* Tighten spacing for print */
+    .divider { margin: 14pt 0 !important; }
+    .divider-accent { margin: 4pt 0 10pt !important; }
+
+    /* Force backgrounds/colors to print */
+    .pricing-card,
+    .scope-card,
+    .callout,
+    .stat-card,
+    thead th,
+    .estimate-table .total td,
+    .cover-badge,
+    .tag {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    .page-footer {
+      position: absolute !important;
+      bottom: 0.35in !important;
+      left: 0.6in !important;
+      right: 0.6in !important;
+      font-size: 8pt !important;
+      color: var(--muted) !important;
+    }
   }
 </style>
 </head>
