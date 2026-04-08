@@ -1,13 +1,9 @@
-import chromium from '@sparticuz/chromium-min';
+import chromium from '@sparticuz/chromium';
 import puppeteer from 'puppeteer-core';
 
 export const config = {
   maxDuration: 60,
 };
-
-// Hosted Chromium binary (keeps function bundle small)
-const CHROMIUM_PACK =
-  'https://github.com/Sparticuz/chromium/releases/download/v131.0.1/chromium-v131.0.1-pack.tar';
 
 export default async function handler(req, res) {
   // Allow file override via query param (e.g., ?file=sweetwater-proposal.html)
@@ -36,7 +32,7 @@ export default async function handler(req, res) {
         '--disable-web-security',
       ],
       defaultViewport: { width: 1240, height: 1754, deviceScaleFactor: 2 },
-      executablePath: await chromium.executablePath(CHROMIUM_PACK),
+      executablePath: await chromium.executablePath(),
       headless: true,
     });
 
