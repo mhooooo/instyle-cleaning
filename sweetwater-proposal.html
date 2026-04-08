@@ -25,7 +25,13 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   @page {
-    size: letter;
+    size: A4;
+    margin: 16mm 14mm 18mm;
+  }
+
+  /* Cover page has its own full-bleed page (no margins) */
+  @page cover {
+    size: A4;
     margin: 0;
   }
 
@@ -730,16 +736,20 @@
   .deerflow-mark:hover { color: rgba(0,0,0,0.35); }
 
   /* ═══════════════════════════════════════════
-     PRINT — Letter size, 0.5" margin, one page per section
+     PRINT — A4 professional PDF output
+     Strategy: @page owns the margins. .page is just a
+     section break marker. Content flows naturally and
+     cards/tables use page-break-inside:avoid to stay together.
      ═══════════════════════════════════════════ */
   @media print {
     .deerflow-mark,
     .print-bar { display: none !important; }
 
-    body {
+    html, body {
       background: white !important;
-      font-size: 11pt;
-      line-height: 1.5;
+      font-size: 10pt !important;
+      line-height: 1.5 !important;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
     }
 
     .pages {
@@ -747,26 +757,25 @@
       padding: 0 !important;
       gap: 0 !important;
       max-width: none !important;
-      width: 100% !important;
+      width: auto !important;
       display: block !important;
     }
 
-    /* Each .page starts a new sheet; content flows naturally */
+    /* Strip all fixed dimensions — @page owns the geometry */
     .page {
-      width: 8.5in !important;
-      min-height: 10.5in !important;
+      width: auto !important;
+      min-height: 0 !important;
       max-height: none !important;
-      padding: 0.45in 0.55in 0.7in !important;
+      padding: 0 !important;
       margin: 0 !important;
       box-shadow: none !important;
       border-radius: 0 !important;
-      background: var(--paper) !important;
+      background: transparent !important;
       page-break-after: always !important;
       break-after: page !important;
       overflow: visible !important;
-      position: relative;
-      display: flex !important;
-      flex-direction: column !important;
+      display: block !important;
+      position: static !important;
     }
 
     .page:last-child {
@@ -774,33 +783,47 @@
       break-after: auto !important;
     }
 
-    /* Cover page — full-bleed dark background, fills sheet */
+    /* Cover page — full-bleed dark background, uses :first @page (no margin) */
     .page.cover {
       background: var(--ink) !important;
       color: white !important;
-      padding: 0 !important;
-      min-height: 10.8in !important;
+      padding: 25mm 18mm 22mm !important;
+      min-height: 252mm !important;
+      display: flex !important;
+      flex-direction: column !important;
       justify-content: space-between !important;
+      page: cover;
     }
-    .page.cover .cover-top {
-      padding: 0.7in 0.7in 0 !important;
-    }
+    .page.cover .cover-top { padding: 0 !important; }
     .page.cover .cover-visual {
-      padding: 0 0.7in 0.7in !important;
-      flex: 1 !important;
+      padding: 0 !important;
+      margin-top: auto !important;
+      flex: none !important;
     }
-    .cover-title { font-size: 42pt !important; }
-    .cover-subtitle { font-size: 14pt !important; }
+    .page.cover .cover-visual .pattern { display: none !important; }
+    .page.cover .cover-meta { padding: 0 !important; }
 
-    /* Section typography tuned for print */
-    h2 { font-size: 22pt !important; margin-bottom: 12pt !important; }
-    h3 { font-size: 14pt !important; margin: 14pt 0 6pt !important; }
-    h4 { font-size: 11pt !important; }
-    p, li, td, th { font-size: 10pt !important; }
-    .section-num { font-size: 9pt !important; margin-bottom: 8pt !important; }
-    .section-lead { font-size: 11pt !important; margin-bottom: 14pt !important; }
+    .cover-title { font-size: 38pt !important; line-height: 1.05 !important; }
+    .cover-subtitle { font-size: 12pt !important; margin-top: 14pt !important; }
+    .cover-badge { margin-bottom: 28pt !important; font-size: 9pt !important; }
+    .cover-meta { gap: 18pt !important; }
+    .meta-block label { font-size: 8pt !important; }
+    .meta-block p { font-size: 10pt !important; }
 
-    /* Keep critical content together */
+    /* Typography scaled for A4 */
+    h2 { font-size: 20pt !important; margin-bottom: 6pt !important; line-height: 1.15 !important; }
+    h3 { font-size: 13pt !important; margin: 12pt 0 5pt !important; }
+    h4 { font-size: 11pt !important; margin-bottom: 6pt !important; }
+    p, li, td, th { font-size: 9.5pt !important; }
+    .section-num {
+      font-size: 8pt !important;
+      margin-bottom: 6pt !important;
+      letter-spacing: 1.5pt !important;
+    }
+    .section-lead { font-size: 10pt !important; margin-bottom: 12pt !important; }
+    .body-text { font-size: 9.5pt !important; }
+
+    /* Keep cards/tables/rows from splitting across pages */
     table,
     .pricing-card,
     .scope-card,
@@ -808,49 +831,48 @@
     .stat-card,
     .timeline-item,
     .sig-block,
-    .photo-demo { page-break-inside: avoid !important; break-inside: avoid !important; }
+    .photo-demo,
+    .price-row,
+    tr { page-break-inside: avoid !important; break-inside: avoid !important; }
 
-    table { width: 100% !important; }
-    thead { display: table-header-group; }
-    tr { page-break-inside: avoid !important; }
+    h2, h3, h4 { page-break-after: avoid !important; break-after: avoid !important; }
+    table { width: 100% !important; border-collapse: collapse !important; }
+    thead { display: table-header-group !important; }
 
-    /* Tighten spacing for print */
-    .divider { margin: 14pt 0 !important; }
-    .divider-accent { margin: 4pt 0 10pt !important; }
+    /* Tighten vertical rhythm */
+    .pricing-card { margin: 10pt 0 !important; }
+    .pricing-body { padding: 4pt 14pt !important; }
+    .pricing-header { padding: 10pt 14pt !important; }
+    .price-row { padding: 8pt 0 !important; }
+    .scope-card { padding: 12pt !important; margin-bottom: 8pt !important; }
+    .scope-grid { gap: 8pt !important; margin: 8pt 0 !important; }
+    .callout { padding: 10pt 14pt !important; margin: 10pt 0 !important; }
+    .estimate-table td,
+    .estimate-table th { padding: 7pt 10pt !important; }
+    .divider { margin: 10pt 0 !important; }
+    .divider-accent { margin: 3pt 0 8pt !important; }
+    ul, ol { margin: 4pt 0 4pt 16pt !important; padding-left: 0 !important; }
+    li { margin-bottom: 2pt !important; line-height: 1.45 !important; }
 
-    /* Force backgrounds/colors to print */
-    .pricing-card,
-    .scope-card,
-    .callout,
-    .stat-card,
-    thead th,
-    .estimate-table .total td,
-    .cover-badge,
-    .tag {
+    /* Force ALL backgrounds/colors to print */
+    * {
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
+      color-adjust: exact !important;
     }
 
+    /* Section footer flows at bottom of each section */
     .page-footer {
       position: static !important;
-      margin-top: auto !important;
-      padding-top: 14pt !important;
-      font-size: 8pt !important;
+      margin-top: 14pt !important;
+      padding-top: 8pt !important;
+      font-size: 7.5pt !important;
       color: var(--muted) !important;
       display: flex !important;
       justify-content: space-between !important;
       align-items: center !important;
-      border-top: 1px solid rgba(0,0,0,0.08) !important;
+      border-top: 1px solid rgba(0,0,0,0.1) !important;
     }
-
-    /* Reduce vertical spacing so content fits */
-    .pricing-card { margin: 10pt 0 !important; }
-    .scope-card { padding: 14pt !important; margin-bottom: 10pt !important; }
-    .callout { padding: 12pt 16pt !important; margin: 10pt 0 !important; }
-    .estimate-table td,
-    .estimate-table th { padding: 8pt 10pt !important; }
-    ul, ol { margin: 6pt 0 !important; }
-    li { margin-bottom: 3pt !important; }
   }
 </style>
 </head>
