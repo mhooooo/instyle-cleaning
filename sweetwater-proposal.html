@@ -751,21 +751,22 @@
       display: block !important;
     }
 
-    /* Each .page fills exactly one letter sheet */
+    /* Each .page starts a new sheet; content flows naturally */
     .page {
       width: 8.5in !important;
-      min-height: 11in !important;
-      max-height: 11in !important;
-      padding: 0.5in 0.6in !important;
+      min-height: 10.5in !important;
+      max-height: none !important;
+      padding: 0.45in 0.55in 0.7in !important;
       margin: 0 !important;
       box-shadow: none !important;
       border-radius: 0 !important;
       background: var(--paper) !important;
       page-break-after: always !important;
       break-after: page !important;
-      page-break-inside: avoid;
-      overflow: hidden !important;
+      overflow: visible !important;
       position: relative;
+      display: flex !important;
+      flex-direction: column !important;
     }
 
     .page:last-child {
@@ -773,20 +774,20 @@
       break-after: auto !important;
     }
 
-    /* Cover page — full-bleed dark background */
+    /* Cover page — full-bleed dark background, fills sheet */
     .page.cover {
       background: var(--ink) !important;
       color: white !important;
       padding: 0 !important;
-      display: flex !important;
-      flex-direction: column !important;
+      min-height: 10.8in !important;
       justify-content: space-between !important;
     }
     .page.cover .cover-top {
       padding: 0.7in 0.7in 0 !important;
     }
     .page.cover .cover-visual {
-      padding: 0 0.7in 0.6in !important;
+      padding: 0 0.7in 0.7in !important;
+      flex: 1 !important;
     }
     .cover-title { font-size: 42pt !important; }
     .cover-subtitle { font-size: 14pt !important; }
@@ -831,13 +832,25 @@
     }
 
     .page-footer {
-      position: absolute !important;
-      bottom: 0.35in !important;
-      left: 0.6in !important;
-      right: 0.6in !important;
+      position: static !important;
+      margin-top: auto !important;
+      padding-top: 14pt !important;
       font-size: 8pt !important;
       color: var(--muted) !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      border-top: 1px solid rgba(0,0,0,0.08) !important;
     }
+
+    /* Reduce vertical spacing so content fits */
+    .pricing-card { margin: 10pt 0 !important; }
+    .scope-card { padding: 14pt !important; margin-bottom: 10pt !important; }
+    .callout { padding: 12pt 16pt !important; margin: 10pt 0 !important; }
+    .estimate-table td,
+    .estimate-table th { padding: 8pt 10pt !important; }
+    ul, ol { margin: 6pt 0 !important; }
+    li { margin-bottom: 3pt !important; }
   }
 </style>
 </head>
